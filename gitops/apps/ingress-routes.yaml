@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress-routes
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: traefik-system
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: https://github.com/YOUR_USERNAME/k3s-homelab.git
+    targetRevision: main
+    path: gitops/manifests/ingress-routes
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false

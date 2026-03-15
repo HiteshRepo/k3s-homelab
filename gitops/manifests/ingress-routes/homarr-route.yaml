@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: homarr
+  namespace: traefik-system
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`homarr.lab.hiteshp.in`)
+      kind: Rule
+      services:
+        - name: homarr
+          namespace: homelab
+          port: 7575
+  tls: {}

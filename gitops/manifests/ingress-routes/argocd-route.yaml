@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: argocd
+  namespace: traefik-system
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`argocd.lab.hiteshp.in`)
+      kind: Rule
+      services:
+        - name: argocd-server
+          namespace: argocd
+          port: 80
+  tls: {}
