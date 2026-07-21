@@ -21,6 +21,10 @@ lid-suspend-off: ## Disable laptop suspend on lid close
 	sudo sed -i 's/#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
 	sudo systemctl restart systemd-logind
 
+.PHONY: gpu-node-setup
+gpu-node-setup: ## Set up GPU support on this node (NVIDIA driver → CUDA → container toolkit → k3s → device plugin)
+	bash gpu-node-setup.sh
+
 .PHONY: set-github-username
 set-github-username: ## Replace YOUR_USERNAME in all YAML files (usage: make set-github-username GITHUB_USERNAME=myuser)
 	@if [ "$(GITHUB_USERNAME)" = "YOUR_USERNAME" ]; then \
