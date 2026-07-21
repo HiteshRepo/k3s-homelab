@@ -28,6 +28,7 @@ make bootstrap              # Apply app-of-apps to start all deployments
 make status                 # Print sync status of all ArgoCD applications (one-shot)
 make watch                  # Watch ArgoCD sync progress (streaming)
 make traefik-ip             # Print the LoadBalancer IP assigned to Traefik
+make cloudflared-secret TUNNEL_TOKEN=<token>  # Create the Cloudflare Tunnel token secret
 ```
 
 For ad-hoc operations not covered by the Makefile:
@@ -64,7 +65,9 @@ gitops/
     ├── ingress-routes/       # Traefik IngressRoute objects for each service
     ├── metallb-config/       # IP pool (192.168.1.200–220) + L2Advertisement
     ├── metallb-namespace/    # Namespace with privileged PSS labels required by MetalLB
-    └── monitoring-namespace/ # Namespace for Prometheus/Grafana/Uptime-Kuma
+    ├── monitoring-namespace/ # Namespace for Prometheus/Grafana/Uptime-Kuma
+    ├── ollama/               # Ollama (GPU) + Open WebUI Deployments, Services, PVCs
+    └── cloudflared/          # Cloudflare Tunnel Deployment (token secret created via make)
 ```
 
 ## Adding a New Application
