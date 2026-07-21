@@ -18,8 +18,11 @@ kubeconfig: ## Copy K3s kubeconfig to ~/.kube/config
 
 .PHONY: lid-suspend-off
 lid-suspend-off: ## Disable laptop suspend on lid close
-	sudo sed -i 's/#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
-	sudo systemctl restart systemd-logind
+	@grep -q "^HandleLidSwitch=ignore" /etc/systemd/logind.conf && echo "Lid suspend already disabled" || { \
+	  sudo sed -i 's/#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf; \
+	  sudo systemctl restart systemd-logind; \
+	  echo "Lid suspend disabled"; \
+	}
 
 .PHONY: gpu-node-setup
 gpu-node-setup: ## Set up GPU support on this node (NVIDIA driver → CUDA → container toolkit → k3s → device plugin)
@@ -38,9 +41,11 @@ set-github-username: ## Replace YOUR_USERNAME in all YAML files (usage: make set
 
 .PHONY: install-argocd
 install-argocd: ## Install ArgoCD into the argocd namespace
-	kubectl create namespace argocd --dry-run=client -o yaml | kubectl apply -f -
-	kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-	kubectl wait --for=condition=available deployment/argocd-server -n argocd --timeout=120s
+	@kubectl get deployment argocd-server -n argocd >/dev/null 2>&1 && echo "ArgoCD already installed" || { \
+	  kubectl create namespace argocd --dry-run=client -o yaml | kubectl apply -f -; \
+	  kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml; \
+	  kubectl wait --for=condition=available deployment/argocd-server -n argocd --timeout=120s; \
+	}
 
 .PHONY: argocd-password
 argocd-password: ## Print the initial ArgoCD admin password
@@ -49,7 +54,8 @@ argocd-password: ## Print the initial ArgoCD admin password
 
 .PHONY: bootstrap
 bootstrap: ## Apply the app-of-apps to kick off all deployments
-	kubectl apply -f gitops/app-of-apps.yaml
+	@kubectl get application app-of-apps -n argocd >/dev/null 2>&1 && echo "app-of-apps already bootstrapped" || \
+	  kubectl apply -f gitops/app-of-apps.yaml
 
 # ─── Status ───────────────────────────────────────────────────────────────────
 

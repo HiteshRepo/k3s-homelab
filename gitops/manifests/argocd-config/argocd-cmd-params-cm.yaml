@@ -6,3 +6,5 @@ metadata:
 data:
   # Run ArgoCD server without TLS — Traefik handles HTTPS termination
   server.insecure: "true"
+  # Poll Git every 24 hours — homelab only, no need for frequent reconciliation
+  timeout.reconciliation: 86400s

@@ -22,9 +22,13 @@ fi
 
 # ─── System ───────────────────────────────────────────────────────────────────
 
-info "Disabling lid-close suspend"
-make lid-suspend-off
-ok "Lid suspend disabled"
+if grep -q "^HandleLidSwitch=ignore" /etc/systemd/logind.conf; then
+  ok "Lid suspend already disabled"
+else
+  info "Disabling lid-close suspend"
+  make lid-suspend-off
+  ok "Lid suspend disabled"
+fi
 
 # ─── K3s ──────────────────────────────────────────────────────────────────────
 
@@ -44,13 +48,21 @@ fi
 
 # ─── ArgoCD ───────────────────────────────────────────────────────────────────
 
-info "Installing ArgoCD"
-make install-argocd
-ok "ArgoCD ready"
+if kubectl get deployment argocd-server -n argocd >/dev/null 2>&1; then
+  ok "ArgoCD already installed"
+else
+  info "Installing ArgoCD"
+  make install-argocd
+  ok "ArgoCD ready"
+fi
 
-info "Bootstrapping app-of-apps"
-make bootstrap
-ok "Bootstrap applied — ArgoCD is now deploying all apps"
+if kubectl get application app-of-apps -n argocd >/dev/null 2>&1; then
+  ok "app-of-apps already bootstrapped"
+else
+  info "Bootstrapping app-of-apps"
+  make bootstrap
+  ok "Bootstrap applied — ArgoCD is now deploying all apps"
+fi
 
 # ─── Done ─────────────────────────────────────────────────────────────────────
 
