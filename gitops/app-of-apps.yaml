@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: gitops/apps
-    repoURL: https://github.com/YOUR_USERNAME/k3s-homelab
+    repoURL: https://github.com/hiteshrepo/k3s-homelab
     targetRevision: main
   syncPolicy:
     automated:

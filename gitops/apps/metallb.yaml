@@ -13,10 +13,10 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   sources:
-    - repoURL: https://github.com/YOUR_USERNAME/k3s-homelab
+    - repoURL: https://github.com/hiteshrepo/k3s-homelab
       path: gitops/manifests/metallb-namespace
       targetRevision: main
-    - repoURL: https://github.com/YOUR_USERNAME/k3s-homelab
+    - repoURL: https://github.com/hiteshrepo/k3s-homelab
       path: gitops/manifests/metallb-config
       targetRevision: main
     - chart: metallb

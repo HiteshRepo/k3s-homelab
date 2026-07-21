@@ -13,7 +13,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    repoURL: https://github.com/YOUR_USERNAME/k3s-homelab.git
+    repoURL: https://github.com/hiteshrepo/k3s-homelab.git
     targetRevision: main
     path: gitops/manifests/cert-issuer
   syncPolicy:
