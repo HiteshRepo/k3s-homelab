@@ -28,13 +28,19 @@ ok "Lid suspend disabled"
 
 # ─── K3s ──────────────────────────────────────────────────────────────────────
 
-info "Installing K3s"
-make install-k3s
-ok "K3s installed"
+if command -v k3s &>/dev/null; then
+  ok "K3s already installed"
+else
+  info "Installing K3s"
+  make install-k3s
+  ok "K3s installed"
+fi
 
-info "Copying kubeconfig"
-make kubeconfig
-ok "kubeconfig ready at ~/.kube/config"
+if [ ! -f ~/.kube/config ]; then
+  info "Copying kubeconfig"
+  make kubeconfig
+  ok "kubeconfig ready at ~/.kube/config"
+fi
 
 # ─── ArgoCD ───────────────────────────────────────────────────────────────────
 

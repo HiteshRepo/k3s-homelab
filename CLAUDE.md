@@ -6,11 +6,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A GitOps homelab running K3s (lightweight Kubernetes) on a single Ubuntu laptop. ArgoCD manages all deployments by watching this repository. There are no build steps — everything is declarative YAML.
 
+## First-Time Setup
+
+Run `./first-time-setup.sh` — it handles everything end-to-end: prompts for your GitHub username, replaces `YOUR_USERNAME` placeholders, installs K3s and ArgoCD, bootstraps the app-of-apps, and prints the `/etc/hosts` entries to add on client machines.
+
+On a GPU node, run `./gpu-node-setup.sh` **before** `./first-time-setup.sh` — the NVIDIA driver requires a reboot, so it's cleaner to get that out of the way first. Both scripts are idempotent on k3s and kubeconfig, so either order works, but GPU-first avoids an extra reboot mid-setup. `gpu-node-setup.sh` can also be run standalone if you only want a GPU-enabled k3s without the ArgoCD GitOps stack.
+
 ## Key Commands
 
 Run `make help` to list all available targets. Common ones:
 
 ```bash
+make gpu-node-setup         # Set up GPU support (NVIDIA driver → CUDA → container toolkit → k3s → device plugin)
 make lid-suspend-off        # Disable laptop suspend on lid close (run once after Ubuntu install)
 make install-k3s            # Install K3s
 make kubeconfig             # Copy K3s kubeconfig to ~/.kube/config
@@ -18,7 +25,8 @@ make set-github-username GITHUB_USERNAME=myuser  # Replace YOUR_USERNAME in all 
 make install-argocd         # Deploy ArgoCD
 make argocd-password        # Print initial ArgoCD admin password
 make bootstrap              # Apply app-of-apps to start all deployments
-make watch                  # Watch ArgoCD sync progress
+make status                 # Print sync status of all ArgoCD applications (one-shot)
+make watch                  # Watch ArgoCD sync progress (streaming)
 make traefik-ip             # Print the LoadBalancer IP assigned to Traefik
 ```
 
@@ -64,6 +72,8 @@ gitops/
 1. Create `gitops/apps/myapp.yaml` — an ArgoCD `Application` resource pointing to a Helm chart or Git path
 2. Add a `syncWave` annotation (wave 4 for apps, wave 5 for ingress routes)
 3. If the app needs an ingress, add a `Traefik IngressRoute` to `gitops/manifests/ingress-routes/`
+   - Place the `IngressRoute` in the **`traefik-system` namespace** (not the app's namespace) — cross-namespace routing is enabled via `allowCrossNamespace: true` in the Traefik Helm values
+   - Use `tls: {}` to get Traefik's default self-signed certificate (same pattern as existing routes)
 4. Push to GitHub — ArgoCD deploys automatically
 
 ## Network Configuration
@@ -72,6 +82,16 @@ gitops/
 - Traefik LoadBalancer IP: `192.168.1.200` — hardcoded in `gitops/apps/traefik.yaml`
 - Domain: `*.lab.hiteshp.in` resolved via `/etc/hosts` on client machines
 - If your LAN uses this range, update both files above before bootstrapping
+
+Service URLs (add all to `/etc/hosts` pointing at `192.168.1.200`):
+
+| Service | URL | Default Credentials |
+|---------|-----|---------------------|
+| ArgoCD | `https://argocd.lab.hiteshp.in` | admin / `make argocd-password` |
+| Grafana | `https://grafana.lab.hiteshp.in` | admin / admin |
+| Homarr | `https://homarr.lab.hiteshp.in` | — |
+| Uptime Kuma | `https://status.lab.hiteshp.in` | — |
+| Traefik dashboard | `https://traefik.lab.hiteshp.in` | — |
 
 ## Helm Chart Sources
 
