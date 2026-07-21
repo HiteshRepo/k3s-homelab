@@ -11,7 +11,8 @@ GitOps homelab on K3s. Runs on a single Ubuntu laptop on your home network.
 | Grafana | https://grafana.lab.hiteshp.in | Metrics dashboards |
 | Uptime Kuma | https://status.lab.hiteshp.in | Uptime monitoring |
 | Traefik | https://traefik.lab.hiteshp.in | Ingress controller |
-| Open WebUI | https://chat.lab.hiteshp.in | LLM chat UI (backed by Ollama) |
+| Open WebUI | https://chat.lab.hiteshp.in | LLM chat UI (backed by Ollama + LiteLLM) |
+| LiteLLM | https://litellm.lab.hiteshp.in | OpenAI-compatible proxy (Ollama + cloud APIs) |
 
 ## Network
 
@@ -68,9 +69,20 @@ Add these lines to `/etc/hosts` on any machine you want access from
 192.168.1.200   status.lab.hiteshp.in
 192.168.1.200   traefik.lab.hiteshp.in
 192.168.1.200   chat.lab.hiteshp.in
+192.168.1.200   litellm.lab.hiteshp.in
 ```
 
-### Step 6 — (Optional) Cloudflare Tunnel for external access
+### Step 6 — (Optional) LiteLLM cloud API keys
+
+To enable OpenAI and/or Anthropic models in Open WebUI, create the secret **before** ArgoCD deploys LiteLLM:
+
+```bash
+make litellm-secret OPENAI_API_KEY=sk-... ANTHROPIC_API_KEY=sk-ant-...
+```
+
+The master key is auto-generated and printed on first run. Open WebUI will automatically surface cloud models alongside your local Ollama models.
+
+### Step 7 — (Optional) Cloudflare Tunnel for external access
 
 To expose Open WebUI outside your LAN via Cloudflare Tunnel:
 
@@ -108,3 +120,4 @@ See `CLAUDE.md` for the full pattern including sync waves and IngressRoute conve
 | ArgoCD | admin | run `make argocd-password` |
 | Grafana | admin | admin |
 | Open WebUI | — | first user registered becomes admin |
+| LiteLLM | — | master key printed by `make litellm-secret` |
