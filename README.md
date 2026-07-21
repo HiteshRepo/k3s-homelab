@@ -85,6 +85,13 @@ To expose Open WebUI outside your LAN via Cloudflare Tunnel:
 
 ---
 
+## TODO
+
+External access options (not yet implemented):
+
+- [ ] **Cloudflare Tunnel** — transfer DNS from Netlify to Cloudflare (keep domain at Netlify, point nameservers to Cloudflare — free, ~24h propagation), then `make cloudflared-secret TUNNEL_TOKEN=<token>` and configure the public hostname in Zero Trust dashboard
+- [ ] **Tailscale** — no domain needed, free for personal use, install on the GPU laptop and any client device; reach all services over the Tailscale network without exposing anything publicly
+
 ## Adding a New App
 
 1. Create `gitops/apps/myapp.yaml` (ArgoCD Application pointing to a Helm chart or Git path)
