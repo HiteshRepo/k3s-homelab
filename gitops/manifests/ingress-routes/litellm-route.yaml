@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: litellm
+  namespace: traefik-system
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`litellm.lab.hiteshp.in`)
+      kind: Rule
+      services:
+        - name: litellm
+          namespace: litellm
+          port: 4000
+  tls: {}

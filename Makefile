@@ -39,6 +39,28 @@ set-github-username: ## Replace YOUR_USERNAME in all YAML files (usage: make set
 
 # ─── App Secrets ──────────────────────────────────────────────────────────────
 
+OPENAI_API_KEY ?= ""
+ANTHROPIC_API_KEY ?= ""
+
+.PHONY: litellm-secret
+litellm-secret: ## Create LiteLLM API key secrets (usage: make litellm-secret OPENAI_API_KEY=sk-... ANTHROPIC_API_KEY=sk-ant-...)
+	@if [ -z "$(OPENAI_API_KEY)" ] && [ -z "$(ANTHROPIC_API_KEY)" ]; then \
+	  echo "Error: pass at least one key — make litellm-secret OPENAI_API_KEY=sk-... ANTHROPIC_API_KEY=sk-ant-..."; exit 1; \
+	fi
+	@kubectl get secret litellm-keys -n litellm >/dev/null 2>&1 && echo "litellm-keys secret already exists" || { \
+	  MASTER_KEY=$$(openssl rand -hex 32); \
+	  kubectl create namespace litellm --dry-run=client -o yaml | kubectl apply -f -; \
+	  kubectl create secret generic litellm-keys \
+	    --namespace litellm \
+	    --from-literal=openai-api-key=$(OPENAI_API_KEY) \
+	    --from-literal=anthropic-api-key=$(ANTHROPIC_API_KEY) \
+	    --from-literal=master-key=$$MASTER_KEY; \
+	  kubectl create namespace ollama --dry-run=client -o yaml | kubectl apply -f -; \
+	  kubectl create secret generic litellm-master-key \
+	    --namespace ollama \
+	    --from-literal=master-key=$$MASTER_KEY; \
+	}
+
 .PHONY: homarr-secret
 homarr-secret: ## Create the Homarr database encryption key secret
 	@kubectl get secret db-encryption -n homelab >/dev/null 2>&1 && echo "db-encryption secret already exists" || \

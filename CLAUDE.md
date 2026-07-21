@@ -30,6 +30,7 @@ make watch                  # Watch ArgoCD sync progress (streaming)
 make traefik-ip             # Print the LoadBalancer IP assigned to Traefik
 make homarr-secret              # Create the Homarr DB encryption key secret (auto-generated)
 make cloudflared-secret TUNNEL_TOKEN=<token>  # Create the Cloudflare Tunnel token secret
+make litellm-secret OPENAI_API_KEY=sk-... ANTHROPIC_API_KEY=sk-ant-...  # Create LiteLLM API key secrets
 ```
 
 For ad-hoc operations not covered by the Makefile:
@@ -49,7 +50,7 @@ kubectl patch application <app-name> -n argocd --type merge -p '{"operation":{"i
 1. Wave 1: MetalLB, cert-manager, metrics-server, argocd-config
 2. Wave 2: local-path-provisioner, cert-issuer
 3. Wave 3: Traefik (depends on MetalLB for LoadBalancer IP)
-4. Wave 4: Applications (Homarr, Prometheus stack, Uptime Kuma, Ollama + Open WebUI, Cloudflared)
+4. Wave 4: Applications (Homarr, Prometheus stack, Uptime Kuma, Ollama + Open WebUI, LiteLLM, Cloudflared)
 5. Wave 5: ingress-routes (Traefik IngressRoutes for all services)
 
 **Traffic path:** DNS (`*.lab.hiteshp.in → 192.168.1.200`) → MetalLB → Traefik → services. TLS terminates at Traefik using self-signed certs from cert-manager.
@@ -68,6 +69,7 @@ gitops/
     ├── metallb-namespace/    # Namespace with privileged PSS labels required by MetalLB
     ├── monitoring-namespace/ # Namespace for Prometheus/Grafana/Uptime-Kuma
     ├── ollama/               # Ollama (GPU) + Open WebUI Deployments, Services, PVCs
+    ├── litellm/              # LiteLLM proxy (OpenAI-compatible API aggregating Ollama + cloud providers)
     └── cloudflared/          # Cloudflare Tunnel Deployment (token secret created via make)
 ```
 
@@ -97,12 +99,14 @@ Service URLs (add all to `/etc/hosts` pointing at `192.168.1.200`):
 | Uptime Kuma | `https://status.lab.hiteshp.in` | — |
 | Traefik dashboard | `https://traefik.lab.hiteshp.in` | — |
 | Open WebUI | `https://chat.lab.hiteshp.in` | first user registered becomes admin |
+| LiteLLM | `https://litellm.lab.hiteshp.in` | master key from `make litellm-secret` |
 
 **Secrets that must be created manually** before ArgoCD deploys the respective app (cannot be stored in Git):
 
 ```bash
 make homarr-secret                            # Homarr DB encryption key (auto-generated)
 make cloudflared-secret TUNNEL_TOKEN=<token>  # Cloudflare Tunnel token
+make litellm-secret OPENAI_API_KEY=sk-... ANTHROPIC_API_KEY=sk-ant-...  # LiteLLM API keys (master key auto-generated)
 ```
 
 Get the cloudflared token from Cloudflare Zero Trust → Networks → Tunnels → Create tunnel → Cloudflared. Set the public hostname service to `http://open-webui.ollama.svc.cluster.local:8080`.

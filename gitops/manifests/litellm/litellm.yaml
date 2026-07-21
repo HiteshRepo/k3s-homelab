@@ -1,0 +1,120 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: litellm-config
+  namespace: litellm
+data:
+  config.yaml: |
+    model_list:
+      # OpenAI models — remove if you don't have an OpenAI key
+      - model_name: gpt-4o
+        litellm_params:
+          model: openai/gpt-4o
+          api_key: os.environ/OPENAI_API_KEY
+      - model_name: gpt-4o-mini
+        litellm_params:
+          model: openai/gpt-4o-mini
+          api_key: os.environ/OPENAI_API_KEY
+
+      # Anthropic models — remove if you don't have an Anthropic key
+      - model_name: claude-opus-4-5
+        litellm_params:
+          model: anthropic/claude-opus-4-5
+          api_key: os.environ/ANTHROPIC_API_KEY
+      - model_name: claude-sonnet-4-5
+        litellm_params:
+          model: anthropic/claude-sonnet-4-5
+          api_key: os.environ/ANTHROPIC_API_KEY
+
+      # Local Ollama models
+      - model_name: ollama/qwen2.5:3b
+        litellm_params:
+          model: ollama/qwen2.5:3b
+          api_base: http://ollama.ollama.svc.cluster.local:11434
+      - model_name: ollama/phi3.5
+        litellm_params:
+          model: ollama/phi3.5
+          api_base: http://ollama.ollama.svc.cluster.local:11434
+      - model_name: ollama/llama3.2:3b
+        litellm_params:
+          model: ollama/llama3.2:3b
+          api_base: http://ollama.ollama.svc.cluster.local:11434
+
+    litellm_settings:
+      drop_params: true
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: litellm
+  namespace: litellm
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: litellm }
+  template:
+    metadata:
+      labels: { app: litellm }
+    spec:
+      containers:
+      - name: litellm
+        image: ghcr.io/berriai/litellm:main-latest
+        args: ["--config", "/app/config.yaml", "--port", "4000"]
+        ports:
+        - containerPort: 4000
+        env:
+        - name: LITELLM_MASTER_KEY
+          valueFrom:
+            secretKeyRef:
+              name: litellm-keys
+              key: master-key
+        - name: OPENAI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: litellm-keys
+              key: openai-api-key
+              optional: true
+        - name: ANTHROPIC_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: litellm-keys
+              key: anthropic-api-key
+              optional: true
+        volumeMounts:
+        - name: config
+          mountPath: /app/config.yaml
+          subPath: config.yaml
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        livenessProbe:
+          httpGet:
+            path: /health/liveliness
+            port: 4000
+          initialDelaySeconds: 30
+          periodSeconds: 15
+        readinessProbe:
+          httpGet:
+            path: /health/readiness
+            port: 4000
+          initialDelaySeconds: 15
+          periodSeconds: 10
+      volumes:
+      - name: config
+        configMap:
+          name: litellm-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: litellm
+  namespace: litellm
+spec:
+  selector: { app: litellm }
+  ports:
+  - port: 4000
+    targetPort: 4000
