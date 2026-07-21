@@ -80,6 +80,10 @@ spec:
               name: litellm-keys
               key: anthropic-api-key
               optional: true
+        - name: DISABLE_SCHEMA_UPDATE
+          value: "true"
+        - name: STORE_MODEL_IN_DB
+          value: "false"
         volumeMounts:
         - name: config
           mountPath: /app/config.yaml
