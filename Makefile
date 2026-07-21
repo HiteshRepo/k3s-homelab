@@ -57,7 +57,7 @@ cloudflared-secret: ## Create the cloudflared tunnel token secret (usage: make c
 install-argocd: ## Install ArgoCD into the argocd namespace
 	@kubectl get deployment argocd-server -n argocd >/dev/null 2>&1 && echo "ArgoCD already installed" || { \
 	  kubectl create namespace argocd --dry-run=client -o yaml | kubectl apply -f -; \
-	  kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml; \
+	  kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.13.3/manifests/install.yaml; \
 	  kubectl wait --for=condition=available deployment/argocd-server -n argocd --timeout=120s; \
 	}
 

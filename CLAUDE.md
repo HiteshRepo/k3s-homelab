@@ -105,8 +105,9 @@ Get the token from Cloudflare Zero Trust → Networks → Tunnels → Create tun
 
 ## Helm Chart Sources
 
-| Component | Helm Repo | Chart Version |
-|-----------|-----------|---------------|
+| Component | Source | Version |
+|-----------|--------|---------|
+| ArgoCD | github.com/argoproj/argo-cd | v2.13.3 (pinned — v3.x has a Redis/ECR multi-arch issue on x86_64 with k3s) |
 | MetalLB | metallb/metallb | 0.15.3 |
 | cert-manager | jetstack/cert-manager | 1.19.1 |
 | Traefik | traefik/traefik | 37.4.0 |
