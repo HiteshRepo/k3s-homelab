@@ -97,6 +97,16 @@ argocd-password: ## Print the initial ArgoCD admin password
 	@kubectl get secret argocd-initial-admin-secret -n argocd \
 	  -o jsonpath="{.data.password}" | base64 -d && echo
 
+APP ?= ""
+
+.PHONY: sync
+sync: ## Force sync an ArgoCD application (usage: make sync APP=litellm)
+	@if [ -z "$(APP)" ]; then \
+	  echo "Error: pass an app name — make sync APP=litellm"; exit 1; \
+	fi
+	kubectl patch application $(APP) -n argocd --type merge \
+	  -p '{"operation":{"initiatedBy":{"username":"admin"},"sync":{}}}'
+
 .PHONY: bootstrap
 bootstrap: ## Apply the app-of-apps to kick off all deployments
 	@kubectl get application app-of-apps -n argocd >/dev/null 2>&1 && echo "app-of-apps already bootstrapped" || \
