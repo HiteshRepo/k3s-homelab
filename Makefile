@@ -37,6 +37,20 @@ set-github-username: ## Replace YOUR_USERNAME in all YAML files (usage: make set
 	  -exec sed -i 's/YOUR_USERNAME/$(GITHUB_USERNAME)/g' {} +
 	@echo "Done. Commit and push to GitHub before running make bootstrap."
 
+# ─── Cloudflare Tunnel ────────────────────────────────────────────────────────
+
+TUNNEL_TOKEN ?= ""
+
+.PHONY: cloudflared-secret
+cloudflared-secret: ## Create the cloudflared tunnel token secret (usage: make cloudflared-secret TUNNEL_TOKEN=<token>)
+	@if [ -z "$(TUNNEL_TOKEN)" ]; then \
+	  echo "Error: pass your token — make cloudflared-secret TUNNEL_TOKEN=<token>"; exit 1; \
+	fi
+	@kubectl get secret cloudflared-token -n cloudflared >/dev/null 2>&1 && echo "cloudflared-token secret already exists" || \
+	  kubectl create secret generic cloudflared-token \
+	    --namespace cloudflared \
+	    --from-literal=token=$(TUNNEL_TOKEN)
+
 # ─── ArgoCD ───────────────────────────────────────────────────────────────────
 
 .PHONY: install-argocd

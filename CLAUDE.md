@@ -47,7 +47,7 @@ kubectl patch application <app-name> -n argocd --type merge -p '{"operation":{"i
 1. Wave 1: MetalLB, cert-manager, metrics-server, argocd-config
 2. Wave 2: local-path-provisioner, cert-issuer
 3. Wave 3: Traefik (depends on MetalLB for LoadBalancer IP)
-4. Wave 4: Applications (Homarr, Prometheus stack, Uptime Kuma)
+4. Wave 4: Applications (Homarr, Prometheus stack, Uptime Kuma, Ollama + Open WebUI, Cloudflared)
 5. Wave 5: ingress-routes (Traefik IngressRoutes for all services)
 
 **Traffic path:** DNS (`*.lab.hiteshp.in → 192.168.1.200`) → MetalLB → Traefik → services. TLS terminates at Traefik using self-signed certs from cert-manager.
@@ -92,6 +92,13 @@ Service URLs (add all to `/etc/hosts` pointing at `192.168.1.200`):
 | Homarr | `https://homarr.lab.hiteshp.in` | — |
 | Uptime Kuma | `https://status.lab.hiteshp.in` | — |
 | Traefik dashboard | `https://traefik.lab.hiteshp.in` | — |
+| Open WebUI | `https://chat.lab.hiteshp.in` | first user registered becomes admin |
+
+**Cloudflared prerequisite:** the tunnel token secret must be created manually before ArgoCD deploys cloudflared — it cannot be stored in Git:
+```bash
+make cloudflared-secret TUNNEL_TOKEN=<token>
+```
+Get the token from Cloudflare Zero Trust → Networks → Tunnels → Create tunnel → Cloudflared. Set the public hostname service to `http://open-webui.ollama.svc.cluster.local:8080`.
 
 ## Helm Chart Sources
 
