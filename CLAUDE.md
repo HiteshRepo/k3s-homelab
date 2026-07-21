@@ -28,6 +28,7 @@ make bootstrap              # Apply app-of-apps to start all deployments
 make status                 # Print sync status of all ArgoCD applications (one-shot)
 make watch                  # Watch ArgoCD sync progress (streaming)
 make traefik-ip             # Print the LoadBalancer IP assigned to Traefik
+make homarr-secret              # Create the Homarr DB encryption key secret (auto-generated)
 make cloudflared-secret TUNNEL_TOKEN=<token>  # Create the Cloudflare Tunnel token secret
 ```
 
@@ -97,11 +98,14 @@ Service URLs (add all to `/etc/hosts` pointing at `192.168.1.200`):
 | Traefik dashboard | `https://traefik.lab.hiteshp.in` | — |
 | Open WebUI | `https://chat.lab.hiteshp.in` | first user registered becomes admin |
 
-**Cloudflared prerequisite:** the tunnel token secret must be created manually before ArgoCD deploys cloudflared — it cannot be stored in Git:
+**Secrets that must be created manually** before ArgoCD deploys the respective app (cannot be stored in Git):
+
 ```bash
-make cloudflared-secret TUNNEL_TOKEN=<token>
+make homarr-secret                            # Homarr DB encryption key (auto-generated)
+make cloudflared-secret TUNNEL_TOKEN=<token>  # Cloudflare Tunnel token
 ```
-Get the token from Cloudflare Zero Trust → Networks → Tunnels → Create tunnel → Cloudflared. Set the public hostname service to `http://open-webui.ollama.svc.cluster.local:8080`.
+
+Get the cloudflared token from Cloudflare Zero Trust → Networks → Tunnels → Create tunnel → Cloudflared. Set the public hostname service to `http://open-webui.ollama.svc.cluster.local:8080`.
 
 ## Helm Chart Sources
 

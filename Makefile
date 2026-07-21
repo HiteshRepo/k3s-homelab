@@ -37,6 +37,15 @@ set-github-username: ## Replace YOUR_USERNAME in all YAML files (usage: make set
 	  -exec sed -i 's/YOUR_USERNAME/$(GITHUB_USERNAME)/g' {} +
 	@echo "Done. Commit and push to GitHub before running make bootstrap."
 
+# ─── App Secrets ──────────────────────────────────────────────────────────────
+
+.PHONY: homarr-secret
+homarr-secret: ## Create the Homarr database encryption key secret
+	@kubectl get secret db-encryption -n homelab >/dev/null 2>&1 && echo "db-encryption secret already exists" || \
+	  kubectl create secret generic db-encryption \
+	    --namespace homelab \
+	    --from-literal=db-encryption-key=$$(openssl rand -hex 32)
+
 # ─── Cloudflare Tunnel ────────────────────────────────────────────────────────
 
 TUNNEL_TOKEN ?= ""
