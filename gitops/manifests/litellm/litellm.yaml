@@ -58,7 +58,7 @@ spec:
     spec:
       containers:
       - name: litellm
-        image: ghcr.io/berriai/litellm:main-latest
+        image: ghcr.io/berriai/litellm:main-stable
         args: ["--config", "/app/config.yaml", "--port", "4000"]
         ports:
         - containerPort: 4000
@@ -96,7 +96,7 @@ spec:
             memory: 512Mi
           limits:
             cpu: 1000m
-            memory: 1Gi
+            memory: 2Gi
         livenessProbe:
           httpGet:
             path: /health/liveliness
