@@ -11,6 +11,7 @@ GitOps homelab on K3s. Runs on a single Ubuntu laptop on your home network.
 | Grafana | https://grafana.lab.hiteshp.in | Metrics dashboards |
 | Uptime Kuma | https://status.lab.hiteshp.in | Uptime monitoring |
 | Traefik | https://traefik.lab.hiteshp.in | Ingress controller |
+| Open WebUI | https://chat.lab.hiteshp.in | LLM chat UI (backed by Ollama) |
 
 ## Network
 
@@ -26,84 +27,39 @@ GitOps homelab on K3s. Runs on a single Ubuntu laptop on your home network.
 
 ## Setup
 
-### Step 1 — Install Ubuntu on the laptop
+### Step 1 — Install Ubuntu 26.04 on the laptop
 
-Install Ubuntu 24.04 LTS. During install, disable Secure Boot if prompted.
+Fresh install. Disable Secure Boot if prompted.
 
-After install, disable lid-close suspend:
-```bash
-sudo sed -i 's/#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
-sudo systemctl restart systemd-logind
-```
-
-### Step 2 — Install K3s
+### Step 2 — Clone this repo
 
 ```bash
-curl -sfL https://get.k3s.io | sh -s - \
-  --disable traefik \
-  --disable servicelb \
-  --disable local-storage \
-  --disable metrics-server
+git clone https://github.com/YOUR_USERNAME/k3s-homelab.git
+cd k3s-homelab
 ```
 
-Copy kubeconfig to your home directory:
-```bash
-mkdir -p ~/.kube
-sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
-sudo chown $USER:$USER ~/.kube/config
-```
+### Step 3 — (GPU nodes only) Set up GPU support
 
-### Step 3 — Create GitHub repo
-
-1. Create a new GitHub repo named `k3s-homelab`
-2. Replace `YOUR_USERNAME` in all files with your GitHub username:
-   ```bash
-   find gitops/ -type f -name "*.yaml" \
-     -exec sed -i 's/YOUR_USERNAME/your-actual-username/g' {} +
-   ```
-3. Push to GitHub:
-   ```bash
-   git init
-   git add .
-   git commit -m "feat: initial k3s homelab setup"
-   git branch -M main
-   git remote add origin https://github.com/YOUR_USERNAME/k3s-homelab.git
-   git push -u origin main
-   ```
-
-### Step 4 — Install ArgoCD
+If the laptop has an NVIDIA GPU, run this first — it installs the driver and requires a reboot before continuing:
 
 ```bash
-kubectl create namespace argocd
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+./gpu-node-setup.sh
 ```
 
-Wait for ArgoCD to be ready:
-```bash
-kubectl wait --for=condition=available deployment/argocd-server -n argocd --timeout=120s
-```
+Re-run after reboot to complete the remaining layers (CUDA, container toolkit, device plugin).
 
-Get the initial admin password:
-```bash
-kubectl get secret argocd-initial-admin-secret -n argocd \
-  -o jsonpath="{.data.password}" | base64 -d && echo
-```
-
-### Step 5 — Bootstrap the app-of-apps
+### Step 4 — Run first-time setup
 
 ```bash
-kubectl apply -f gitops/app-of-apps.yaml
+./first-time-setup.sh
 ```
 
-ArgoCD will now automatically deploy all apps. Watch progress:
-```bash
-kubectl get applications -n argocd -w
-```
+This handles everything: prompts for your GitHub username, replaces placeholders, installs K3s and ArgoCD, bootstraps the app-of-apps, and prints the `/etc/hosts` entries to add on client machines.
 
-### Step 6 — Set up /etc/hosts
+### Step 5 — Set up /etc/hosts
 
 Add these lines to `/etc/hosts` on any machine you want access from
-(replace `192.168.1.200` with the actual IP K3s assigned to Traefik):
+(replace `192.168.1.200` with the IP printed by the setup script):
 
 ```
 192.168.1.200   argocd.lab.hiteshp.in
@@ -111,23 +67,36 @@ Add these lines to `/etc/hosts` on any machine you want access from
 192.168.1.200   grafana.lab.hiteshp.in
 192.168.1.200   status.lab.hiteshp.in
 192.168.1.200   traefik.lab.hiteshp.in
+192.168.1.200   chat.lab.hiteshp.in
 ```
 
-Find Traefik's actual IP:
-```bash
-kubectl get svc -n traefik-system traefik -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
-```
+### Step 6 — (Optional) Cloudflare Tunnel for external access
+
+To expose Open WebUI outside your LAN via Cloudflare Tunnel:
+
+1. Create a tunnel in [Cloudflare Zero Trust](https://one.dash.cloudflare.com) → Networks → Tunnels → Create tunnel → Cloudflared
+2. Copy the tunnel token, then:
+   ```bash
+   make cloudflared-secret TUNNEL_TOKEN=<token>
+   ```
+3. In the Cloudflare dashboard, add a public hostname:
+   - Hostname: `chat.yourdomain.com`
+   - Service: `http://open-webui.ollama.svc.cluster.local:8080`
 
 ---
 
 ## Adding a New App
 
-1. Create `gitops/apps/myapp.yaml` (ArgoCD Application pointing to a Helm chart)
-2. Push to GitHub — ArgoCD auto-discovers and deploys it
+1. Create `gitops/apps/myapp.yaml` (ArgoCD Application pointing to a Helm chart or Git path)
+2. Add a Traefik `IngressRoute` to `gitops/manifests/ingress-routes/` if the app needs external access
+3. Push to GitHub — ArgoCD auto-discovers and deploys it
+
+See `CLAUDE.md` for the full pattern including sync waves and IngressRoute conventions.
 
 ## Credentials
 
 | Service | Username | Password |
 |---------|----------|----------|
-| ArgoCD | admin | (see Step 4) |
+| ArgoCD | admin | run `make argocd-password` |
 | Grafana | admin | admin |
+| Open WebUI | — | first user registered becomes admin |
