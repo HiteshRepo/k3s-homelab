@@ -84,6 +84,8 @@ spec:
           value: "true"
         - name: STORE_MODEL_IN_DB
           value: "false"
+        - name: DISABLE_ADMIN_UI
+          value: "true"
         volumeMounts:
         - name: config
           mountPath: /app/config.yaml
