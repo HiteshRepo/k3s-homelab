@@ -111,6 +111,36 @@ make litellm-secret OPENAI_API_KEY=sk-... ANTHROPIC_API_KEY=sk-ant-...  # LiteLL
 
 Get the cloudflared token from Cloudflare Zero Trust → Networks → Tunnels → Create tunnel → Cloudflared. Set the public hostname service to `http://open-webui.ollama.svc.cluster.local:8080`.
 
+## Gotchas
+
+Non-obvious issues discovered in production — check here before debugging from scratch.
+
+**ArgoCD pinned to v2.13.3**
+v3.x introduced a Redis multi-arch issue on x86_64 with k3s: `exec format error` on the Redis container. Pinned to v2.13.3 until fixed upstream. Do not upgrade without testing.
+
+**LiteLLM OOMKills on startup**
+`main-latest` is a nightly dev build and spikes past 1Gi during startup due to Prisma schema migration. Fixes applied:
+- Use `main-stable` image tag
+- `DISABLE_SCHEMA_UPDATE=true` — skips Prisma migration
+- `STORE_MODEL_IN_DB=false` — no database needed
+- `DISABLE_ADMIN_UI=true` — drops the UI bundle overhead
+- Memory limit set to 2Gi
+
+**Open WebUI does not auto-connect to LiteLLM via env vars**
+`OPENAI_API_BASE_URL` and `OPENAI_API_KEY` are set on the Open WebUI Deployment but Open WebUI's database takes precedence. The connection must be added manually: Admin Panel → Settings → Connections → add OpenAI entry with URL `http://litellm.litellm.svc.cluster.local:4000/v1` and the master key from `kubectl get secret litellm-keys -n litellm -o jsonpath='{.data.master-key}' | base64 -d`.
+
+**Ollama ImagePullBackOff on restart**
+`latest` image tag defaults to `imagePullPolicy: Always` in Kubernetes, causing a Docker Hub pull on every pod restart. For a ~4GB image this fails whenever Docker Hub has connectivity issues. Fixed with `imagePullPolicy: IfNotPresent` — uses the cached image and skips the pull.
+
+**GPU held by Unknown-state pods**
+When an Ollama pod gets stuck in `Unknown` state it retains the `nvidia.com/gpu: 1` resource, blocking new pods from scheduling (`Insufficient nvidia.com/gpu`). Fix: `kubectl delete pod <pod-name> -n ollama --force --grace-period=0`.
+
+**Traefik IngressRoute namespace**
+IngressRoutes must be created in the `traefik-system` namespace, not the app's namespace. Cross-namespace routing works via `allowCrossNamespace: true` in the Traefik Helm values. Putting an IngressRoute in the wrong namespace means Traefik silently ignores it.
+
+**Kubernetes secrets are namespace-scoped**
+A secret in the `litellm` namespace cannot be referenced by a pod in the `ollama` namespace. The LiteLLM master key is duplicated into both namespaces by `make litellm-secret` for this reason.
+
 ## Helm Chart Sources
 
 | Component | Source | Version |
