@@ -116,6 +116,12 @@ bootstrap: ## Apply the app-of-apps to kick off all deployments
 	@kubectl get application app-of-apps -n argocd >/dev/null 2>&1 && echo "app-of-apps already bootstrapped" || \
 	  kubectl apply -f gitops/app-of-apps.yaml
 
+# ─── Port Forwards ────────────────────────────────────────────────────────────
+
+.PHONY: pf-litellm
+pf-litellm: ## Port-forward LiteLLM to localhost:4000 (for aider and llm CLI on the homelab node)
+	kubectl port-forward -n litellm svc/litellm 4000:4000
+
 # ─── Status ───────────────────────────────────────────────────────────────────
 
 .PHONY: watch
