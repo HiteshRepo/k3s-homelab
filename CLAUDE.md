@@ -138,6 +138,14 @@ When an Ollama pod gets stuck in `Unknown` state it retains the `nvidia.com/gpu:
 **Traefik IngressRoute namespace**
 IngressRoutes must be created in the `traefik-system` namespace, not the app's namespace. Cross-namespace routing works via `allowCrossNamespace: true` in the Traefik Helm values. Putting an IngressRoute in the wrong namespace means Traefik silently ignores it.
 
+**Self-signed cert not trusted by Python/aider (SSL connection error)**
+Traefik uses `tls: {}` in IngressRoutes which means it generates its own self-signed cert (not from cert-manager). This cert is not trusted by system tools or Python by default. Things tried and why they failed:
+- `update-ca-certificates` — fixes `curl`/`wget` but Python ignores the system trust store; it uses `certifi`'s bundled CA store instead
+- `REQUESTS_CA_BUNDLE=""` — empty string doesn't disable verification, it causes Python to fail loading the bundle
+- `REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` + `SSL_CERT_FILE=...` — correct approach in theory but Traefik regenerates its self-signed cert on each restart, so the trusted cert quickly goes stale
+- **Fix that works**: `kubectl port-forward -n litellm svc/litellm 4000:4000` exposes LiteLLM over plain HTTP on localhost, bypassing SSL entirely. Managed as a systemd service (`make pf-litellm-service`) so it survives reboots. Aider and `llm` point to `http://localhost:4000/v1`.
+- **Proper long-term fix**: switch IngressRoutes from `tls: {}` to cert-manager issued certs with a CA ClusterIssuer; then the CA cert can be trusted once system-wide and never changes
+
 **Kubernetes secrets are namespace-scoped**
 A secret in the `litellm` namespace cannot be referenced by a pod in the `ollama` namespace. The LiteLLM master key is duplicated into both namespaces by `make litellm-secret` for this reason.
 
