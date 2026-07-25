@@ -1,0 +1,14 @@
+[Unit]
+Description=LiteLLM kubectl port-forward
+After=network.target k3s.service
+Wants=k3s.service
+
+[Service]
+ExecStart=/usr/local/bin/kubectl port-forward -n litellm svc/litellm 4000:4000 --address 127.0.0.1
+Restart=always
+RestartSec=5
+User=hitesh
+Environment=KUBECONFIG=/home/hitesh/.kube/config
+
+[Install]
+WantedBy=multi-user.target

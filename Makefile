@@ -134,8 +134,16 @@ trust-homelab-cert: ## Trust the homelab self-signed cert system-wide (idempoten
 # ─── Port Forwards ────────────────────────────────────────────────────────────
 
 .PHONY: pf-litellm
-pf-litellm: ## Port-forward LiteLLM to localhost:4000 (for aider and llm CLI on the homelab node)
+pf-litellm: ## Port-forward LiteLLM to localhost:4000 (foreground, for one-off use)
 	kubectl port-forward -n litellm svc/litellm 4000:4000
+
+.PHONY: pf-litellm-service
+pf-litellm-service: ## Install systemd service to keep LiteLLM port-forward running on boot
+	@sed 's/User=hitesh/User=$(USER)/' gitops/manifests/litellm/litellm-portforward.service \
+	  | sudo tee /etc/systemd/system/litellm-portforward.service > /dev/null
+	@sudo systemctl daemon-reload
+	@sudo systemctl enable --now litellm-portforward
+	@echo "litellm-portforward service enabled and started"
 
 # ─── Status ───────────────────────────────────────────────────────────────────
 
