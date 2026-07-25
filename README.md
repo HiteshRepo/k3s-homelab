@@ -80,7 +80,15 @@ To enable OpenAI and/or Anthropic models in Open WebUI, create the secret **befo
 make litellm-secret OPENAI_API_KEY=sk-... ANTHROPIC_API_KEY=sk-ant-...
 ```
 
-The master key is auto-generated and printed on first run. Open WebUI will automatically surface cloud models alongside your local Ollama models.
+Then retrieve the auto-generated master key and add the connection manually in Open WebUI — env vars alone are not enough as Open WebUI's database takes precedence:
+
+```bash
+kubectl get secret litellm-keys -n litellm -o jsonpath='{.data.master-key}' | base64 -d
+```
+
+Open WebUI → Admin Panel → Settings → Connections → add OpenAI entry:
+- **URL**: `http://litellm.litellm.svc.cluster.local:4000/v1`
+- **Key**: master key from above
 
 ### Step 7 — (Optional) Cloudflare Tunnel for external access
 
