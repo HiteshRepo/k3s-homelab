@@ -112,6 +112,7 @@ External access options (not yet implemented):
 - [ ] **Cloudflare Tunnel** — transfer DNS from Netlify to Cloudflare (keep domain at Netlify, point nameservers to Cloudflare — free, ~24h propagation), then `make cloudflared-secret TUNNEL_TOKEN=<token>` and configure the public hostname in Zero Trust dashboard
 - [ ] **Tailscale** — no domain needed, free for personal use, install on the GPU laptop and any client device; reach all services over the Tailscale network without exposing anything publicly
 - [ ] **Homarr setup** — add tiles for all services (ArgoCD, Grafana, Open WebUI, Uptime Kuma, Traefik) so it becomes a useful homepage; configure via `https://homarr.lab.hiteshp.in`
+- [ ] **Kimi (Moonshot AI) integration** — OpenAI-compatible API, strong long-context and reasoning, free tier available; add to LiteLLM config and benchmark against existing models; check current rate limits at platform.moonshot.cn
 - [ ] **Model upgrades + benchmarking** — evaluate and benchmark current models (llama3.2:3b, qwen2.5:3b, phi3.5) against better alternatives suited for GTX 1650 4GB VRAM: `qwen2.5-coder:3b` (coding-focused drop-in), `phi4-mini` (newer phi), `deepseek-r1:1.5b` (reasoning); also test 7B models (qwen2.5-coder:7b, mistral:7b) with CPU offloading; add winners to LiteLLM config and aider aliases
 
 ## Adding a New App
