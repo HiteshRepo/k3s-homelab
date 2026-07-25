@@ -61,6 +61,10 @@ litellm-secret: ## Create LiteLLM API key secrets (usage: make litellm-secret OP
 	    --from-literal=master-key=$$MASTER_KEY; \
 	}
 
+.PHONY: litellm-master-key
+litellm-master-key: ## Print the LiteLLM master key (for use with llm CLI and aider)
+	@kubectl get secret litellm-keys -n litellm -o jsonpath='{.data.master-key}' | base64 -d && echo
+
 .PHONY: homarr-secret
 homarr-secret: ## Create the Homarr database encryption key secret
 	@kubectl get secret db-encryption -n homelab >/dev/null 2>&1 && echo "db-encryption secret already exists" || \
