@@ -116,6 +116,21 @@ bootstrap: ## Apply the app-of-apps to kick off all deployments
 	@kubectl get application app-of-apps -n argocd >/dev/null 2>&1 && echo "app-of-apps already bootstrapped" || \
 	  kubectl apply -f gitops/app-of-apps.yaml
 
+# ─── TLS ──────────────────────────────────────────────────────────────────────
+
+.PHONY: trust-homelab-cert
+trust-homelab-cert: ## Trust the homelab self-signed cert system-wide (idempotent)
+	@CERT=$$(echo | openssl s_client -connect litellm.lab.hiteshp.in:443 \
+	  -servername litellm.lab.hiteshp.in 2>/dev/null | openssl x509); \
+	CERT_FILE="/usr/local/share/ca-certificates/homelab.crt"; \
+	if [ -f "$$CERT_FILE" ] && [ "$$(cat $$CERT_FILE)" = "$$CERT" ]; then \
+	  echo "homelab cert already trusted and up to date"; \
+	else \
+	  echo "$$CERT" | sudo tee "$$CERT_FILE" > /dev/null; \
+	  sudo update-ca-certificates; \
+	  echo "homelab cert trusted"; \
+	fi
+
 # ─── Port Forwards ────────────────────────────────────────────────────────────
 
 .PHONY: pf-litellm
