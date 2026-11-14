@@ -35,12 +35,8 @@ spec:
                   echo "--- Backing up docs ---"
                   kopia snapshot create /mnt/external/docs
 
-                  echo "--- Backing up photos in parallel ---"
-                  kopia snapshot create /mnt/external/photos/Pics/d750 &
-                  kopia snapshot create "/mnt/external/photos/Pics/eng" &
-                  kopia snapshot create "/mnt/external/photos/Pics/z6 1" &
-                  wait
-                  echo "--- All photo backups complete ---"
+                  # d750, eng, z6 1 excluded — too large for B2 free tier (20GB total)
+                  # Safely stored on external HDD at /mnt/external/photos/Pics/
 
                   echo "--- Backing up Immich library ---"
                   kopia snapshot create /mnt/immich
