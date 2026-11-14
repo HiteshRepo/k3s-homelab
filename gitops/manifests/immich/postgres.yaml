@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: postgres
-          image: ghcr.io/immich-app/postgres:16-vectorchord
+          image: ghcr.io/immich-app/postgres:16-vectorchord0.4.3
           env:
             - name: POSTGRES_DB
               value: immich

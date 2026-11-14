@@ -25,17 +25,21 @@ spec:
           DB_DATABASE_NAME: immich
           DB_USERNAME: immich
           DB_PASSWORD: immich
+          REDIS_HOSTNAME: immich-valkey-master
 
         immich:
           persistence:
             library:
               existingClaim: immich-library-pvc
 
-        database:
-          enabled: false
-
-        redis:
+        valkey:
           enabled: true
+          persistence:
+            data:
+              enabled: true
+              type: persistentVolumeClaim
+              size: 1Gi
+              storageClass: local-path
 
         server:
           resources:
