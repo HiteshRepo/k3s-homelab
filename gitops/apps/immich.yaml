@@ -1,0 +1,75 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: immich
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: immich
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: immich
+    repoURL: https://immich-app.github.io/immich-charts
+    targetRevision: 0.12.0
+    helm:
+      values: |
+        env:
+          TZ: "Asia/Kolkata"
+          DB_DATABASE_NAME: immich
+          DB_USERNAME: immich
+          DB_PASSWORD: immich
+
+        immich:
+          persistence:
+            library:
+              existingClaim: immich-library-pvc
+
+        postgresql:
+          enabled: true
+          global:
+            postgresql:
+              auth:
+                database: immich
+                username: immich
+                password: immich
+          primary:
+            persistence:
+              enabled: true
+              storageClass: local-path
+              size: 10Gi
+
+        redis:
+          enabled: true
+
+        server:
+          resources:
+            requests:
+              memory: 512Mi
+            limits:
+              memory: 2Gi
+
+        machine-learning:
+          enabled: true
+          persistence:
+            cache:
+              enabled: true
+              storageClass: local-path
+              size: 10Gi
+          resources:
+            requests:
+              memory: 512Mi
+            limits:
+              memory: 2Gi
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
