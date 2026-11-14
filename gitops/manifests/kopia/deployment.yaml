@@ -38,6 +38,7 @@ spec:
             - --server-username=admin
             - --server-password=kopia-admin
             - --password=$(KOPIA_PASSWORD)
+            - --no-grpc
           env:
             - name: KOPIA_PASSWORD
               valueFrom:

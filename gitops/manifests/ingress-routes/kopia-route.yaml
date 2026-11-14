@@ -1,4 +1,16 @@
 apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: kopia-headers
+  namespace: traefik-system
+spec:
+  headers:
+    customRequestHeaders:
+      X-Forwarded-Proto: "https"
+    customResponseHeaders:
+      X-Frame-Options: ""
+---
+apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: kopia
@@ -9,6 +21,8 @@ spec:
   routes:
     - match: Host(`kopia.lab.hiteshp.in`)
       kind: Rule
+      middlewares:
+        - name: kopia-headers
       services:
         - name: kopia
           namespace: kopia
