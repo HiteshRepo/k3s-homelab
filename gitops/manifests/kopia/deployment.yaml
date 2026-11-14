@@ -37,6 +37,7 @@ spec:
             - --address=0.0.0.0:51515
             - --server-username=admin
             - --server-password=kopia-admin
+            - --password=$(KOPIA_PASSWORD)
           env:
             - name: KOPIA_PASSWORD
               valueFrom:
