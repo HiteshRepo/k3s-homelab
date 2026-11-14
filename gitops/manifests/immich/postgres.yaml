@@ -26,6 +26,9 @@ spec:
     metadata:
       labels:
         app: immich-postgres
+      annotations:
+        container.apparmor.security.beta.kubernetes.io/postgres: unconfined
+        container.apparmor.security.beta.kubernetes.io/fix-permissions: unconfined
     spec:
       securityContext:
         runAsUser: 999
