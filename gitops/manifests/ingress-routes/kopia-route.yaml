@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: kopia
+  namespace: traefik-system
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`kopia.lab.hiteshp.in`)
+      kind: Rule
+      services:
+        - name: kopia
+          namespace: kopia
+          port: 51515
+  tls: {}

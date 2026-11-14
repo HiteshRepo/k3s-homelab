@@ -1,0 +1,105 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: kopia-config-pvc
+  namespace: kopia
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-path
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kopia
+  namespace: kopia
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kopia
+  template:
+    metadata:
+      labels:
+        app: kopia
+    spec:
+      containers:
+        - name: kopia
+          image: kopia/kopia:latest
+          args:
+            - server
+            - start
+            - --insecure
+            - --address=0.0.0.0:51515
+            - --server-username=admin
+            - --server-password=kopia-admin
+          env:
+            - name: KOPIA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kopia-b2-credentials
+                  key: KOPIA_PASSWORD
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: kopia-b2-credentials
+                  key: B2_KEY_ID
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: kopia-b2-credentials
+                  key: B2_APPLICATION_KEY
+            - name: TZ
+              value: "Asia/Kolkata"
+          ports:
+            - containerPort: 51515
+          volumeMounts:
+            - name: kopia-config
+              mountPath: /app/config
+            - name: kopia-cache
+              mountPath: /app/cache
+            - name: external-hdd
+              mountPath: /mnt/external
+            - name: pendrive
+              mountPath: /mnt/pendrive
+            - name: immich-library
+              mountPath: /mnt/immich
+          resources:
+            requests:
+              memory: 256Mi
+            limits:
+              memory: 1Gi
+      volumes:
+        - name: kopia-config
+          persistentVolumeClaim:
+            claimName: kopia-config-pvc
+        - name: kopia-cache
+          emptyDir: {}
+        - name: external-hdd
+          hostPath:
+            path: /mnt/external
+            type: Directory
+        - name: pendrive
+          hostPath:
+            path: /mnt/pendrive2
+            type: Directory
+        - name: immich-library
+          hostPath:
+            path: /opt/local-path-provisioner/pvc-2a569fe3-80a3-422e-8b99-7d36daaf68cf_immich_immich-library-pvc
+            type: Directory
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kopia
+  namespace: kopia
+spec:
+  selector:
+    app: kopia
+  ports:
+    - port: 51515
+      targetPort: 51515
