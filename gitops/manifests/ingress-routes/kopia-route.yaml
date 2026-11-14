@@ -7,8 +7,23 @@ spec:
   headers:
     customRequestHeaders:
       X-Forwarded-Proto: "https"
+      X-Forwarded-Host: "kopia.lab.hiteshp.in"
     customResponseHeaders:
       X-Frame-Options: ""
+    sslProxyHeaders:
+      X-Forwarded-Proto: "https"
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: kopia-sticky
+  namespace: traefik-system
+spec:
+  sticky:
+    cookie:
+      name: kopia_session
+      secure: true
+      httpOnly: false
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
