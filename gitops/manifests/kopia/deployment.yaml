@@ -72,9 +72,9 @@ spec:
               mountPath: /mnt/immich
           resources:
             requests:
-              memory: 256Mi
+              memory: 512Mi
             limits:
-              memory: 1Gi
+              memory: 2Gi
       volumes:
         - name: kopia-config
           persistentVolumeClaim:
