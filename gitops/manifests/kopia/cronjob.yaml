@@ -35,8 +35,14 @@ spec:
                   echo "--- Backing up docs ---"
                   kopia snapshot create /mnt/external/docs
 
-                  echo "--- Backing up photos ---"
-                  kopia snapshot create /mnt/external/photos
+                  echo "--- Backing up photos in parallel ---"
+                  kopia snapshot create /mnt/external/photos/Pics/d750 &
+                  kopia snapshot create "/mnt/external/photos/Pics/eng" &
+                  kopia snapshot create "/mnt/external/photos/Pics/z6 1" &
+                  kopia snapshot create /mnt/external/photos/Captures/Edited &
+                  kopia snapshot create /mnt/external/photos/Captures/Uploaded &
+                  wait
+                  echo "--- All photo backups complete ---"
 
                   echo "--- Backing up Immich library ---"
                   kopia snapshot create /mnt/immich
