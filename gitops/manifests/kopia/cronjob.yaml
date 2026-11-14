@@ -1,0 +1,102 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: kopia-backup
+  namespace: kopia
+spec:
+  schedule: "30 20 * * *"  # 2:00 AM IST (UTC+5:30)
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: kopia
+              image: kopia/kopia:latest
+              command:
+                - sh
+                - -c
+                - |
+                  set -e
+                  echo "=== Kopia Daily Backup - $(date) ==="
+
+                  kopia repository connect s3 \
+                    --bucket=hitesh-homelab-backup \
+                    --endpoint=s3.eu-central-003.backblazeb2.com \
+                    --access-key=$B2_KEY_ID \
+                    --secret-access-key=$B2_APPLICATION_KEY \
+                    --password=$KOPIA_PASSWORD \
+                    --override-username=hitesh \
+                    --override-hostname=lenovo
+
+                  echo "--- Backing up docs ---"
+                  kopia snapshot create /mnt/external/docs
+
+                  echo "--- Backing up photos ---"
+                  kopia snapshot create /mnt/external/photos
+
+                  echo "--- Backing up Immich library ---"
+                  kopia snapshot create /mnt/immich
+
+                  echo "--- Syncing to pendrive ---"
+                  kopia repository sync-to filesystem --path=/mnt/pendrive
+
+                  echo "--- Running maintenance ---"
+                  kopia maintenance run
+
+                  echo "=== Backup complete - $(date) ==="
+              env:
+                - name: KOPIA_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: kopia-b2-credentials
+                      key: KOPIA_PASSWORD
+                - name: B2_KEY_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: kopia-b2-credentials
+                      key: B2_KEY_ID
+                - name: B2_APPLICATION_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: kopia-b2-credentials
+                      key: B2_APPLICATION_KEY
+                - name: TZ
+                  value: "Asia/Kolkata"
+              volumeMounts:
+                - name: kopia-config
+                  mountPath: /app/config
+                - name: kopia-cache
+                  mountPath: /app/cache
+                - name: external-hdd
+                  mountPath: /mnt/external
+                - name: pendrive
+                  mountPath: /mnt/pendrive
+                - name: immich-library
+                  mountPath: /mnt/immich
+              resources:
+                requests:
+                  memory: 256Mi
+                limits:
+                  memory: 1Gi
+          volumes:
+            - name: kopia-config
+              persistentVolumeClaim:
+                claimName: kopia-config-pvc
+            - name: kopia-cache
+              emptyDir: {}
+            - name: external-hdd
+              hostPath:
+                path: /mnt/external
+                type: Directory
+            - name: pendrive
+              hostPath:
+                path: /mnt/pendrive2
+                type: Directory
+            - name: immich-library
+              hostPath:
+                path: /opt/local-path-provisioner/pvc-2a569fe3-80a3-422e-8b99-7d36daaf68cf_immich_immich-library-pvc
+                type: Directory
