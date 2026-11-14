@@ -70,6 +70,10 @@ spec:
               mountPath: /mnt/pendrive
             - name: immich-library
               mountPath: /mnt/immich
+            - name: pvcs
+              mountPath: /mnt/pvcs
+            - name: k3s-db
+              mountPath: /mnt/k3s-db
           resources:
             requests:
               memory: 512Mi
@@ -92,6 +96,14 @@ spec:
         - name: immich-library
           hostPath:
             path: /opt/local-path-provisioner/pvc-2a569fe3-80a3-422e-8b99-7d36daaf68cf_immich_immich-library-pvc
+            type: Directory
+        - name: pvcs
+          hostPath:
+            path: /opt/local-path-provisioner
+            type: Directory
+        - name: k3s-db
+          hostPath:
+            path: /var/lib/rancher/k3s/server/db
             type: Directory
 ---
 apiVersion: v1

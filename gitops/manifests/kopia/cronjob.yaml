@@ -4,7 +4,7 @@ metadata:
   name: kopia-backup
   namespace: kopia
 spec:
-  schedule: "30 20 * * *"  # 2:00 AM IST (UTC+5:30)
+  schedule: "30 20 * * *"  # 2:00 AM IST (UTC+5:30) — runs after etcd snapshot at 1:30 AM
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 3
   failedJobsHistoryLimit: 3
@@ -40,6 +40,18 @@ spec:
 
                   echo "--- Backing up Immich library ---"
                   kopia snapshot create /mnt/immich
+
+                  echo "--- Backing up Immich postgres ---"
+                  kopia snapshot create /mnt/pvcs/immich-postgres
+
+                  echo "--- Backing up Open WebUI ---"
+                  kopia snapshot create /mnt/pvcs/open-webui
+
+                  echo "--- Backing up Kopia config ---"
+                  kopia snapshot create /mnt/pvcs/kopia-config
+
+                  echo "--- Backing up k3s SQLite database ---"
+                  kopia snapshot create /mnt/k3s-db
 
                   echo "--- Syncing to pendrive ---"
                   kopia repository sync-to filesystem --path=/mnt/pendrive
@@ -77,11 +89,15 @@ spec:
                   mountPath: /mnt/pendrive
                 - name: immich-library
                   mountPath: /mnt/immich
+                - name: pvcs
+                  mountPath: /mnt/pvcs
+                - name: k3s-db
+                  mountPath: /mnt/k3s-db
               resources:
                 requests:
-                  memory: 256Mi
+                  memory: 512Mi
                 limits:
-                  memory: 1Gi
+                  memory: 2Gi
           volumes:
             - name: kopia-config
               persistentVolumeClaim:
@@ -99,4 +115,12 @@ spec:
             - name: immich-library
               hostPath:
                 path: /opt/local-path-provisioner/pvc-2a569fe3-80a3-422e-8b99-7d36daaf68cf_immich_immich-library-pvc
+                type: Directory
+            - name: pvcs
+              hostPath:
+                path: /opt/local-path-provisioner
+                type: Directory
+            - name: k3s-db
+              hostPath:
+                path: /var/lib/rancher/k3s/server/db
                 type: Directory
