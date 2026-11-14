@@ -41,8 +41,10 @@ spec:
             - -c
             - |
               chown -R 999:999 /var/lib/postgresql/data && chmod 700 /var/lib/postgresql/data
-              echo "shared_preload_libraries = ''" > /var/lib/postgresql/data/postgresql.override.conf
-              chown 999:999 /var/lib/postgresql/data/postgresql.override.conf || true
+              if [ -f /var/lib/postgresql/data/PG_VERSION ]; then
+                echo "shared_preload_libraries = ''" > /var/lib/postgresql/data/postgresql.override.conf
+                chown 999:999 /var/lib/postgresql/data/postgresql.override.conf
+              fi
           volumeMounts:
             - name: postgres-data
               mountPath: /var/lib/postgresql/data
