@@ -100,6 +100,7 @@ Service URLs (add all to `/etc/hosts` pointing at `192.168.1.200`):
 | Traefik dashboard | `https://traefik.lab.hiteshp.in` | — |
 | Open WebUI | `https://chat.lab.hiteshp.in` | first user registered becomes admin |
 | LiteLLM | `https://litellm.lab.hiteshp.in` | master key from `make litellm-secret` |
+| Immich | `https://immich.lab.hiteshp.in` | first user registered becomes admin |
 
 **Secrets that must be created manually** before ArgoCD deploys the respective app (cannot be stored in Git):
 
@@ -135,6 +136,9 @@ v3.x introduced a Redis multi-arch issue on x86_64 with k3s: `exec format error`
 **GPU held by Unknown-state pods**
 When an Ollama pod gets stuck in `Unknown` state it retains the `nvidia.com/gpu: 1` resource, blocking new pods from scheduling (`Insufficient nvidia.com/gpu`). Fix: `kubectl delete pod <pod-name> -n ollama --force --grace-period=0`.
 
+**Immich postgres AppArmor signal blocking**
+The `cri-containerd.apparmor.d` profile blocks SIGINT between postgres processes, causing the WAL startup process to exit with code 1 after a 60-second timeout. This also causes `gosu` to hang (can't drop privileges) and `pg_ctl stop` to fail with `Permission denied`. Fix: add `container.apparmor.security.beta.kubernetes.io/<container-name>: unconfined` annotation to the pod template. Also applies to any container using `gosu` or inter-process signaling. The local-path provisioner creates PVC directories as root, so an initContainer running as root with `chown -R 999:999` is needed before postgres can initialize. After AppArmor is fixed, vchord.so loads correctly but `CREATE EXTENSION vchord CASCADE` must be run manually on first deployment before Immich connects (run `kubectl exec -n immich <postgres-pod> -- psql -U immich -d immich -c 'CREATE EXTENSION IF NOT EXISTS vchord CASCADE'`).
+
 **Traefik IngressRoute namespace**
 IngressRoutes must be created in the `traefik-system` namespace, not the app's namespace. Cross-namespace routing works via `allowCrossNamespace: true` in the Traefik Helm values. Putting an IngressRoute in the wrong namespace means Traefik silently ignores it.
 
@@ -162,3 +166,4 @@ A secret in the `litellm` namespace cannot be referenced by a pod in the `ollama
 | kube-prometheus-stack | prometheus-community | 80.0.0 |
 | Homarr | homarr-labs/homarr | 8.4.3 |
 | Uptime Kuma | helm.irsigler.cloud/uptime-kuma | 2.24.0 |
+| Immich | immich-app/immich-charts | 0.12.0 |
