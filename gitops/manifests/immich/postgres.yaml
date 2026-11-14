@@ -36,7 +36,13 @@ spec:
           image: busybox
           securityContext:
             runAsUser: 0
-          command: ["sh", "-c", "chown -R 999:999 /var/lib/postgresql/data && chmod 700 /var/lib/postgresql/data"]
+          command:
+            - sh
+            - -c
+            - |
+              chown -R 999:999 /var/lib/postgresql/data && chmod 700 /var/lib/postgresql/data
+              echo "shared_preload_libraries = ''" > /var/lib/postgresql/data/postgresql.override.conf
+              chown 999:999 /var/lib/postgresql/data/postgresql.override.conf || true
           volumeMounts:
             - name: postgres-data
               mountPath: /var/lib/postgresql/data
