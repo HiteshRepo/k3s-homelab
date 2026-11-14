@@ -27,6 +27,10 @@ spec:
       labels:
         app: immich-postgres
     spec:
+      securityContext:
+        runAsUser: 999
+        runAsGroup: 999
+        fsGroup: 999
       containers:
         - name: postgres
           image: ghcr.io/immich-app/postgres:16-vectorchord0.4.3
