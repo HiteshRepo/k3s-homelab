@@ -20,6 +20,8 @@ spec:
       values: |
         env:
           TZ: "Asia/Kolkata"
+          DB_HOSTNAME: immich-postgres
+          DB_PORT: "5432"
           DB_DATABASE_NAME: immich
           DB_USERNAME: immich
           DB_PASSWORD: immich
@@ -29,19 +31,8 @@ spec:
             library:
               existingClaim: immich-library-pvc
 
-        postgresql:
-          enabled: true
-          global:
-            postgresql:
-              auth:
-                database: immich
-                username: immich
-                password: immich
-          primary:
-            persistence:
-              enabled: true
-              storageClass: local-path
-              size: 10Gi
+        database:
+          enabled: false
 
         redis:
           enabled: true
