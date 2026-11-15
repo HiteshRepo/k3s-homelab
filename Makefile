@@ -159,6 +159,100 @@ status: ## Print sync status of all ArgoCD applications
 traefik-ip: ## Print the LoadBalancer IP assigned to Traefik
 	@kubectl get svc -n traefik-system traefik -o jsonpath='{.status.loadBalancer.ingress[0].ip}' && echo
 
+# ─── Kopia Backup ─────────────────────────────────────────────────────────────
+
+KOPIA_POD = $(shell kubectl get pod -n kopia -o jsonpath='{.items[0].metadata.name}')
+KOPIA_CMD = kubectl exec -n kopia $(KOPIA_POD) --
+KOPIA_LOCAL = $(KOPIA_CMD) kopia --config-file=/app/config/repository-local.config
+
+B2_KEY_ID ?= ""
+B2_APPLICATION_KEY ?= ""
+KOPIA_PASSWORD ?= ""
+
+.PHONY: kopia-secret
+kopia-secret: ## Create Kopia B2 credentials secret (usage: make kopia-secret B2_KEY_ID=... B2_APPLICATION_KEY=... KOPIA_PASSWORD=...)
+	@kubectl get secret kopia-b2-credentials -n kopia >/dev/null 2>&1 && echo "kopia-b2-credentials secret already exists" || { \
+	  kubectl create namespace kopia --dry-run=client -o yaml | kubectl apply -f -; \
+	  kubectl create secret generic kopia-b2-credentials \
+	    --namespace kopia \
+	    --from-literal=B2_KEY_ID=$(B2_KEY_ID) \
+	    --from-literal=B2_APPLICATION_KEY=$(B2_APPLICATION_KEY) \
+	    --from-literal=KOPIA_PASSWORD=$(KOPIA_PASSWORD); \
+	}
+
+.PHONY: kopia-snapshots
+kopia-snapshots: ## List all Kopia snapshots in B2 repository
+	$(KOPIA_CMD) kopia snapshot list --all
+
+.PHONY: kopia-snapshots-local
+kopia-snapshots-local: ## List all Kopia snapshots in pendrive repository
+	$(KOPIA_LOCAL) snapshot list --all
+
+.PHONY: kopia-stats
+kopia-stats: ## Show B2 repository storage stats
+	$(KOPIA_CMD) kopia content stats
+
+.PHONY: kopia-stats-local
+kopia-stats-local: ## Show pendrive repository storage stats
+	$(KOPIA_LOCAL) content stats
+
+.PHONY: kopia-backup-now
+kopia-backup-now: ## Trigger manual backup to B2 immediately
+	kubectl create job -n kopia --from=cronjob/kopia-backup kopia-manual-$(shell date +%Y%m%d%H%M%S)
+
+.PHONY: kopia-backup-b2
+kopia-backup-b2: ## Run backup to B2 only (foreground)
+	$(KOPIA_CMD) sh -c 'kopia snapshot create /mnt/external/docs & kopia snapshot create /mnt/immich & kopia snapshot create /mnt/pvcs/immich-postgres & kopia snapshot create /mnt/pvcs/open-webui & kopia snapshot create /mnt/pvcs/kopia-config & kopia snapshot create /mnt/k3s-db & wait && echo DONE'
+
+.PHONY: kopia-backup-local
+kopia-backup-local: ## Run backup to pendrive only (foreground)
+	$(KOPIA_CMD) sh -c 'kopia --config-file=/app/config/repository-local.config snapshot create /mnt/external/docs & kopia --config-file=/app/config/repository-local.config snapshot create /mnt/immich & kopia --config-file=/app/config/repository-local.config snapshot create /mnt/pvcs/immich-postgres & kopia --config-file=/app/config/repository-local.config snapshot create /mnt/pvcs/open-webui & kopia --config-file=/app/config/repository-local.config snapshot create /mnt/pvcs/kopia-config & kopia --config-file=/app/config/repository-local.config snapshot create /mnt/k3s-db & wait && echo DONE'
+
+.PHONY: kopia-logs
+kopia-logs: ## Tail Kopia server logs
+	kubectl logs -n kopia -l app=kopia -f
+
+# ─── Immich ───────────────────────────────────────────────────────────────────
+
+IMMICH_POD = $(shell kubectl get pod -n immich -l app.kubernetes.io/name=server -o jsonpath='{.items[0].metadata.name}')
+
+.PHONY: immich-status
+immich-status: ## Show Immich pod status
+	kubectl get pods -n immich
+
+.PHONY: immich-logs
+immich-logs: ## Tail Immich server logs
+	kubectl logs -n immich -l app.kubernetes.io/name=server -f --tail=50
+
+.PHONY: immich-storage
+immich-storage: ## Show Immich library storage usage
+	@sudo du -sh /opt/local-path-provisioner/pvc-2a569fe3-80a3-422e-8b99-7d36daaf68cf_immich_immich-library-pvc/
+
+.PHONY: immich-vchord
+immich-vchord: ## Create vchord extension (run after fresh postgres init)
+	kubectl exec -n immich $(shell kubectl get pod -n immich -l app=immich-postgres -o jsonpath='{.items[0].metadata.name}') -- psql -U immich -d immich -c 'CREATE EXTENSION IF NOT EXISTS vchord CASCADE'
+
+.PHONY: immich-restart
+immich-restart: ## Restart Immich server
+	kubectl rollout restart deployment/immich-server -n immich
+
+# ─── Storage ──────────────────────────────────────────────────────────────────
+
+.PHONY: storage-status
+storage-status: ## Show all storage usage (NVMe, external HDD, pendrives)
+	@echo "=== NVMe ===" && df -h / | tail -1
+	@echo "=== External HDD ===" && df -h /mnt/external 2>/dev/null | tail -1 || echo "not mounted"
+	@echo "=== Pendrive ===" && df -h /mnt/pendrive2 2>/dev/null | tail -1 || echo "not mounted"
+	@echo "=== PVCs ===" && sudo du -sh /opt/local-path-provisioner/*/ 2>/dev/null | sort -h
+
+.PHONY: mount-external
+mount-external: ## Mount external HDD at /mnt/external
+	@mountpoint -q /mnt/external && echo "already mounted" || sudo mount /dev/sda1 /mnt/external
+
+.PHONY: mount-pendrive
+mount-pendrive: ## Mount pendrive (sdc1) at /mnt/pendrive2
+	@mountpoint -q /mnt/pendrive2 && echo "already mounted" || sudo mount /dev/sdc1 /mnt/pendrive2
+
 # ─── Help ─────────────────────────────────────────────────────────────────────
 
 .PHONY: help
