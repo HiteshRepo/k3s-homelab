@@ -66,6 +66,8 @@ spec:
                     --override-username=hitesh \
                     --override-hostname=lenovo
                   backup_all
+                  echo "--- Backing up DSLR photos (pendrive only) ---"
+                  kopia --config-file=/app/config/repository-local.config snapshot create /mnt/external/photos/Pics
 
                   echo "=== All backups complete - $(date) ==="
 
