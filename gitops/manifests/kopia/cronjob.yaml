@@ -53,9 +53,6 @@ spec:
                   echo "--- Backing up k3s SQLite database ---"
                   kopia snapshot create /mnt/k3s-db
 
-                  echo "--- Syncing to pendrive ---"
-                  kopia repository sync-to filesystem --path=/mnt/pendrive
-
                   echo "--- Running maintenance ---"
                   kopia maintenance run
 
