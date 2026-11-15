@@ -136,6 +136,9 @@ v3.x introduced a Redis multi-arch issue on x86_64 with k3s: `exec format error`
 **GPU held by Unknown-state pods**
 When an Ollama pod gets stuck in `Unknown` state it retains the `nvidia.com/gpu: 1` resource, blocking new pods from scheduling (`Insufficient nvidia.com/gpu`). Fix: `kubectl delete pod <pod-name> -n ollama --force --grace-period=0`.
 
+**DSLR photos (d750, eng, z6 1) not backed up to B2**
+20GB of DSLR photos at `/mnt/external/photos/Pics/` are backed up to pendrive only (B2 free tier is 10GB). To add B2 backup: upgrade B2 to paid (~$1/month) then add `/mnt/external/photos/Pics/` to the B2 section of `gitops/manifests/kopia/cronjob.yaml` (currently only in the pendrive section). Also set Kopia policy: `kopia policy set /mnt/external/photos/Pics --compression=zstd`.
+
 **Immich postgres AppArmor signal blocking**
 The `cri-containerd.apparmor.d` profile blocks SIGINT between postgres processes, causing the WAL startup process to exit with code 1 after a 60-second timeout. This also causes `gosu` to hang (can't drop privileges) and `pg_ctl stop` to fail with `Permission denied`. Fix: add `container.apparmor.security.beta.kubernetes.io/<container-name>: unconfined` annotation to the pod template. Also applies to any container using `gosu` or inter-process signaling. The local-path provisioner creates PVC directories as root, so an initContainer running as root with `chown -R 999:999` is needed before postgres can initialize. After AppArmor is fixed, vchord.so loads correctly but `CREATE EXTENSION vchord CASCADE` must be run manually on first deployment before Immich connects (run `kubectl exec -n immich <postgres-pod> -- psql -U immich -d immich -c 'CREATE EXTENSION IF NOT EXISTS vchord CASCADE'`).
 
