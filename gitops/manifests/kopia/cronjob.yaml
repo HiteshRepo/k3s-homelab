@@ -21,8 +21,34 @@ spec:
                 - -c
                 - |
                   set -e
-                  echo "=== Kopia Daily Backup - $(date) ==="
 
+                  backup_all() {
+                    echo "--- Backing up docs ---"
+                    kopia snapshot create /mnt/external/docs
+
+                    # d750, eng, z6 1 excluded — too large for B2 free tier (20GB total)
+                    # Safely stored on external HDD at /mnt/external/photos/Pics/
+
+                    echo "--- Backing up Immich library ---"
+                    kopia snapshot create /mnt/immich
+
+                    echo "--- Backing up Immich postgres ---"
+                    kopia snapshot create /mnt/pvcs/immich-postgres
+
+                    echo "--- Backing up Open WebUI ---"
+                    kopia snapshot create /mnt/pvcs/open-webui
+
+                    echo "--- Backing up Kopia config ---"
+                    kopia snapshot create /mnt/pvcs/kopia-config
+
+                    echo "--- Backing up k3s SQLite database ---"
+                    kopia snapshot create /mnt/k3s-db
+
+                    echo "--- Running maintenance ---"
+                    kopia maintenance run
+                  }
+
+                  echo "=== Backup to Backblaze B2 - $(date) ==="
                   kopia repository connect s3 \
                     --bucket=hitesh-homelab-backup \
                     --endpoint=s3.eu-central-003.backblazeb2.com \
@@ -31,30 +57,17 @@ spec:
                     --password=$KOPIA_PASSWORD \
                     --override-username=hitesh \
                     --override-hostname=lenovo
+                  backup_all
 
-                  echo "--- Backing up docs ---"
-                  kopia snapshot create /mnt/external/docs
+                  echo "=== Backup to Pendrive - $(date) ==="
+                  kopia --config-file=/app/config/repository-local.config repository connect filesystem \
+                    --path=/mnt/pendrive \
+                    --password=$KOPIA_PASSWORD \
+                    --override-username=hitesh \
+                    --override-hostname=lenovo
+                  backup_all
 
-                  # d750, eng, z6 1 excluded — too large for B2 free tier (20GB total)
-                  # Safely stored on external HDD at /mnt/external/photos/Pics/
-
-                  echo "--- Backing up Immich library ---"
-                  kopia snapshot create /mnt/immich
-
-                  echo "--- Backing up Immich postgres ---"
-                  kopia snapshot create /mnt/pvcs/immich-postgres
-
-                  echo "--- Backing up Open WebUI ---"
-                  kopia snapshot create /mnt/pvcs/open-webui
-
-                  echo "--- Backing up Kopia config ---"
-                  kopia snapshot create /mnt/pvcs/kopia-config
-
-                  echo "--- Backing up k3s SQLite database ---"
-                  kopia snapshot create /mnt/k3s-db
-
-                  echo "--- Running maintenance ---"
-                  kopia maintenance run
+                  echo "=== All backups complete - $(date) ==="
 
                   echo "=== Backup complete - $(date) ==="
               env:
