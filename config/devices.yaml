@@ -4,6 +4,13 @@ devices:
     kind: k8s-node
     ownership: personal
 
+  - id: legion-host
+    name: Legion 5i (Host OS)
+    kind: linux
+    host: 192.168.29.146
+    port: 9101
+    ownership: personal
+
   - id: macbook-work
     name: MacBook Work
     kind: mac
