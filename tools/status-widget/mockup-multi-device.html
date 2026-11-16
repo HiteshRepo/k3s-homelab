@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homelab — Multi-Device Widget Mockup</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #1c1c1e;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+    padding: 40px 24px 80px;
+  }
+
+  h1 { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #8e8e93; margin-bottom: 8px; }
+  .subtitle { font-size: 12px; color: #636366; margin-bottom: 36px; }
+
+  .section-label {
+    font-size: 11px; font-weight: 600; letter-spacing: .06em;
+    text-transform: uppercase; color: #636366; margin: 44px 0 16px;
+  }
+
+  /* ── dots ── */
+  .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+  .g { background: #30d158; box-shadow: 0 0 5px #30d15899; }
+  .y { background: #ffd60a; box-shadow: 0 0 5px #ffd60a88; }
+  .r { background: #ff453a; box-shadow: 0 0 5px #ff453a88; }
+
+  /* ── bar ── */
+  .bar { background: #3a3a3c; border-radius: 3px; height: 4px; overflow: hidden; flex: 1; }
+  .bar-fill { height: 100%; border-radius: 3px; }
+  .c-blue   { background: #0a84ff; }
+  .c-green  { background: #30d158; }
+  .c-orange { background: #ff9f0a; }
+  .c-yellow { background: #ffd60a; }
+  .c-red    { background: #ff453a; }
+
+  /* ── widget shells ── */
+  .widget { background: #2c2c2e; border-radius: 20px; overflow: hidden; flex-shrink: 0; }
+  .w-sm { width: 155px; height: 155px; }
+  .w-md { width: 329px; height: 155px; }
+  .w-lg { width: 329px; height: 329px; }
+  .row { display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start; }
+
+  /* ═══════════════════════════════════════
+     SMALL — single-number health score
+  ═══════════════════════════════════════ */
+  .sm-body {
+    padding: 14px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .sm-header { display: flex; align-items: center; gap: 6px; }
+  .sm-title  { font-size: 13px; font-weight: 700; }
+  .sm-time   { font-size: 10px; color: #636366; margin-top: 1px; margin-left: 13px; }
+  .sm-score  { font-size: 46px; font-weight: 800; line-height: 1; color: #30d158; }
+  .sm-score-label { font-size: 10px; color: #8e8e93; margin-top: 2px; }
+  .sm-footer { display: flex; gap: 8px; }
+  .sm-pill {
+    background: #3a3a3c; border-radius: 6px; padding: 3px 7px;
+    font-size: 9px; font-weight: 600; display: flex; align-items: center; gap: 4px;
+  }
+
+  /* ═══════════════════════════════════════
+     MEDIUM — per-device rows
+  ═══════════════════════════════════════ */
+  .md-body {
+    padding: 12px 14px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .md-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .md-title-grp { display: flex; align-items: center; gap: 7px; }
+  .md-title { font-size: 13px; font-weight: 700; }
+  .md-time  { font-size: 10px; color: #636366; }
+
+  .dev-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+    border-bottom: 1px solid #3a3a3c;
+  }
+  .dev-row:last-child { border-bottom: none; }
+
+  .dev-name   { font-size: 11px; font-weight: 600; width: 62px; flex-shrink: 0; }
+  .dev-kind   { font-size: 9px; color: #636366; width: 40px; flex-shrink: 0; }
+  .dev-metrics { display: flex; gap: 8px; flex: 1; align-items: center; }
+  .metric-pill {
+    display: flex; flex-direction: column; align-items: center;
+    min-width: 30px;
+  }
+  .metric-pill .lbl { font-size: 8px; color: #636366; letter-spacing: .03em; text-transform: uppercase; }
+  .metric-pill .val { font-size: 10px; font-weight: 700; }
+  .dev-tag {
+    font-size: 8px; font-weight: 700; padding: 2px 5px;
+    border-radius: 4px; flex-shrink: 0;
+  }
+  .tag-co  { background: #3a2800; color: #ffd60a; }
+  .tag-ios { background: #002844; color: #0a84ff; }
+
+  /* ═══════════════════════════════════════
+     LARGE — per-device cards
+  ═══════════════════════════════════════ */
+  .lg-body {
+    padding: 14px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .lg-header { display: flex; align-items: center; justify-content: space-between; }
+  .lg-title  { font-size: 14px; font-weight: 700; }
+  .lg-time   { font-size: 10px; color: #636366; }
+
+  .dev-card {
+    background: #3a3a3c;
+    border-radius: 10px;
+    padding: 7px 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+  }
+  .dev-card-left { flex: 1; }
+  .dev-card-name { font-size: 11px; font-weight: 700; }
+  .dev-card-kind { font-size: 9px; color: #8e8e93; margin-top: 1px; }
+  .dev-card-metrics { display: flex; gap: 10px; }
+  .dcm { display: flex; flex-direction: column; align-items: flex-end; }
+  .dcm-lbl { font-size: 8px; color: #636366; }
+  .dcm-val { font-size: 10px; font-weight: 700; }
+
+  /* ═══════════════════════════════════════
+     DEVICE PROFILE CARDS (concept)
+  ═══════════════════════════════════════ */
+  .profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+  }
+  .profile-card {
+    background: #2c2c2e;
+    border-radius: 16px;
+    padding: 16px;
+  }
+  .profile-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .profile-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .icon-cluster { background: #0a2744; }
+  .icon-mac     { background: #1a1a2e; }
+  .icon-ios     { background: #001a33; }
+  .icon-linux   { background: #001a0a; }
+
+  .profile-title { font-size: 14px; font-weight: 700; }
+  .profile-desc  { font-size: 11px; color: #8e8e93; margin-top: 2px; }
+
+  .metric-tag {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: #3a3a3c; border-radius: 6px;
+    padding: 3px 7px; font-size: 10px; font-weight: 500;
+    margin: 2px;
+  }
+  .metric-tag .dot { width: 5px; height: 5px; }
+
+  .collection-method {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #3a3a3c;
+    font-size: 10px; color: #636366;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .method-badge {
+    background: #2c2c2e; border-radius: 5px;
+    padding: 2px 7px; font-size: 10px; font-weight: 600;
+  }
+
+  /* ownership badge */
+  .ownership-row {
+    margin-top: 8px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+  .own-badge {
+    font-size: 10px; font-weight: 700; padding: 2px 8px;
+    border-radius: 5px;
+  }
+  .own-personal { background: #002a00; color: #30d158; }
+  .own-company  { background: #2a1a00; color: #ffd60a; }
+  .own-note     { font-size: 10px; color: #636366; }
+
+  /* ═══════════════════════════════════════
+     DETAIL SCREEN — device list
+  ═══════════════════════════════════════ */
+  .phone {
+    background: #000;
+    border-radius: 44px;
+    width: 390px;
+    min-height: 780px;
+    overflow: hidden;
+    border: 1px solid #3a3a3c;
+    flex-shrink: 0;
+  }
+  .statusbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 24px 0; font-size: 12px; font-weight: 600;
+  }
+  .statusbar-icons { display: flex; gap: 6px; align-items: center; font-size: 11px; }
+  .nav {
+    padding: 10px 20px 0;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-back  { font-size: 13px; color: #0a84ff; font-weight: 500; }
+  .nav-title { font-size: 17px; font-weight: 700; }
+  .nav-add   { font-size: 20px; color: #0a84ff; line-height: 1; }
+
+  .detail-body { padding: 14px 20px; display: flex; flex-direction: column; gap: 12px; }
+
+  .d-card { background: #1c1c1e; border-radius: 16px; padding: 14px 16px; }
+  .d-card-title {
+    font-size: 11px; font-weight: 700; letter-spacing: .06em;
+    text-transform: uppercase; color: #636366; margin-bottom: 10px;
+  }
+
+  /* device list item */
+  .d-dev-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #2c2c2e;
+    cursor: pointer;
+  }
+  .d-dev-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .d-dev-icon {
+    width: 38px; height: 38px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+  }
+  .d-dev-info { flex: 1; }
+  .d-dev-name { font-size: 14px; font-weight: 600; }
+  .d-dev-sub  { font-size: 11px; color: #8e8e93; margin-top: 1px; }
+  .d-dev-right { text-align: right; }
+  .d-dev-status { font-size: 12px; font-weight: 600; }
+  .d-dev-time   { font-size: 10px; color: #636366; margin-top: 2px; }
+  .d-dev-tag { font-size: 9px; font-weight: 700; padding: 1px 6px; border-radius: 4px; margin-top: 3px; display: inline-block; }
+
+  .ok   { color: #30d158; }
+  .warn { color: #ffd60a; }
+  .err  { color: #ff453a; }
+
+  /* ═══════════════════════════════════════
+     DETAIL SCREEN — single device
+  ═══════════════════════════════════════ */
+  .d-metric-row {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+  }
+  .d-metric-row:last-child { margin-bottom: 0; }
+  .d-metric-label { font-size: 13px; color: #8e8e93; width: 72px; flex-shrink: 0; }
+  .d-metric-val   { font-size: 13px; font-weight: 700; width: 46px; text-align: right; flex-shrink: 0; }
+  .d-bar { flex: 1; background: #2c2c2e; border-radius: 4px; height: 5px; overflow: hidden; }
+  .d-bar-fill { height: 100%; border-radius: 4px; }
+
+  .d-info-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 0; border-bottom: 1px solid #2c2c2e;
+  }
+  .d-info-row:last-child { border-bottom: none; }
+  .d-info-label { font-size: 13px; color: #8e8e93; }
+  .d-info-val   { font-size: 13px; font-weight: 600; }
+
+  .d-btn {
+    border-radius: 12px; padding: 13px;
+    text-align: center; font-size: 15px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .btn-blue { background: #0a84ff; color: #fff; }
+  .btn-red  { background: #2c0a0a; color: #ff453a; }
+
+  /* ── annotation ── */
+  .ann-list { margin-top: 32px; display: flex; flex-direction: column; gap: 8px; }
+  .ann { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: #8e8e93; }
+  .ann-n {
+    background: #3a3a3c; border-radius: 10px;
+    width: 18px; height: 18px; min-width: 18px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 700; color: #fff;
+  }
+
+  .divider { height: 1px; background: #3a3a3c; }
+</style>
+</head>
+<body>
+
+<h1>Homelab — Multi-Device Status Widget</h1>
+<div class="subtitle">Device Profiles · Add/Remove · Company cleanup</div>
+
+<!-- ══════════════════════════════════════════
+     DEVICE PROFILE CARDS
+══════════════════════════════════════════ -->
+<div class="section-label">Device Profiles — what gets tracked per device kind</div>
+<div class="profile-grid">
+
+  <!-- k8s-node -->
+  <div class="profile-card">
+    <div class="profile-header">
+      <div class="profile-icon icon-cluster">🖥</div>
+      <div>
+        <div class="profile-title">k8s-node</div>
+        <div class="profile-desc">Legion, future Mac Mini</div>
+      </div>
+    </div>
+    <div>
+      <span class="metric-tag"><span class="dot g"></span>CPU %</span>
+      <span class="metric-tag"><span class="dot g"></span>Memory %</span>
+      <span class="metric-tag"><span class="dot g"></span>Disk %</span>
+      <span class="metric-tag"><span class="dot g"></span>GPU util + temp</span>
+      <span class="metric-tag"><span class="dot g"></span>GPU VRAM</span>
+      <span class="metric-tag"><span class="dot g"></span>Pod count</span>
+      <span class="metric-tag"><span class="dot g"></span>ArgoCD sync</span>
+      <span class="metric-tag"><span class="dot g"></span>Ollama model</span>
+      <span class="metric-tag"><span class="dot g"></span>Kopia backup</span>
+      <span class="metric-tag"><span class="dot g"></span>Uptime Kuma</span>
+    </div>
+    <div class="collection-method">
+      <span>Collection:</span>
+      <span class="method-badge" style="color:#0a84ff;">PULL · cluster-internal</span>
+    </div>
+    <div class="ownership-row">
+      <span class="own-badge own-personal">personal</span>
+    </div>
+  </div>
+
+  <!-- mac -->
+  <div class="profile-card">
+    <div class="profile-header">
+      <div class="profile-icon icon-mac">💻</div>
+      <div>
+        <div class="profile-title">mac</div>
+        <div class="profile-desc">MacBook, MacBook Air, Mac Mini</div>
+      </div>
+    </div>
+    <div>
+      <span class="metric-tag"><span class="dot g"></span>CPU %</span>
+      <span class="metric-tag"><span class="dot g"></span>Memory %</span>
+      <span class="metric-tag"><span class="dot g"></span>Disk %</span>
+      <span class="metric-tag"><span class="dot g"></span>Battery %</span>
+      <span class="metric-tag"><span class="dot g"></span>Charging?</span>
+      <span class="metric-tag"><span class="dot g"></span>Uptime</span>
+      <span class="metric-tag"><span class="dot y"></span>CPU temp</span>
+    </div>
+    <div class="collection-method">
+      <span>Collection:</span>
+      <span class="method-badge" style="color:#30d158;">PULL · homelab-agent HTTP</span>
+    </div>
+    <div class="ownership-row">
+      <span class="own-badge own-company">company</span>
+      <span class="own-note">flag: cleanup_on_offboard: true</span>
+    </div>
+  </div>
+
+  <!-- ios -->
+  <div class="profile-card">
+    <div class="profile-header">
+      <div class="profile-icon icon-ios">📱</div>
+      <div>
+        <div class="profile-title">ios</div>
+        <div class="profile-desc">iPad Pro, iPhone — push only</div>
+      </div>
+    </div>
+    <div>
+      <span class="metric-tag"><span class="dot g"></span>Battery %</span>
+      <span class="metric-tag"><span class="dot g"></span>Charging?</span>
+      <span class="metric-tag"><span class="dot g"></span>Storage free</span>
+      <span class="metric-tag"><span class="dot g"></span>WiFi SSID</span>
+      <span class="metric-tag"><span class="dot y"></span>Last seen</span>
+    </div>
+    <div class="collection-method">
+      <span>Collection:</span>
+      <span class="method-badge" style="color:#ffd60a;">PUSH · Scriptable → /push</span>
+    </div>
+    <div class="collection-method" style="margin-top:4px; border-top: none; padding-top:0;">
+      <span style="color:#484850;">iOS Shortcut automation pushes every hour</span>
+    </div>
+    <div class="ownership-row">
+      <span class="own-badge own-personal">personal</span>
+    </div>
+  </div>
+
+  <!-- linux -->
+  <div class="profile-card">
+    <div class="profile-header">
+      <div class="profile-icon icon-linux">🐧</div>
+      <div>
+        <div class="profile-title">linux</div>
+        <div class="profile-desc">Generic Linux node, Raspberry Pi</div>
+      </div>
+    </div>
+    <div>
+      <span class="metric-tag"><span class="dot g"></span>CPU %</span>
+      <span class="metric-tag"><span class="dot g"></span>Memory %</span>
+      <span class="metric-tag"><span class="dot g"></span>Disk %</span>
+      <span class="metric-tag"><span class="dot g"></span>Uptime</span>
+      <span class="metric-tag"><span class="dot y"></span>CPU temp</span>
+    </div>
+    <div class="collection-method">
+      <span>Collection:</span>
+      <span class="method-badge" style="color:#30d158;">PULL · homelab-agent HTTP</span>
+    </div>
+    <div class="ownership-row">
+      <span class="own-badge own-personal">personal</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════
+     SMALL WIDGET — health score
+══════════════════════════════════════════ -->
+<div class="section-label">Small Widget (2×2) — overall health score</div>
+<div class="row">
+  <div class="widget w-sm">
+    <div class="sm-body">
+      <div>
+        <div class="sm-header">
+          <span class="dot g"></span>
+          <span class="sm-title">devices</span>
+        </div>
+        <div class="sm-time">10:42</div>
+      </div>
+      <div>
+        <div class="sm-score">4<span style="font-size:22px;color:#8e8e93;">/5</span></div>
+        <div class="sm-score-label">devices healthy</div>
+      </div>
+      <div class="sm-footer">
+        <div class="sm-pill"><span class="dot y"></span>1 warn</div>
+        <div class="sm-pill">5 dev</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     MEDIUM WIDGET — per-device rows
+══════════════════════════════════════════ -->
+<div class="section-label">Medium Widget (4×2) — per-device rows</div>
+<div class="row">
+  <div class="widget w-md">
+    <div class="md-body">
+
+      <div class="md-header">
+        <div class="md-title-grp">
+          <span class="dot g"></span>
+          <span class="md-title">devices</span>
+        </div>
+        <span class="md-time">Nov 16 · 10:42</span>
+      </div>
+
+      <!-- Legion -->
+      <div class="dev-row">
+        <span class="dot g"></span>
+        <span class="dev-name">Legion</span>
+        <span class="dev-kind">k8s-node</span>
+        <div class="dev-metrics">
+          <div class="metric-pill">
+            <span class="lbl">CPU</span>
+            <span class="val" style="color:#0a84ff;">45%</span>
+          </div>
+          <div class="metric-pill">
+            <span class="lbl">MEM</span>
+            <span class="val" style="color:#ff9f0a;">70%</span>
+          </div>
+          <div class="metric-pill">
+            <span class="lbl">GPU</span>
+            <span class="val" style="color:#30d158;">38°</span>
+          </div>
+          <div class="metric-pill">
+            <span class="lbl">PODS</span>
+            <span class="val" style="color:#30d158;">24</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MacBook -->
+      <div class="dev-row">
+        <span class="dot g"></span>
+        <span class="dev-name">MacBook</span>
+        <span class="dev-kind">mac</span>
+        <div class="dev-metrics">
+          <div class="metric-pill">
+            <span class="lbl">CPU</span>
+            <span class="val" style="color:#30d158;">12%</span>
+          </div>
+          <div class="metric-pill">
+            <span class="lbl">MEM</span>
+            <span class="val" style="color:#30d158;">68%</span>
+          </div>
+          <div class="metric-pill">
+            <span class="lbl">BAT</span>
+            <span class="val" style="color:#30d158;">87%</span>
+          </div>
+        </div>
+        <span class="dev-tag tag-co">CO</span>
+      </div>
+
+      <!-- iPad -->
+      <div class="dev-row">
+        <span class="dot y"></span>
+        <span class="dev-name">iPad Pro</span>
+        <span class="dev-kind">ios</span>
+        <div class="dev-metrics">
+          <div class="metric-pill">
+            <span class="lbl">BAT</span>
+            <span class="val" style="color:#ffd60a;">22%</span>
+          </div>
+          <div class="metric-pill">
+            <span class="lbl">FREE</span>
+            <span class="val" style="color:#30d158;">42G</span>
+          </div>
+          <div class="metric-pill">
+            <span class="lbl">WiFi</span>
+            <span class="val" style="color:#30d158;">✓</span>
+          </div>
+        </div>
+        <span class="dev-tag tag-ios">iOS</span>
+      </div>
+
+      <!-- iPhone -->
+      <div class="dev-row">
+        <span class="dot g"></span>
+        <span class="dev-name">iPhone</span>
+        <span class="dev-kind">ios</span>
+        <div class="dev-metrics">
+          <div class="metric-pill">
+            <span class="lbl">BAT</span>
+            <span class="val" style="color:#30d158;">61%</span>
+          </div>
+          <div class="metric-pill">
+            <span class="lbl">FREE</span>
+            <span class="val" style="color:#30d158;">18G</span>
+          </div>
+          <div class="metric-pill">
+            <span class="lbl">WiFi</span>
+            <span class="val" style="color:#30d158;">✓</span>
+          </div>
+        </div>
+        <span class="dev-tag tag-ios">iOS</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     LARGE WIDGET — device cards
+══════════════════════════════════════════ -->
+<div class="section-label">Large Widget (4×4) — device cards</div>
+<div class="row">
+  <div class="widget w-lg">
+    <div class="lg-body">
+
+      <div class="lg-header">
+        <div style="display:flex;align-items:center;gap:7px;">
+          <span class="dot g"></span>
+          <span class="lg-title">devices</span>
+        </div>
+        <span class="lg-time">Nov 16 · 10:42</span>
+      </div>
+
+      <!-- Legion card -->
+      <div class="dev-card">
+        <div>
+          <span style="font-size:16px;">🖥</span>
+        </div>
+        <div class="dev-card-left">
+          <div class="dev-card-name">Legion <span class="dot g" style="margin-left:4px;"></span></div>
+          <div class="dev-card-kind">k8s-node · 24/26 pods · Argo Synced</div>
+        </div>
+        <div class="dev-card-metrics">
+          <div class="dcm">
+            <span class="dcm-lbl">CPU</span>
+            <span class="dcm-val" style="color:#0a84ff;">45%</span>
+          </div>
+          <div class="dcm">
+            <span class="dcm-lbl">MEM</span>
+            <span class="dcm-val" style="color:#ff9f0a;">70%</span>
+          </div>
+          <div class="dcm">
+            <span class="dcm-lbl">GPU</span>
+            <span class="dcm-val" style="color:#30d158;">38°</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MacBook card -->
+      <div class="dev-card">
+        <div>
+          <span style="font-size:16px;">💻</span>
+        </div>
+        <div class="dev-card-left">
+          <div class="dev-card-name">MacBook <span style="font-size:8px;background:#2a1a00;color:#ffd60a;border-radius:4px;padding:1px 5px;margin-left:4px;font-weight:700;">CO</span></div>
+          <div class="dev-card-kind">mac · uptime 3d · charging</div>
+        </div>
+        <div class="dev-card-metrics">
+          <div class="dcm">
+            <span class="dcm-lbl">CPU</span>
+            <span class="dcm-val" style="color:#30d158;">12%</span>
+          </div>
+          <div class="dcm">
+            <span class="dcm-lbl">MEM</span>
+            <span class="dcm-val" style="color:#30d158;">68%</span>
+          </div>
+          <div class="dcm">
+            <span class="dcm-lbl">BAT</span>
+            <span class="dcm-val" style="color:#30d158;">87%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- iPad card -->
+      <div class="dev-card">
+        <div>
+          <span style="font-size:16px;">📱</span>
+        </div>
+        <div class="dev-card-left">
+          <div class="dev-card-name">iPad Pro <span class="dot y" style="margin-left:4px;"></span></div>
+          <div class="dev-card-kind">ios · low battery</div>
+        </div>
+        <div class="dev-card-metrics">
+          <div class="dcm">
+            <span class="dcm-lbl">BAT</span>
+            <span class="dcm-val" style="color:#ffd60a;">22%</span>
+          </div>
+          <div class="dcm">
+            <span class="dcm-lbl">FREE</span>
+            <span class="dcm-val" style="color:#30d158;">42G</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- iPhone card -->
+      <div class="dev-card">
+        <div>
+          <span style="font-size:16px;">📱</span>
+        </div>
+        <div class="dev-card-left">
+          <div class="dev-card-name">iPhone <span class="dot g" style="margin-left:4px;"></span></div>
+          <div class="dev-card-kind">ios · seen 4m ago</div>
+        </div>
+        <div class="dev-card-metrics">
+          <div class="dcm">
+            <span class="dcm-lbl">BAT</span>
+            <span class="dcm-val" style="color:#30d158;">61%</span>
+          </div>
+          <div class="dcm">
+            <span class="dcm-lbl">FREE</span>
+            <span class="dcm-val" style="color:#30d158;">18G</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     DETAIL SCREEN — device list
+══════════════════════════════════════════ -->
+<div class="section-label">Detail Screen — device list</div>
+<div class="row">
+
+  <div class="phone">
+    <div class="statusbar">
+      <span>10:42</span>
+      <div class="statusbar-icons"><span>WiFi</span><span>🔋</span></div>
+    </div>
+    <div class="nav">
+      <div class="nav-back">‹ Home</div>
+      <div class="nav-title">All Devices</div>
+      <div class="nav-add">+</div>
+    </div>
+    <div class="detail-body">
+
+      <div class="d-card">
+        <div class="d-card-title">Cluster</div>
+
+        <div class="d-dev-item">
+          <div class="d-dev-icon icon-cluster">🖥</div>
+          <div class="d-dev-info">
+            <div class="d-dev-name">Legion Y540</div>
+            <div class="d-dev-sub">k8s-node · 24/26 pods · phi4-mini</div>
+          </div>
+          <div class="d-dev-right">
+            <div class="d-dev-status ok">Healthy</div>
+            <div class="d-dev-time">just now</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="d-card">
+        <div class="d-card-title">Computers</div>
+
+        <div class="d-dev-item">
+          <div class="d-dev-icon icon-mac">💻</div>
+          <div class="d-dev-info">
+            <div class="d-dev-name">MacBook Pro</div>
+            <div class="d-dev-sub">mac · 87% batt · charging</div>
+          </div>
+          <div class="d-dev-right">
+            <div class="d-dev-status ok">Healthy</div>
+            <div class="d-dev-time">30s ago</div>
+            <div class="d-dev-tag tag-co">Company</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="d-card">
+        <div class="d-card-title">iOS Devices</div>
+
+        <div class="d-dev-item">
+          <div class="d-dev-icon icon-ios">📱</div>
+          <div class="d-dev-info">
+            <div class="d-dev-name">iPad Pro</div>
+            <div class="d-dev-sub">ios · 42GB free · home WiFi</div>
+          </div>
+          <div class="d-dev-right">
+            <div class="d-dev-status warn">Low battery</div>
+            <div class="d-dev-time">4m ago</div>
+          </div>
+        </div>
+
+        <div class="d-dev-item">
+          <div class="d-dev-icon icon-ios">📱</div>
+          <div class="d-dev-info">
+            <div class="d-dev-name">iPhone 15</div>
+            <div class="d-dev-sub">ios · 18GB free · home WiFi</div>
+          </div>
+          <div class="d-dev-right">
+            <div class="d-dev-status ok">Healthy</div>
+            <div class="d-dev-time">4m ago</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="d-btn btn-blue">+ Add Device ›</div>
+
+    </div>
+  </div>
+
+  <!-- Per-device detail: MacBook -->
+  <div class="phone">
+    <div class="statusbar">
+      <span>10:42</span>
+      <div class="statusbar-icons"><span>WiFi</span><span>🔋</span></div>
+    </div>
+    <div class="nav">
+      <div class="nav-back">‹ All Devices</div>
+      <div class="nav-title">MacBook Pro</div>
+      <div style="font-size:12px;color:#ff453a;font-weight:600;">Remove</div>
+    </div>
+    <div class="detail-body">
+
+      <div class="d-card" style="background:#1a1000;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span class="dot y"></span>
+          <span style="font-size:12px;color:#ffd60a;font-weight:600;">Company-owned device</span>
+        </div>
+        <div style="font-size:11px;color:#636366;margin-top:6px;">Tracking will be removed on offboard. Run <code style="color:#ffd60a;background:#2a1a00;padding:1px 5px;border-radius:4px;">make device-offboard macbook-work</code> when leaving.</div>
+      </div>
+
+      <div class="d-card">
+        <div class="d-card-title">System</div>
+        <div class="d-metric-row">
+          <span class="d-metric-label">CPU</span>
+          <div class="d-bar"><div class="d-bar-fill c-green" style="width:12%"></div></div>
+          <span class="d-metric-val" style="color:#30d158;">12%</span>
+        </div>
+        <div class="d-metric-row">
+          <span class="d-metric-label">Memory</span>
+          <div class="d-bar"><div class="d-bar-fill c-orange" style="width:68%"></div></div>
+          <span class="d-metric-val" style="color:#ff9f0a;">10.9G</span>
+        </div>
+        <div class="d-metric-row">
+          <span class="d-metric-label">Disk</span>
+          <div class="d-bar"><div class="d-bar-fill c-blue" style="width:60%"></div></div>
+          <span class="d-metric-val" style="color:#0a84ff;">60%</span>
+        </div>
+        <div class="d-metric-row">
+          <span class="d-metric-label">Battery</span>
+          <div class="d-bar"><div class="d-bar-fill c-green" style="width:87%"></div></div>
+          <span class="d-metric-val" style="color:#30d158;">87% ⚡</span>
+        </div>
+      </div>
+
+      <div class="d-card">
+        <div class="d-card-title">Info</div>
+        <div class="d-info-row">
+          <span class="d-info-label">Uptime</span>
+          <span class="d-info-val">3d 4h</span>
+        </div>
+        <div class="d-info-row">
+          <span class="d-info-label">Agent version</span>
+          <span class="d-info-val">v0.1.2</span>
+        </div>
+        <div class="d-info-row">
+          <span class="d-info-label">Last seen</span>
+          <span class="d-info-val ok">30s ago</span>
+        </div>
+        <div class="d-info-row">
+          <span class="d-info-label">Ownership</span>
+          <span class="d-info-val warn">Company</span>
+        </div>
+      </div>
+
+      <div class="d-btn btn-red">Offboard & Remove Tracking ›</div>
+
+    </div>
+  </div>
+
+  <!-- Per-device detail: iPad -->
+  <div class="phone">
+    <div class="statusbar">
+      <span>10:42</span>
+      <div class="statusbar-icons"><span>WiFi</span><span>🔋</span></div>
+    </div>
+    <div class="nav">
+      <div class="nav-back">‹ All Devices</div>
+      <div class="nav-title">iPad Pro</div>
+      <div style="font-size:12px;color:#ff453a;font-weight:600;">Remove</div>
+    </div>
+    <div class="detail-body">
+
+      <div class="d-card" style="background:#1a1000;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span class="dot y"></span>
+          <span style="font-size:12px;color:#ffd60a;font-weight:600;">Push-based tracking</span>
+        </div>
+        <div style="font-size:11px;color:#636366;margin-top:6px;">
+          iPad pushes data via iOS Shortcuts every hour.
+          Last push: 4 minutes ago. Data is stale after 2h.
+        </div>
+      </div>
+
+      <div class="d-card">
+        <div class="d-card-title">Device</div>
+        <div class="d-metric-row">
+          <span class="d-metric-label">Battery</span>
+          <div class="d-bar"><div class="d-bar-fill c-yellow" style="width:22%"></div></div>
+          <span class="d-metric-val" style="color:#ffd60a;">22%</span>
+        </div>
+        <div class="d-metric-row">
+          <span class="d-metric-label">Storage</span>
+          <div class="d-bar"><div class="d-bar-fill c-blue" style="width:52%"></div></div>
+          <span class="d-metric-val" style="color:#0a84ff;">52%</span>
+        </div>
+      </div>
+
+      <div class="d-card">
+        <div class="d-card-title">Info</div>
+        <div class="d-info-row">
+          <span class="d-info-label">Free storage</span>
+          <span class="d-info-val">42 GB</span>
+        </div>
+        <div class="d-info-row">
+          <span class="d-info-label">Total storage</span>
+          <span class="d-info-val">128 GB</span>
+        </div>
+        <div class="d-info-row">
+          <span class="d-info-label">Charging</span>
+          <span class="d-info-val err">No</span>
+        </div>
+        <div class="d-info-row">
+          <span class="d-info-label">WiFi</span>
+          <span class="d-info-val ok">Home WiFi</span>
+        </div>
+        <div class="d-info-row">
+          <span class="d-info-label">Last push</span>
+          <span class="d-info-val">4m ago</span>
+        </div>
+        <div class="d-info-row">
+          <span class="d-info-label">Ownership</span>
+          <span class="d-info-val ok">Personal</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- annotations -->
+<div class="ann-list">
+  <div class="ann"><div class="ann-n">1</div><div><b>Device Profiles</b> define what gets tracked per kind. k8s-node gets cluster metrics, mac gets battery + sys, ios gets push-only battery/storage. New devices inherit the profile for their kind.</div></div>
+  <div class="ann"><div class="ann-n">2</div><div><b>Collection model differs by kind:</b> k8s-node is polled internally (already in cluster). Mac/linux run a lightweight Go agent (homelab-agent) that exposes /metrics — status API polls it. iOS is push-only: Scriptable + iOS Shortcuts automation POSTs every hour.</div></div>
+  <div class="ann"><div class="ann-n">3</div><div><b>Company MacBook:</b> tagged <code>ownership: company, cleanup_on_offboard: true</code>. Status API banner reminds you. <code>make device-offboard macbook-work</code> uninstalls the agent and removes the device from the registry.</div></div>
+  <div class="ann"><div class="ann-n">4</div><div><b>Adding a new device:</b> <code>make device-add</code> → prompts for name + kind → updates devices.yaml → prints the homelab-agent install one-liner for mac/linux, or the Scriptable push URL for iOS.</div></div>
+  <div class="ann"><div class="ann-n">5</div><div><b>CO badge</b> (company-owned) appears on widget row + detail screen. When device list grows, CO devices are grouped separately so it's clear what gets cleaned up.</div></div>
+</div>
+
+</body>
+</html>
