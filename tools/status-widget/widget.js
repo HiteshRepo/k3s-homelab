@@ -195,7 +195,7 @@ function keyMetric(d) {
       return `${fmtPct(m.cpu_percent)} CPU · ${fmtPct(m.mem_percent)} MEM`
     case "ios": {
       const batt = m.battery_percent != null ? fmtPct(m.battery_percent) : "—"
-      const wifi = m.wifi_connected ? "WiFi" : "no WiFi"
+      const wifi = m.wifi_name || "no WiFi"
       return `${batt} · ${wifi}`
     }
     default:
@@ -446,7 +446,7 @@ async function showDeviceDetail(d) {
         addInfoRow(table, "Charging",   m.charging ? "Yes" : "No", COLOR.text)
         addInfoRow(table, "Disk free",  fmtBytes(m.disk_free_bytes), COLOR.text)
         addInfoRow(table, "Disk total", fmtBytes(m.disk_total_bytes), COLOR.text)
-        addInfoRow(table, "WiFi",       m.wifi_connected ? "Connected" : "Disconnected", COLOR.text)
+        addInfoRow(table, "WiFi",       m.wifi_name || "Disconnected", COLOR.text)
       }
       break
   }
