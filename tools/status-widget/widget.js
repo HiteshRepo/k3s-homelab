@@ -6,7 +6,7 @@
 //
 // Widget parameter overrides BASE_URL at runtime.
 
-const BASE_URL = args.widgetParameter || "http://192.168.29.201:8080"
+const BASE_URL = args.widgetParameter || "http://192.168.29.146:31376"
 const STATUS_PATH = "/status"
 
 // ─── Colours ───────────────────────────────────────────────────────────────────
