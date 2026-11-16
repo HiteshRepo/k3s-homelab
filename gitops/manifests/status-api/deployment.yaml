@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: status-api
+  namespace: status-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: status-api
+  template:
+    metadata:
+      labels:
+        app: status-api
+    spec:
+      serviceAccountName: status-api
+      containers:
+        - name: status-api
+          image: ghcr.io/hiteshrepo/status-api:latest
+          imagePullPolicy: IfNotPresent
+          args:
+            - --port=8080
+            - --devices=/etc/status-api/devices.yaml
+            - --poll-interval=60s
+            - --poll-timeout=5s
+            - --stale-after=2h
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
+          volumeMounts:
+            - name: devices-config
+              mountPath: /etc/status-api
+              readOnly: true
+      volumes:
+        - name: devices-config
+          configMap:
+            name: status-api-devices

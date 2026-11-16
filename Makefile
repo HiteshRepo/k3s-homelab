@@ -253,6 +253,19 @@ mount-external: ## Mount external HDD at /mnt/external
 mount-pendrive: ## Mount pendrive (sdc1) at /mnt/pendrive2
 	@mountpoint -q /mnt/pendrive2 && echo "already mounted" || sudo mount /dev/sdc1 /mnt/pendrive2
 
+# ─── Device Registry ──────────────────────────────────────────────────────────
+
+.PHONY: device-add
+device-add: ## Interactively add a device to config/devices.yaml and print the install/push next step
+	@bash scripts/device-add.sh
+
+.PHONY: device-offboard
+device-offboard: ## Remove a device from config/devices.yaml and uninstall its agent via SSH (usage: make device-offboard id=<id>)
+	@if [ -z "$(id)" ]; then \
+	  echo "Error: pass device id — make device-offboard id=<id>"; exit 1; \
+	fi
+	@bash scripts/device-offboard.sh "$(id)"
+
 # ─── Help ─────────────────────────────────────────────────────────────────────
 
 .PHONY: help

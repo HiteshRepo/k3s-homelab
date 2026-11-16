@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: status-api-devices
+  namespace: status-api
+data:
+  devices.yaml: |
+    devices:
+      - id: legion
+        name: Legion 5i (K8s node)
+        kind: k8s-node
+        ownership: personal
+
+      - id: macbook-work
+        name: MacBook Work
+        kind: mac
+        host: 192.168.1.101
+        port: 9100
+        ownership: company
+        cleanup_on_offboard: true
+
+      - id: ipad-pro
+        name: iPad Pro
+        kind: ios
+        ownership: personal
+
+      - id: iphone-15
+        name: iPhone 15
+        kind: ios
+        ownership: personal
