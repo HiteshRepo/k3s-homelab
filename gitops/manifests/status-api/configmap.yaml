@@ -31,7 +31,7 @@ data:
         kind: ios
         ownership: personal
 
-      - id: iphone-15
-        name: iPhone 15
+      - id: iphone-11
+        name: iPhone 11
         kind: ios
         ownership: personal
