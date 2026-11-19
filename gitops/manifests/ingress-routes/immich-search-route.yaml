@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: immich-search
+  namespace: traefik-system
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`search.lab.hiteshp.in`)
+      kind: Rule
+      services:
+        - name: immich-search
+          namespace: immich-search
+          port: 80
+  tls: {}

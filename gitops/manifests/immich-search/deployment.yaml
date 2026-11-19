@@ -1,0 +1,737 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: immich-search-html
+  namespace: immich-search
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Immich Search</title>
+      <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+          background: #0d0d0d;
+          color: #e0e0e0;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          min-height: 100vh;
+        }
+
+        header {
+          background: #161616;
+          border-bottom: 1px solid #252525;
+          padding: 14px 24px;
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          position: sticky;
+          top: 0;
+          z-index: 100;
+        }
+
+        .logo {
+          font-size: 16px;
+          font-weight: 600;
+          color: #4f9ef8;
+          white-space: nowrap;
+          letter-spacing: -0.3px;
+        }
+
+        .search-form {
+          flex: 1;
+          display: flex;
+          gap: 8px;
+          max-width: 640px;
+        }
+
+        .search-input {
+          flex: 1;
+          background: #222;
+          border: 1px solid #333;
+          border-radius: 8px;
+          color: #e0e0e0;
+          font-size: 14px;
+          padding: 9px 14px;
+          outline: none;
+          transition: border-color 0.15s;
+        }
+
+        .search-input:focus { border-color: #4f9ef8; }
+        .search-input::placeholder { color: #555; }
+
+        .search-btn {
+          background: #4f9ef8;
+          border: none;
+          border-radius: 8px;
+          color: white;
+          cursor: pointer;
+          font-size: 13px;
+          font-weight: 600;
+          padding: 9px 20px;
+          transition: background 0.15s;
+          white-space: nowrap;
+        }
+
+        .search-btn:hover { background: #3d8de8; }
+        .search-btn:disabled { background: #1e3a60; color: #555; cursor: not-allowed; }
+
+        .settings-btn {
+          background: none;
+          border: 1px solid #333;
+          border-radius: 8px;
+          color: #666;
+          cursor: pointer;
+          font-size: 16px;
+          line-height: 1;
+          padding: 8px 10px;
+          transition: color 0.15s, border-color 0.15s;
+        }
+
+        .settings-btn:hover { color: #ccc; border-color: #555; }
+
+        .main {
+          padding: 28px 24px;
+          max-width: 1440px;
+          margin: 0 auto;
+        }
+
+        /* Setup screen */
+        .setup-screen {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: calc(100vh - 64px);
+        }
+
+        .setup-card {
+          background: #161616;
+          border: 1px solid #252525;
+          border-radius: 16px;
+          padding: 44px;
+          max-width: 420px;
+          width: 100%;
+          text-align: center;
+        }
+
+        .setup-icon { font-size: 40px; margin-bottom: 16px; }
+        .setup-card h2 { font-size: 20px; margin-bottom: 8px; }
+        .setup-card p { color: #666; margin-bottom: 28px; font-size: 13px; line-height: 1.7; }
+
+        .setup-input {
+          width: 100%;
+          background: #222;
+          border: 1px solid #333;
+          border-radius: 8px;
+          color: #e0e0e0;
+          font-size: 13px;
+          font-family: 'SF Mono', monospace;
+          padding: 11px 14px;
+          margin-bottom: 12px;
+          outline: none;
+          transition: border-color 0.15s;
+        }
+
+        .setup-input:focus { border-color: #4f9ef8; }
+
+        .setup-submit {
+          width: 100%;
+          background: #4f9ef8;
+          border: none;
+          border-radius: 8px;
+          color: white;
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 600;
+          padding: 11px;
+          transition: background 0.15s;
+        }
+
+        .setup-submit:hover { background: #3d8de8; }
+
+        /* Status bar */
+        .status-bar {
+          color: #555;
+          font-size: 12px;
+          margin-bottom: 18px;
+        }
+
+        /* Grid */
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 6px;
+        }
+
+        .card {
+          background: #1a1a1a;
+          border-radius: 6px;
+          overflow: hidden;
+          cursor: pointer;
+          position: relative;
+          aspect-ratio: 1;
+        }
+
+        .card::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: 6px;
+          transition: background 0.15s;
+        }
+
+        .card:hover::after { background: rgba(255,255,255,0.05); }
+
+        .card img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          background: #1e1e1e;
+        }
+
+        .card-overlay {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: linear-gradient(transparent, rgba(0,0,0,0.75));
+          padding: 24px 8px 8px;
+          opacity: 0;
+          transition: opacity 0.15s;
+        }
+
+        .card:hover .card-overlay { opacity: 1; }
+
+        .card-date { color: #ddd; font-size: 11px; }
+
+        .video-badge {
+          position: absolute;
+          top: 7px;
+          right: 7px;
+          background: rgba(0,0,0,0.65);
+          border-radius: 4px;
+          color: #fff;
+          font-size: 10px;
+          font-weight: 600;
+          padding: 2px 6px;
+          letter-spacing: 0.3px;
+        }
+
+        .fav-badge {
+          position: absolute;
+          top: 7px;
+          left: 7px;
+          font-size: 14px;
+        }
+
+        /* Spinner */
+        .spinner-wrap {
+          display: flex;
+          justify-content: center;
+          padding: 80px;
+        }
+
+        .spinner {
+          width: 32px;
+          height: 32px;
+          border: 2.5px solid #252525;
+          border-top-color: #4f9ef8;
+          border-radius: 50%;
+          animation: spin 0.75s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Empty / error */
+        .message {
+          text-align: center;
+          padding: 100px 20px;
+        }
+
+        .message-icon { font-size: 36px; margin-bottom: 14px; }
+        .message h3 { font-size: 16px; color: #666; margin-bottom: 6px; }
+        .message p { font-size: 13px; color: #444; }
+
+        /* Landing suggestions */
+        .suggestions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          justify-content: center;
+          margin-top: 24px;
+        }
+
+        .suggestion {
+          background: #1e1e1e;
+          border: 1px solid #2a2a2a;
+          border-radius: 100px;
+          color: #888;
+          cursor: pointer;
+          font-size: 12px;
+          padding: 6px 14px;
+          transition: background 0.15s, color 0.15s;
+        }
+
+        .suggestion:hover { background: #252525; color: #ccc; }
+
+        /* Lightbox */
+        .lightbox {
+          display: none;
+          position: fixed;
+          inset: 0;
+          background: rgba(0,0,0,0.93);
+          z-index: 1000;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .lightbox.open { display: flex; }
+
+        .lightbox-inner {
+          display: flex;
+          max-width: 92vw;
+          max-height: 92vh;
+          border-radius: 10px;
+          overflow: hidden;
+          background: #161616;
+          box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+        }
+
+        .lightbox-img-wrap {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #000;
+          min-width: 200px;
+          max-width: 72vw;
+          max-height: 92vh;
+        }
+
+        .lightbox-img-wrap img {
+          display: block;
+          max-width: 100%;
+          max-height: 92vh;
+          object-fit: contain;
+        }
+
+        .lightbox-panel {
+          background: #161616;
+          border-left: 1px solid #222;
+          padding: 24px 20px;
+          width: 230px;
+          flex-shrink: 0;
+          overflow-y: auto;
+        }
+
+        .lightbox-filename {
+          font-size: 13px;
+          font-weight: 500;
+          word-break: break-all;
+          margin-bottom: 20px;
+          color: #ddd;
+          line-height: 1.4;
+        }
+
+        .meta-row { margin-bottom: 14px; }
+
+        .meta-label {
+          font-size: 10px;
+          font-weight: 600;
+          color: #555;
+          text-transform: uppercase;
+          letter-spacing: 0.6px;
+          margin-bottom: 3px;
+        }
+
+        .meta-value { font-size: 13px; color: #bbb; }
+
+        .lightbox-nav {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background: rgba(0,0,0,0.5);
+          border: none;
+          border-radius: 50%;
+          color: white;
+          cursor: pointer;
+          font-size: 20px;
+          width: 44px;
+          height: 44px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: background 0.15s;
+          z-index: 1001;
+        }
+
+        .lightbox-nav:hover { background: rgba(255,255,255,0.12); }
+        #lightboxPrev { left: 16px; }
+        #lightboxNext { right: 260px; }
+
+        .lightbox-close {
+          position: absolute;
+          top: 16px;
+          right: 16px;
+          background: rgba(0,0,0,0.5);
+          border: none;
+          border-radius: 50%;
+          color: white;
+          cursor: pointer;
+          font-size: 16px;
+          width: 36px;
+          height: 36px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: background 0.15s;
+          z-index: 1001;
+        }
+
+        .lightbox-close:hover { background: rgba(255,255,255,0.1); }
+
+        /* Settings modal */
+        .modal-overlay {
+          display: none;
+          position: fixed;
+          inset: 0;
+          background: rgba(0,0,0,0.75);
+          z-index: 2000;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .modal-overlay.open { display: flex; }
+
+        .modal {
+          background: #161616;
+          border: 1px solid #252525;
+          border-radius: 12px;
+          padding: 32px;
+          width: 380px;
+        }
+
+        .modal h3 { font-size: 16px; margin-bottom: 20px; }
+        .modal label { display: block; font-size: 12px; color: #666; margin-bottom: 6px; }
+
+        .modal-actions {
+          display: flex;
+          gap: 8px;
+          justify-content: flex-end;
+          margin-top: 20px;
+        }
+
+        .btn { border-radius: 7px; cursor: pointer; font-size: 13px; font-weight: 500; padding: 8px 16px; border: none; }
+        .btn-secondary { background: #222; color: #aaa; border: 1px solid #333; }
+        .btn-secondary:hover { background: #2a2a2a; }
+        .btn-primary { background: #4f9ef8; color: white; }
+        .btn-primary:hover { background: #3d8de8; }
+      </style>
+    </head>
+    <body>
+
+    <header>
+      <div class="logo">Immich Search</div>
+      <form class="search-form" id="searchForm" style="display:none">
+        <input class="search-input" id="queryInput" type="text"
+          placeholder="birthday party, sunset on a beach, dog playing..." autocomplete="off" />
+        <button class="search-btn" id="searchBtn" type="submit">Search</button>
+      </form>
+      <button class="settings-btn" id="settingsBtn" style="display:none" title="Settings">⚙</button>
+    </header>
+
+    <div class="main" id="main"></div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" id="lightboxClose">✕</button>
+      <button class="lightbox-nav" id="lightboxPrev">‹</button>
+      <button class="lightbox-nav" id="lightboxNext">›</button>
+      <div class="lightbox-inner">
+        <div class="lightbox-img-wrap">
+          <img id="lightboxImg" src="" alt="" />
+        </div>
+        <div class="lightbox-panel" id="lightboxPanel"></div>
+      </div>
+    </div>
+
+    <!-- Settings modal -->
+    <div class="modal-overlay" id="settingsModal">
+      <div class="modal">
+        <h3>Settings</h3>
+        <label>API Key</label>
+        <input class="setup-input" id="modalKeyInput" type="password" placeholder="Paste your Immich API key" />
+        <div class="modal-actions">
+          <button class="btn btn-secondary" id="modalCancel">Cancel</button>
+          <button class="btn btn-primary" id="modalSave">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const BASE_URL = 'https://immich.lab.hiteshp.in';
+      const SUGGESTIONS = [
+        'sunset on a beach', 'birthday party', 'family dinner',
+        'hiking in mountains', 'dogs playing', 'city at night',
+        'snow landscape', 'flowers in garden', 'road trip'
+      ];
+
+      let apiKey = localStorage.getItem('immich_api_key') || '';
+      let currentResults = [];
+      let lightboxIndex = 0;
+
+      const $ = id => document.getElementById(id);
+      const main = $('main');
+      const searchForm = $('searchForm');
+      const queryInput = $('queryInput');
+      const searchBtn = $('searchBtn');
+      const settingsBtn = $('settingsBtn');
+      const lightbox = $('lightbox');
+      const lightboxImg = $('lightboxImg');
+      const lightboxPanel = $('lightboxPanel');
+      const settingsModal = $('settingsModal');
+
+      const thumbUrl = (id, size = 'thumbnail') =>
+        `${BASE_URL}/api/assets/${id}/thumbnail?size=${size}&key=${apiKey}`;
+
+      const fmtDate = iso => new Date(iso).toLocaleDateString('en-IN', {
+        year: 'numeric', month: 'short', day: 'numeric'
+      });
+
+      const fmtTime = iso => new Date(iso).toLocaleTimeString('en-IN', {
+        hour: '2-digit', minute: '2-digit'
+      });
+
+      function showSetup() {
+        searchForm.style.display = 'none';
+        settingsBtn.style.display = 'none';
+        main.innerHTML = `
+          <div class="setup-screen">
+            <div class="setup-card">
+              <div class="setup-icon">🔍</div>
+              <h2>Immich Smart Search</h2>
+              <p>Search your photos and videos using natural language.<br>
+                 Powered by CLIP semantic embeddings.</p>
+              <input class="setup-input" id="keyInput" type="password"
+                placeholder="Paste your Immich API key..." />
+              <button class="setup-submit" id="keySubmit">Connect</button>
+            </div>
+          </div>`;
+        $('keySubmit').onclick = () => {
+          const key = $('keyInput').value.trim();
+          if (!key) return;
+          apiKey = key;
+          localStorage.setItem('immich_api_key', key);
+          showLanding();
+        };
+      }
+
+      function showLanding() {
+        searchForm.style.display = 'flex';
+        settingsBtn.style.display = 'block';
+        const chips = SUGGESTIONS.map(s =>
+          `<span class="suggestion" data-query="${s}">${s}</span>`
+        ).join('');
+        main.innerHTML = `
+          <div class="message">
+            <div class="message-icon">📷</div>
+            <h3>Search your memories</h3>
+            <p>Use natural language — describe a scene, event, or feeling</p>
+            <div class="suggestions">${chips}</div>
+          </div>`;
+        main.querySelectorAll('.suggestion').forEach(el => {
+          el.addEventListener('click', () => {
+            queryInput.value = el.dataset.query;
+            searchForm.dispatchEvent(new Event('submit'));
+          });
+        });
+        setTimeout(() => queryInput.focus(), 50);
+      }
+
+      function showLoading() {
+        main.innerHTML = '<div class="spinner-wrap"><div class="spinner"></div></div>';
+      }
+
+      function renderResults(items) {
+        currentResults = items;
+        if (!items.length) {
+          main.innerHTML = `
+            <div class="message">
+              <div class="message-icon">🔭</div>
+              <h3>No results</h3>
+              <p>Try a different description or broader terms</p>
+            </div>`;
+          return;
+        }
+        const cards = items.map((a, i) => `
+          <div class="card" data-index="${i}">
+            <img src="${thumbUrl(a.id)}" alt="${a.originalFileName}" loading="lazy" />
+            ${a.type === 'VIDEO' ? '<span class="video-badge">▶ VIDEO</span>' : ''}
+            ${a.isFavorite ? '<span class="fav-badge">★</span>' : ''}
+            <div class="card-overlay">
+              <div class="card-date">${fmtDate(a.fileCreatedAt)}</div>
+            </div>
+          </div>`).join('');
+        main.innerHTML = `
+          <div class="status-bar">${items.length} result${items.length !== 1 ? 's' : ''}</div>
+          <div class="grid">${cards}</div>`;
+        main.querySelectorAll('.card').forEach(c =>
+          c.addEventListener('click', () => openLightbox(+c.dataset.index))
+        );
+      }
+
+      function openLightbox(index) {
+        lightboxIndex = index;
+        const a = currentResults[index];
+        lightboxImg.src = thumbUrl(a.id, 'preview');
+        lightboxImg.alt = a.originalFileName;
+        lightboxPanel.innerHTML = `
+          <div class="lightbox-filename">${a.originalFileName}</div>
+          <div class="meta-row">
+            <div class="meta-label">Date</div>
+            <div class="meta-value">${fmtDate(a.fileCreatedAt)}</div>
+          </div>
+          <div class="meta-row">
+            <div class="meta-label">Time</div>
+            <div class="meta-value">${fmtTime(a.fileCreatedAt)}</div>
+          </div>
+          <div class="meta-row">
+            <div class="meta-label">Type</div>
+            <div class="meta-value">${a.type}</div>
+          </div>
+          ${a.width ? `
+          <div class="meta-row">
+            <div class="meta-label">Dimensions</div>
+            <div class="meta-value">${a.width} × ${a.height}</div>
+          </div>` : ''}
+          <div class="meta-row">
+            <div class="meta-label">Favourite</div>
+            <div class="meta-value">${a.isFavorite ? '★ Yes' : 'No'}</div>
+          </div>
+          <div class="meta-row">
+            <div class="meta-label">Result</div>
+            <div class="meta-value">${index + 1} of ${currentResults.length}</div>
+          </div>`;
+        lightbox.classList.add('open');
+        $('lightboxPrev').style.display = index > 0 ? 'flex' : 'none';
+        $('lightboxNext').style.display = index < currentResults.length - 1 ? 'flex' : 'none';
+      }
+
+      $('lightboxClose').onclick = () => lightbox.classList.remove('open');
+      lightbox.addEventListener('click', e => {
+        if (e.target === lightbox) lightbox.classList.remove('open');
+      });
+      $('lightboxPrev').onclick = e => { e.stopPropagation(); openLightbox(lightboxIndex - 1); };
+      $('lightboxNext').onclick = e => { e.stopPropagation(); openLightbox(lightboxIndex + 1); };
+
+      document.addEventListener('keydown', e => {
+        if (!lightbox.classList.contains('open')) return;
+        if (e.key === 'Escape') lightbox.classList.remove('open');
+        if (e.key === 'ArrowLeft' && lightboxIndex > 0) openLightbox(lightboxIndex - 1);
+        if (e.key === 'ArrowRight' && lightboxIndex < currentResults.length - 1) openLightbox(lightboxIndex + 1);
+      });
+
+      document.addEventListener('keydown', e => {
+        if (e.key === '/' && document.activeElement !== queryInput) {
+          e.preventDefault();
+          queryInput.focus();
+        }
+      });
+
+      // Settings modal
+      settingsBtn.onclick = () => {
+        $('modalKeyInput').value = '';
+        settingsModal.classList.add('open');
+      };
+      $('modalCancel').onclick = () => settingsModal.classList.remove('open');
+      $('modalSave').onclick = () => {
+        const key = $('modalKeyInput').value.trim();
+        if (key) { apiKey = key; localStorage.setItem('immich_api_key', key); }
+        settingsModal.classList.remove('open');
+      };
+
+      // Search
+      searchForm.addEventListener('submit', async e => {
+        e.preventDefault();
+        const query = queryInput.value.trim();
+        if (!query) return;
+        searchBtn.disabled = true;
+        showLoading();
+        try {
+          const res = await fetch(`${BASE_URL}/api/search/smart`, {
+            method: 'POST',
+            headers: { 'x-api-key': apiKey, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ query, size: 100 })
+          });
+          if (res.status === 401) throw new Error('Invalid API key — update it in Settings (⚙)');
+          if (!res.ok) throw new Error(`Server error (HTTP ${res.status})`);
+          const data = await res.json();
+          renderResults(data.assets.items);
+        } catch (err) {
+          main.innerHTML = `
+            <div class="message">
+              <div class="message-icon">⚠️</div>
+              <h3>Error</h3>
+              <p>${err.message}</p>
+            </div>`;
+        } finally {
+          searchBtn.disabled = false;
+          queryInput.focus();
+        }
+      });
+
+      // Init
+      apiKey ? showLanding() : showSetup();
+    </script>
+    </body>
+    </html>
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: immich-search
+  namespace: immich-search
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: immich-search
+  template:
+    metadata:
+      labels:
+        app: immich-search
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: html
+              mountPath: /usr/share/nginx/html
+          resources:
+            requests:
+              memory: 32Mi
+              cpu: 10m
+            limits:
+              memory: 64Mi
+      volumes:
+        - name: html
+          configMap:
+            name: immich-search-html
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: immich-search
+  namespace: immich-search
+spec:
+  selector:
+    app: immich-search
+  ports:
+    - port: 80
+      targetPort: 80
