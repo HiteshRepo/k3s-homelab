@@ -88,6 +88,33 @@ data:
         .search-btn:hover { background: #3d8de8; }
         .search-btn:disabled { background: #1e3a60; color: #555; cursor: not-allowed; }
 
+        .mic-btn {
+          background: #222;
+          border: 1px solid #333;
+          border-radius: 8px;
+          color: #888;
+          cursor: pointer;
+          font-size: 16px;
+          line-height: 1;
+          padding: 9px 11px;
+          transition: background 0.15s, color 0.15s, border-color 0.15s;
+          flex-shrink: 0;
+        }
+
+        .mic-btn:hover { background: #2a2a2a; color: #ccc; border-color: #555; }
+
+        .mic-btn.listening {
+          background: #3a1010;
+          border-color: #c0392b;
+          color: #e74c3c;
+          animation: pulse 1s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
+        }
+
         .main { padding: 28px 24px; max-width: 1440px; margin: 0 auto; }
 
         /* Status bar */
@@ -292,6 +319,7 @@ data:
         <input class="search-input" id="queryInput" type="text"
           placeholder="birthday party, sunset on a beach, dog playing..." autocomplete="off" />
         <button class="search-btn" id="searchBtn" type="submit">Search</button>
+        <button class="mic-btn" id="micBtn" type="button" title="Search by voice">🎤</button>
       </form>
     </header>
 
@@ -465,6 +493,39 @@ data:
           $('queryInput').focus();
         }
       });
+
+      // Voice search
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const micBtn = $('micBtn');
+
+      if (SpeechRecognition) {
+        const recognition = new SpeechRecognition();
+        recognition.continuous = false;
+        recognition.interimResults = false;
+        recognition.lang = 'en-US';
+
+        recognition.onstart = () => micBtn.classList.add('listening');
+        recognition.onend = () => micBtn.classList.remove('listening');
+        recognition.onerror = () => micBtn.classList.remove('listening');
+
+        recognition.onresult = e => {
+          const transcript = e.results[0][0].transcript;
+          $('queryInput').value = transcript;
+          $('searchForm').dispatchEvent(new Event('submit'));
+        };
+
+        micBtn.addEventListener('click', () => {
+          if (micBtn.classList.contains('listening')) {
+            recognition.stop();
+          } else {
+            recognition.start();
+          }
+        });
+      } else {
+        micBtn.title = 'Voice search not supported in this browser';
+        micBtn.style.opacity = '0.3';
+        micBtn.style.cursor = 'not-allowed';
+      }
 
       showLanding();
     </script>
