@@ -500,6 +500,7 @@ data:
       let apiKey = localStorage.getItem('immich_api_key') || '';
       let currentResults = [];
       let lightboxIndex = 0;
+      let currentBlobUrl = null;
 
       const $ = id => document.getElementById(id);
       const main = $('main');
@@ -601,10 +602,25 @@ data:
         );
       }
 
-      function openLightbox(index) {
+      async function openLightbox(index) {
         lightboxIndex = index;
         const a = currentResults[index];
-        lightboxImg.src = thumbUrl(a.id, 'preview');
+
+        // revoke previous blob to free memory
+        if (currentBlobUrl) { URL.revokeObjectURL(currentBlobUrl); currentBlobUrl = null; }
+        lightboxImg.src = '';
+
+        // preview requires x-api-key header — fetch and convert to blob URL
+        try {
+          const res = await fetch(`/api/assets/${a.id}/thumbnail?size=preview`, {
+            headers: { 'x-api-key': apiKey }
+          });
+          if (res.ok) {
+            currentBlobUrl = URL.createObjectURL(await res.blob());
+            lightboxImg.src = currentBlobUrl;
+          }
+        } catch (_) {}
+
         lightboxImg.alt = a.originalFileName;
         lightboxPanel.innerHTML = `
           <div class="lightbox-filename">${a.originalFileName}</div>
@@ -638,16 +654,19 @@ data:
         $('lightboxNext').style.display = index < currentResults.length - 1 ? 'flex' : 'none';
       }
 
-      $('lightboxClose').onclick = () => lightbox.classList.remove('open');
-      lightbox.addEventListener('click', e => {
-        if (e.target === lightbox) lightbox.classList.remove('open');
-      });
+      function closeLightbox() {
+        lightbox.classList.remove('open');
+        if (currentBlobUrl) { URL.revokeObjectURL(currentBlobUrl); currentBlobUrl = null; }
+      }
+
+      $('lightboxClose').onclick = closeLightbox;
+      lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
       $('lightboxPrev').onclick = e => { e.stopPropagation(); openLightbox(lightboxIndex - 1); };
       $('lightboxNext').onclick = e => { e.stopPropagation(); openLightbox(lightboxIndex + 1); };
 
       document.addEventListener('keydown', e => {
         if (!lightbox.classList.contains('open')) return;
-        if (e.key === 'Escape') lightbox.classList.remove('open');
+        if (e.key === 'Escape') closeLightbox();
         if (e.key === 'ArrowLeft' && lightboxIndex > 0) openLightbox(lightboxIndex - 1);
         if (e.key === 'ArrowRight' && lightboxIndex < currentResults.length - 1) openLightbox(lightboxIndex + 1);
       });
