@@ -15,12 +15,11 @@ spec:
             kubernetes.io/hostname: hitesh-lenovo-legion-y540-15irh-pg0
           containers:
             - name: arping
-              image: alpine:3.21
+              image: python:3.12-alpine
               command:
-                - sh
+                - python3
                 - -c
                 - |
-                  python3 - <<'EOF'
                   import socket, struct, fcntl
                   iface = 'wlp0s20f3'
                   ip    = '192.168.29.200'
@@ -32,13 +31,12 @@ spec:
                   eth = struct.pack('!6s6sH', bcast, mac, 0x0806)
                   arp = struct.pack('!HHBBH6s4s6s4s', 1, 0x0800, 6, 4, 1, mac, ip_b, bcast, ip_b)
                   for _ in range(3): s.send(eth + arp)
-                  print(f'Sent 3 gratuitous ARPs for {ip} on {iface}')
+                  print('Sent 3 gratuitous ARPs for', ip, 'on', iface)
                   s.close()
-                  EOF
               securityContext:
                 privileged: true
               resources:
                 requests:
                   cpu: 10m
-                  memory: 16Mi
+                  memory: 32Mi
           restartPolicy: OnFailure
