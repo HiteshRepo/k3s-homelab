@@ -156,6 +156,15 @@ Traefik uses `tls: {}` in IngressRoutes which means it generates its own self-si
 **Kubernetes secrets are namespace-scoped**
 A secret in the `litellm` namespace cannot be referenced by a pod in the `ollama` namespace. The LiteLLM master key is duplicated into both namespaces by `make litellm-secret` for this reason.
 
+**MetalLB speaker FRR permission denied errors (cosmetic)**
+The MetalLB speaker pod (v0.15.x) logs continuous `permission denied` errors from the FRR sidecar container. This is a known bug — FRR is only used for BGP mode and these errors are harmless in L2 mode. Ignore them.
+
+**MetalLB LoadBalancer IP stops responding to TCP after speaker restart**
+Symptom: ping to `192.168.29.200` works (ICMP) but TCP port 443 is refused from WiFi clients. Root cause: after the speaker pod restarts, it doesn't always re-send gratuitous ARP correctly, leaving stale ARP cache entries on clients that work for ICMP but not TCP. Fix: delete the speaker pod — it self-heals in ~20 seconds and re-announces the IP:
+```bash
+kubectl delete pod -n metallb-system -l component=speaker
+```
+
 ## Helm Chart Sources
 
 | Component | Source | Version |
