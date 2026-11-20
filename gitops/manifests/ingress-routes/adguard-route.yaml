@@ -12,5 +12,5 @@ spec:
       services:
         - name: adguard-web
           namespace: adguard
-          port: 3000
+          port: 80
   tls: {}
