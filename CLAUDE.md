@@ -162,7 +162,7 @@ The MetalLB speaker pod (v0.15.x) logs continuous `permission denied` errors fro
 **MetalLB LoadBalancer IP stops responding to TCP after speaker restart**
 Symptom: ping to `192.168.29.200` works (ICMP) but TCP port 443 is refused from WiFi clients. Root cause: after the speaker pod restarts, it doesn't always re-send gratuitous ARP correctly, leaving stale ARP cache entries on clients that work for ICMP but not TCP. Fix: delete the speaker pod — it self-heals in ~20 seconds and re-announces the IP:
 ```bash
-kubectl delete pod -n metallb-system -l component=speaker
+kubectl delete pod -n metallb-system -l app.kubernetes.io/component=speaker
 ```
 
 ## Helm Chart Sources
