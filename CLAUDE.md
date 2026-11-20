@@ -169,6 +169,18 @@ If it happens before the CronJob fires, manually re-trigger by deleting the spea
 kubectl delete pod -n metallb-system -l app.kubernetes.io/component=speaker
 ```
 
+## Network Layout
+
+Two separate home networks:
+
+| Router | Subnet | Gateway | DNS |
+|--------|--------|---------|-----|
+| JIO | `192.168.29.x` | `192.168.29.1` | `192.168.29.202` (AdGuard) + `1.1.1.1` fallback |
+| Airtel | `192.168.1.x` | `192.168.1.1` | `192.168.1.1` (router default) |
+
+**TODO: Airtel DNS**
+Airtel is on a different subnet and can't reach AdGuard at `192.168.29.202`. To fix DNS caching on Airtel devices, log into `http://192.168.1.1` and set the primary DNS to `1.1.1.1`. Password not known at time of writing — check the sticker on the back of the Airtel router.
+
 ## Helm Chart Sources
 
 | Component | Source | Version |
