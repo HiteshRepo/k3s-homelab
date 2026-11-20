@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: adguard
+  namespace: traefik-system
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`adguard.lab.hiteshp.in`)
+      kind: Rule
+      services:
+        - name: adguard-web
+          namespace: adguard
+          port: 3000
+  tls: {}
