@@ -19,7 +19,22 @@ spec:
               command:
                 - sh
                 - -c
-                - apk add -q iputils && arping -U -c 3 -I wlp0s20f3 -s 192.168.29.200 192.168.29.200
+                - |
+                  python3 - <<'EOF'
+                  import socket, struct, fcntl
+                  iface = 'wlp0s20f3'
+                  ip    = '192.168.29.200'
+                  s = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.htons(0x0806))
+                  s.bind((iface, 0))
+                  mac = fcntl.ioctl(s.fileno(), 0x8927, struct.pack('256s', iface[:15].encode()))[18:24]
+                  ip_b = socket.inet_aton(ip)
+                  bcast = b'\xff\xff\xff\xff\xff\xff'
+                  eth = struct.pack('!6s6sH', bcast, mac, 0x0806)
+                  arp = struct.pack('!HHBBH6s4s6s4s', 1, 0x0800, 6, 4, 1, mac, ip_b, bcast, ip_b)
+                  for _ in range(3): s.send(eth + arp)
+                  print(f'Sent 3 gratuitous ARPs for {ip} on {iface}')
+                  s.close()
+                  EOF
               securityContext:
                 privileged: true
               resources:
