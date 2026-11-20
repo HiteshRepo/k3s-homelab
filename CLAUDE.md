@@ -160,7 +160,11 @@ A secret in the `litellm` namespace cannot be referenced by a pod in the `ollama
 The MetalLB speaker pod (v0.15.x) logs continuous `permission denied` errors from the FRR sidecar container. This is a known bug — FRR is only used for BGP mode and these errors are harmless in L2 mode. Ignore them.
 
 **MetalLB LoadBalancer IP stops responding to TCP after speaker restart**
-Symptom: ping to `192.168.29.200` works (ICMP) but TCP port 443 is refused from WiFi clients. Root cause: after the speaker pod restarts, it doesn't always re-send gratuitous ARP correctly, leaving stale ARP cache entries on clients that work for ICMP but not TCP. Fix: delete the speaker pod — it self-heals in ~20 seconds and re-announces the IP:
+Symptom: ping to `192.168.29.200` works (ICMP) but TCP port 443 is refused from WiFi clients. Root cause: after the speaker pod restarts, it doesn't always re-send gratuitous ARP correctly, leaving stale ARP cache entries on clients that work for ICMP but not TCP.
+
+Permanent fix: a CronJob in `gitops/manifests/metallb-config/gratuitous-arp.yaml` runs `arping -U` every 5 minutes to keep ARP caches fresh across the network.
+
+If it happens before the CronJob fires, manually re-trigger by deleting the speaker pod — it self-heals in ~20 seconds and re-announces the IP:
 ```bash
 kubectl delete pod -n metallb-system -l app.kubernetes.io/component=speaker
 ```
