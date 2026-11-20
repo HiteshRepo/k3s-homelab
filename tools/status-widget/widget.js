@@ -1,12 +1,11 @@
 // Homelab Device Status Widget for Scriptable
 // ─────────────────────────────────────────────
 // Install: paste into Scriptable, set widget parameter to your status-api base URL
-// Default: http://192.168.29.201:8080 (plain HTTP, direct LoadBalancer IP — no hostname needed)
-// To use HTTPS: change BASE_URL to https://status-api.lab.hiteshp.in
+// Default: https://status.hiteshpattanayak.com (works on LAN and outside via Cloudflare Tunnel)
 //
 // Widget parameter overrides BASE_URL at runtime.
 
-const BASE_URL = args.widgetParameter || "http://192.168.29.146:31376"
+const BASE_URL = args.widgetParameter || "https://status.hiteshpattanayak.com"
 const STATUS_PATH = "/status"
 
 // ─── Colours ───────────────────────────────────────────────────────────────────
@@ -504,7 +503,7 @@ function addOpenGrafanaButton(table) {
 
   const cell = row.addButton("Open Grafana ↗")
   cell.widthWeight = 100
-  cell.onTap = () => Safari.open("https://grafana.lab.hiteshp.in")
+  cell.onTap = () => Safari.open("https://grafana.hiteshpattanayak.com")
 
   table.addRow(row)
 }

@@ -4,7 +4,7 @@
 # <xbar.title>Homelab Status</xbar.title>
 # <xbar.version>1.0</xbar.version>
 
-STATUS_URL="http://192.168.29.146:31376/status"
+STATUS_URL="https://status.hiteshpattanayak.com/status"
 
 data=$(curl -sf --connect-timeout 3 "$STATUS_URL" 2>/dev/null)
 
@@ -41,5 +41,5 @@ for dev in d:
 " 2>/dev/null
 
 echo "---"
-echo "Open status-api | href=http://192.168.29.146:31376/status"
-echo "Open Grafana | href=https://grafana.lab.hiteshp.in"
+echo "Open status-api | href=https://status.hiteshpattanayak.com/status"
+echo "Open Grafana | href=https://grafana.hiteshpattanayak.com"
