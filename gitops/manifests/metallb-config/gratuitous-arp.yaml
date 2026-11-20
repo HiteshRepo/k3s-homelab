@@ -19,7 +19,7 @@ spec:
               command:
                 - sh
                 - -c
-                - apk add -q iputils && arping -U -c 3 -I wlp0s20f3 192.168.29.200
+                - apk add -q iputils && arping -U -c 3 -I wlp0s20f3 -s 192.168.29.200 192.168.29.200
               securityContext:
                 privileged: true
               resources:
