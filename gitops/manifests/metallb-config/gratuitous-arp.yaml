@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: gratuitous-arp
+  namespace: metallb-system
+spec:
+  schedule: "*/5 * * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          hostNetwork: true
+          nodeSelector:
+            kubernetes.io/hostname: hitesh-lenovo-legion-y540-15irh-pg0
+          containers:
+            - name: arping
+              image: alpine:3.21
+              command:
+                - sh
+                - -c
+                - apk add -q iputils && arping -U -c 3 -I wlp0s20f3 192.168.29.200
+              securityContext:
+                privileged: true
+              resources:
+                requests:
+                  cpu: 10m
+                  memory: 16Mi
+          restartPolicy: OnFailure
