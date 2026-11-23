@@ -101,6 +101,7 @@ Service URLs (add all to `/etc/hosts` pointing at `192.168.1.200`):
 | Open WebUI | `https://chat.lab.hiteshp.in` | first user registered becomes admin |
 | LiteLLM | `https://litellm.lab.hiteshp.in` | master key from `make litellm-secret` |
 | Immich | `https://immich.lab.hiteshp.in` | first user registered becomes admin |
+| Panjika | `https://panjika.lab.hiteshp.in` | Odia almanac 2027, no auth |
 
 **Secrets that must be created manually** before ArgoCD deploys the respective app (cannot be stored in Git):
 

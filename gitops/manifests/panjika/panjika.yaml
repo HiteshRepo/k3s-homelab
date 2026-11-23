@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: panjika
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: panjika
+  namespace: panjika
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: panjika
+  template:
+    metadata:
+      labels:
+        app: panjika
+    spec:
+      containers:
+        - name: panjika
+          image: ghcr.io/hiteshrepo/panjika:2027
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: 10m
+              memory: 16Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: panjika
+  namespace: panjika
+spec:
+  selector:
+    app: panjika
+  ports:
+    - port: 80
+      targetPort: 80

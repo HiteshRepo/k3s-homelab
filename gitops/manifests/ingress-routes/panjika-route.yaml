@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: panjika
+  namespace: traefik-system
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`panjika.lab.hiteshp.in`)
+      kind: Rule
+      services:
+        - name: panjika
+          namespace: panjika
+          port: 80
+  tls: {}

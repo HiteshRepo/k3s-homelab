@@ -266,6 +266,22 @@ device-offboard: ## Remove a device from config/devices.yaml and uninstall its a
 	fi
 	@bash scripts/device-offboard.sh "$(id)"
 
+# ─── Panjika ──────────────────────────────────────────────────────────────────
+
+.PHONY: panjika-data
+panjika-data: ## Regenerate panchanga JSON for 2026 and 2027
+	cd tools/panjika/generate && pip3 install -q -r requirements.txt && python3 panchanga.py 2026 && python3 panchanga.py 2027
+
+.PHONY: panjika-dev
+panjika-dev: ## Run the Odia Panjika dev server on http://localhost:5173
+	cd tools/panjika && npm install && npm run dev
+
+.PHONY: panjika-build-image
+panjika-build-image: ## Build and push the panjika Docker image (usage: make panjika-build-image TAG=2027)
+	$(eval TAG ?= 2027)
+	docker build -t ghcr.io/hiteshrepo/panjika:$(TAG) tools/panjika
+	docker push ghcr.io/hiteshrepo/panjika:$(TAG)
+
 # ─── Help ─────────────────────────────────────────────────────────────────────
 
 .PHONY: help
