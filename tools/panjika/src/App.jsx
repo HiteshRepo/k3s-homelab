@@ -44,12 +44,13 @@ function buildLunarMonthGroups(allDays) {
   let current = null;
   let prevTithi = -1;
   for (const day of allDays) {
-    // Purnimanta: new month starts the day after Purnima.
-    // Trigger on prevTithi===14 && current!==14 so we handle:
-    //   - normal case: Purnima → K1 (tithiIndex 15)
-    //   - kshaya K1: Purnima → K2 (tithiIndex 16) — K1 skipped by astronomy
-    //   - Purnima spanning two civil days: both tithiIndex 14, skip the split
-    if (!current || (prevTithi === 14 && day.tithiIndex !== 14)) {
+    // Purnimanta: new month starts at the Shukla→Krishna transition.
+    // Trigger on prevTithi<15 && day.tithiIndex>=15 so we handle:
+    //   - normal case: Purnima (14) → K1 (15)
+    //   - kshaya K1: Purnima (14) → K2 (16) — K1 skipped by astronomy
+    //   - kshaya Purnima: Chaturdashi (13) → K1 (15) — Purnima skipped
+    //   - Purnima spanning two civil days: both 14, skip the split (14>=15 is false)
+    if (!current || (prevTithi < 15 && day.tithiIndex >= 15)) {
       current = { odiaMonthIndex: day.odiaMonthIndex, odiaMonth: day.odiaMonth, days: [] };
       groups.push(current);
     }
