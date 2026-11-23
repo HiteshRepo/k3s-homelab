@@ -1,9 +1,23 @@
 import { useState, useMemo } from 'react';
 import data2026 from './data/panchanga_2026.json';
 import data2027 from './data/panchanga_2027.json';
+import festivalsJagannatha from './data/festivals_jagannatha.json';
+import festivalsBiraja from './data/festivals_biraja.json';
 import CalendarGrid from './components/CalendarGrid';
 import DayDetail from './components/DayDetail';
 import { toEnShortDate } from './utils/odia';
+
+const OVERLAYS = {
+  generic: {},
+  jagannatha: festivalsJagannatha,
+  biraja: festivalsBiraja,
+};
+
+const PANJI_OPTIONS = [
+  { key: 'generic',     odia: 'ସାଧାରଣ',   en: 'Generic'     },
+  { key: 'jagannatha',  odia: 'ଜଗନ୍ନାଥ',   en: 'Jagannatha'  },
+  { key: 'biraja',      odia: 'ବିରଜା',      en: 'Biraja'      },
+];
 
 const ALL_DAYS = [...data2026.days, ...data2027.days].sort((a, b) =>
   a.date.localeCompare(b.date),
@@ -36,11 +50,27 @@ function initialGroupIdx() {
 export default function App() {
   const [groupIdx, setGroupIdx] = useState(initialGroupIdx);
   const [selected, setSelected] = useState(null);
+  const [panji, setPanji] = useState('generic');
 
   const group = MONTH_GROUPS[groupIdx];
   const firstDay = group.days[0];
   const lastDay = group.days[group.days.length - 1];
   const rangeLabel = `${toEnShortDate(firstDay.date)} – ${toEnShortDate(lastDay.date)}, ${lastDay.date.slice(0, 4)}`;
+
+  const overlaidDays = useMemo(() => {
+    const ov = OVERLAYS[panji];
+    if (!Object.keys(ov).length) return group.days;
+    return group.days.map(day => {
+      const extra = ov[day.date];
+      if (!extra?.length) return day;
+      return { ...day, festivals: [...(day.festivals ?? []), ...extra] };
+    });
+  }, [group.days, panji]);
+
+  const overlaidSelected = useMemo(() => {
+    if (!selected) return null;
+    return overlaidDays.find(d => d.date === selected.date) ?? selected;
+  }, [selected, overlaidDays]);
 
   function prev() { setGroupIdx(i => Math.max(0, i - 1)); setSelected(null); }
   function next() { setGroupIdx(i => Math.min(MONTH_GROUPS.length - 1, i + 1)); setSelected(null); }
@@ -52,6 +82,19 @@ export default function App() {
           <span className="title-odia">ଓଡ଼ିଆ ପଞ୍ଜିକା</span>
         </div>
         <div className="header-sub">ସୂର୍ଯ୍ୟ ସିଦ୍ଧାନ୍ତ · Lahiri Ayanamsa</div>
+        <div className="panji-selector" role="group" aria-label="Panji tradition">
+          {PANJI_OPTIONS.map(opt => (
+            <button
+              key={opt.key}
+              className={`panji-btn${panji === opt.key ? ' active' : ''}`}
+              onClick={() => setPanji(opt.key)}
+              aria-pressed={panji === opt.key}
+            >
+              <span className="panji-odia">{opt.odia}</span>
+              <span className="panji-en">{opt.en}</span>
+            </button>
+          ))}
+        </div>
       </header>
 
       <div className="app-body">
@@ -65,12 +108,12 @@ export default function App() {
             <button className="nav-btn" onClick={next} disabled={groupIdx === MONTH_GROUPS.length - 1} aria-label="Next month">›</button>
           </nav>
 
-          <CalendarGrid days={group.days} selected={selected} onSelect={setSelected} />
+          <CalendarGrid days={overlaidDays} selected={overlaidSelected} onSelect={setSelected} />
         </div>
 
-        {selected && (
+        {overlaidSelected && (
           <aside className="detail-pane">
-            <DayDetail day={selected} onClose={() => setSelected(null)} />
+            <DayDetail day={overlaidSelected} onClose={() => setSelected(null)} />
           </aside>
         )}
       </div>
