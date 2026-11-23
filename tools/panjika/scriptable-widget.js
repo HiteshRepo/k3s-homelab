@@ -75,10 +75,11 @@ async function showDetail(day) {
   const table = new UITable()
   table.showSeparators = true
 
-  // Adaptive colors — readable in both light and dark mode
-  const C_LABEL = Color.dynamic(new Color("#666666"), new Color("#AAAAAA"))
-  const C_VALUE = Color.dynamic(new Color("#111111"), new Color("#F0F0F0"))
-  const C_FEST  = Color.dynamic(new Color("#B45309"), new Color("#FCD34D"))
+  // Color.dynamic is unreliable in UITableCell; read appearance directly
+  const dark    = Device.isUsingDarkAppearance()
+  const C_LABEL = dark ? new Color("#AAAAAA") : new Color("#666666")
+  const C_VALUE = dark ? new Color("#F0F0F0") : new Color("#111111")
+  const C_FEST  = dark ? new Color("#FCD34D") : new Color("#B45309")
 
   function addRow(label, value, opts = {}) {
     const row = new UITableRow()
