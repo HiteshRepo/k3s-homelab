@@ -42,15 +42,19 @@ function buildMonthGroups(allDays) {
 function buildLunarMonthGroups(allDays) {
   const groups = [];
   let current = null;
+  let prevTithi = -1;
   for (const day of allDays) {
-    // Purnimanta: new month starts at Krishna Pratipada (tithiIndex 15 = day after Purnima).
-    // Name comes from the starting day's solar month: on Nov 25 (solar Margashira),
-    // tithiIndex 15 starts the lunar Margashira month. This matches Odia Panjika convention.
-    if (!current || day.tithiIndex === 15) {
+    // Purnimanta: new month starts the day after Purnima.
+    // Trigger on prevTithi===14 && current!==14 so we handle:
+    //   - normal case: Purnima → K1 (tithiIndex 15)
+    //   - kshaya K1: Purnima → K2 (tithiIndex 16) — K1 skipped by astronomy
+    //   - Purnima spanning two civil days: both tithiIndex 14, skip the split
+    if (!current || (prevTithi === 14 && day.tithiIndex !== 14)) {
       current = { odiaMonthIndex: day.odiaMonthIndex, odiaMonth: day.odiaMonth, days: [] };
       groups.push(current);
     }
     current.days.push(day);
+    prevTithi = day.tithiIndex;
   }
   return groups;
 }
