@@ -1,4 +1,4 @@
-import { toOdiaNum, toEnShortDate } from '../utils/odia';
+import { toOdiaNum, toEnShortDate, toTithiLabel } from '../utils/odia';
 
 const WEEKDAY_HEADERS = ['ରବି', 'ସୋମ', 'ମଙ୍ଗ', 'ବୁଧ', 'ଗୁ', 'ଶୁ', 'ଶନି'];
 const TODAY = new Date().toISOString().slice(0, 10);
@@ -13,7 +13,7 @@ function cellClass(day, selected) {
   return cls.join(' ');
 }
 
-export default function CalendarGrid({ days, selected, onSelect }) {
+export default function CalendarGrid({ days, selected, onSelect, mode = 'solar' }) {
   if (!days.length) return null;
 
   // Python weekday: Mon=0…Sun=6. Grid is Sun-first (col 0 = Sun).
@@ -48,8 +48,17 @@ export default function CalendarGrid({ days, selected, onSelect }) {
                 aria-label={`${toEnShortDate(day.date)}, ${day.odiaDate} ${day.odiaMonth}`}
                 aria-selected={selected?.date === day.date}
               >
-                <div className="cell-odia-date">{toOdiaNum(day.odiaDate)}</div>
-                <div className="cell-en-date">{toEnShortDate(day.date)}</div>
+                {mode === 'lunar' ? (
+                  <>
+                    <div className="cell-tithi-label">{toTithiLabel(day.tithiIndex)}</div>
+                    <div className="cell-en-date">{toEnShortDate(day.date)}</div>
+                  </>
+                ) : (
+                  <>
+                    <div className="cell-odia-date">{toOdiaNum(day.odiaDate)}</div>
+                    <div className="cell-en-date">{toEnShortDate(day.date)}</div>
+                  </>
+                )}
                 {day.festivals?.length > 0 && (
                   <div className="cell-dot" aria-hidden="true" />
                 )}

@@ -62,12 +62,52 @@ body {
   letter-spacing: 0.04em;
 }
 
+/* ── Header controls row ── */
+.header-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* ── Solar / Lunar toggle ── */
+.cal-mode-toggle {
+  display: flex;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.mode-btn {
+  font-family: var(--font-odia);
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.65);
+  border-radius: 17px;
+  padding: 5px 16px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  letter-spacing: 0.01em;
+}
+
+.mode-btn:hover {
+  color: white;
+}
+
+.mode-btn.active {
+  background: white;
+  color: var(--maroon);
+}
+
 /* ── Panji selector ── */
 .panji-selector {
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin-top: 12px;
 }
 
 .panji-btn {
@@ -273,6 +313,22 @@ body {
   font-weight: 600;
   line-height: 1.2;
   color: var(--text-primary);
+}
+
+.cell-tithi-label {
+  font-family: var(--font-odia);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+.day-cell.selected .cell-tithi-label {
+  color: white;
+}
+
+.day-cell.today .cell-tithi-label {
+  color: var(--saffron);
 }
 
 .day-cell.selected .cell-odia-date,

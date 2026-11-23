@@ -36,23 +36,49 @@ function buildMonthGroups(allDays) {
   return groups;
 }
 
-const MONTH_GROUPS = buildMonthGroups(ALL_DAYS);
+// Lunar (Amanta): each month runs Shukla 1 → Amavasya.
+// A new group starts at every tithiIndex === 0 (Shukla Pratipada).
+// Month is named after the solar month of its Purnima.
+function buildLunarMonthGroups(allDays) {
+  const groups = [];
+  let current = null;
+  for (const day of allDays) {
+    if (!current || day.tithiIndex === 0) {
+      current = { odiaMonthIndex: day.odiaMonthIndex, odiaMonth: day.odiaMonth, days: [] };
+      groups.push(current);
+    }
+    current.days.push(day);
+    if (day.tithiIndex === 14) {
+      current.odiaMonth = day.odiaMonth;
+      current.odiaMonthIndex = day.odiaMonthIndex;
+    }
+  }
+  return groups;
+}
 
-function initialGroupIdx() {
+const MONTH_GROUPS = buildMonthGroups(ALL_DAYS);
+const LUNAR_MONTH_GROUPS = buildLunarMonthGroups(ALL_DAYS);
+
+function initialGroupIdx(groups = MONTH_GROUPS) {
   const today = new Date().toISOString().slice(0, 10);
-  const idx = MONTH_GROUPS.findIndex(g => g.days.some(d => d.date === today));
-  // Fall back to Baishakha 2027 if today is outside both years
-  return idx >= 0 ? idx : MONTH_GROUPS.findIndex(
+  const idx = groups.findIndex(g => g.days.some(d => d.date === today));
+  return idx >= 0 ? idx : groups.findIndex(
     g => g.odiaMonthIndex === 0 && g.days[0].date.startsWith('2027'),
   );
 }
 
 export default function App() {
-  const [groupIdx, setGroupIdx] = useState(initialGroupIdx);
+  const [calMode, setCalMode] = useState('solar');
+  const [solarIdx, setSolarIdx] = useState(() => initialGroupIdx(MONTH_GROUPS));
+  const [lunarIdx, setLunarIdx] = useState(() => initialGroupIdx(LUNAR_MONTH_GROUPS));
   const [selected, setSelected] = useState(null);
   const [panji, setPanji] = useState('generic');
 
-  const group = MONTH_GROUPS[groupIdx];
+  const groups = calMode === 'solar' ? MONTH_GROUPS : LUNAR_MONTH_GROUPS;
+  const groupIdx = calMode === 'solar' ? solarIdx : lunarIdx;
+  const setGroupIdx = calMode === 'solar' ? setSolarIdx : setLunarIdx;
+
+  const group = groups[groupIdx];
   const firstDay = group.days[0];
   const lastDay = group.days[group.days.length - 1];
   const rangeLabel = `${toEnShortDate(firstDay.date)} – ${toEnShortDate(lastDay.date)}, ${lastDay.date.slice(0, 4)}`;
@@ -73,7 +99,12 @@ export default function App() {
   }, [selected, overlaidDays]);
 
   function prev() { setGroupIdx(i => Math.max(0, i - 1)); setSelected(null); }
-  function next() { setGroupIdx(i => Math.min(MONTH_GROUPS.length - 1, i + 1)); setSelected(null); }
+  function next() { setGroupIdx(i => Math.min(groups.length - 1, i + 1)); setSelected(null); }
+
+  function toggleCalMode(mode) {
+    setCalMode(mode);
+    setSelected(null);
+  }
 
   return (
     <div className="app">
@@ -82,18 +113,32 @@ export default function App() {
           <span className="title-odia">ଓଡ଼ିଆ ପଞ୍ଜିକା</span>
         </div>
         <div className="header-sub">ସୂର୍ଯ୍ୟ ସିଦ୍ଧାନ୍ତ · Lahiri Ayanamsa</div>
-        <div className="panji-selector" role="group" aria-label="Panji tradition">
-          {PANJI_OPTIONS.map(opt => (
+        <div className="header-controls">
+          <div className="cal-mode-toggle" role="group" aria-label="Calendar mode">
             <button
-              key={opt.key}
-              className={`panji-btn${panji === opt.key ? ' active' : ''}`}
-              onClick={() => setPanji(opt.key)}
-              aria-pressed={panji === opt.key}
-            >
-              <span className="panji-odia">{opt.odia}</span>
-              <span className="panji-en">{opt.en}</span>
-            </button>
-          ))}
+              className={`mode-btn${calMode === 'solar' ? ' active' : ''}`}
+              onClick={() => toggleCalMode('solar')}
+              aria-pressed={calMode === 'solar'}
+            >☀ ସୌର</button>
+            <button
+              className={`mode-btn${calMode === 'lunar' ? ' active' : ''}`}
+              onClick={() => toggleCalMode('lunar')}
+              aria-pressed={calMode === 'lunar'}
+            >☽ ଚାନ୍ଦ୍ର</button>
+          </div>
+          <div className="panji-selector" role="group" aria-label="Panji tradition">
+            {PANJI_OPTIONS.map(opt => (
+              <button
+                key={opt.key}
+                className={`panji-btn${panji === opt.key ? ' active' : ''}`}
+                onClick={() => setPanji(opt.key)}
+                aria-pressed={panji === opt.key}
+              >
+                <span className="panji-odia">{opt.odia}</span>
+                <span className="panji-en">{opt.en}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </header>
 
@@ -108,7 +153,7 @@ export default function App() {
             <button className="nav-btn" onClick={next} disabled={groupIdx === MONTH_GROUPS.length - 1} aria-label="Next month">›</button>
           </nav>
 
-          <CalendarGrid days={overlaidDays} selected={overlaidSelected} onSelect={setSelected} />
+          <CalendarGrid days={overlaidDays} selected={overlaidSelected} onSelect={setSelected} mode={calMode} />
         </div>
 
         {overlaidSelected && (
