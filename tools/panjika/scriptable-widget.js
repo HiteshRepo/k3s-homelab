@@ -75,6 +75,11 @@ async function showDetail(day) {
   const table = new UITable()
   table.showSeparators = true
 
+  // Adaptive colors — readable in both light and dark mode
+  const C_LABEL = Color.dynamic(new Color("#666666"), new Color("#AAAAAA"))
+  const C_VALUE = Color.dynamic(new Color("#111111"), new Color("#F0F0F0"))
+  const C_FEST  = Color.dynamic(new Color("#B45309"), new Color("#FCD34D"))
+
   function addRow(label, value, opts = {}) {
     const row = new UITableRow()
     row.height = opts.tall ? 64 : 52
@@ -85,19 +90,19 @@ async function showDetail(day) {
       cell.titleFont    = Font.boldSystemFont(opts.titleSize || 26)
       cell.subtitleFont = Font.systemFont(13)
       cell.titleColor    = C_SAFFRON
-      cell.subtitleColor = C_MUTED
+      cell.subtitleColor = new Color("#FFFFFF", 0.7)
       cell.leftAligned()
       row.addCell(cell)
     } else {
       const lc = UITableCell.text(label)
       lc.titleFont  = Font.systemFont(13)
-      lc.titleColor = new Color("#555555")
+      lc.titleColor = opts.labelColor || C_LABEL
       lc.leftAligned()
       lc.widthWeight = 35
 
       const vc = UITableCell.text(value)
       vc.titleFont  = opts.valueFont || Font.systemFont(16)
-      vc.titleColor = opts.valueColor || new Color("#111111")
+      vc.titleColor = opts.valueColor || C_VALUE
       vc.rightAligned()
       vc.widthWeight = 65
 
@@ -115,7 +120,7 @@ async function showDetail(day) {
   // Festivals (if any)
   if (day.festivals?.length) {
     for (const f of day.festivals) {
-      addRow("🎉", f, { valueFont: Font.boldSystemFont(14), valueColor: new Color("#B45309") })
+      addRow("🎉", f, { valueFont: Font.boldSystemFont(14), valueColor: C_FEST })
     }
   }
 
