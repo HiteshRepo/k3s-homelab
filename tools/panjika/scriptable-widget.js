@@ -1,48 +1,56 @@
 // Odia Panjika — Scriptable Widget
-// Paste into Scriptable, add as home screen widget, tap to open the full calendar.
-// Data source: pre-computed JSON in the GitHub repo (cached locally after first fetch).
 //
-// Sizes supported: small · medium · large
+// Home screen widget → shows today's date.
+// Tap → opens Scriptable and shows full panchanga detail table.
+//
+// Sizes: small · medium · large
+// Setup: paste into Scriptable, name the script anything, add as widget.
 
 const GITHUB_RAW =
   "https://raw.githubusercontent.com/HiteshRepo/k3s-homelab/main/tools/panjika/src/data"
-const APP_URL = "https://panjika.hiteshpattanayak.com"
 
-// ── Colors (match the web app) ───────────────────────────────────────────────
+// ── Colors ───────────────────────────────────────────────────────────────────
 const C_MAROON      = new Color("#7B1A2B")
 const C_DARK_MAROON = new Color("#4A0E1A")
 const C_SAFFRON     = new Color("#E8690B")
 const C_WHITE       = new Color("#FFFFFF")
 const C_MUTED       = new Color("#FFFFFF", 0.55)
 const C_DIM         = new Color("#FFFFFF", 0.35)
+const C_RAHU        = new Color("#FF6B6B")
 
-// ── Odia numerals ────────────────────────────────────────────────────────────
+// ── Helpers ───────────────────────────────────────────────────────────────────
 function toOdia(n) {
-  const digits = "୦୧୨୩୪୫୬୭୮୯"
-  return String(n).split("").map(c => digits[+c]).join("")
+  const d = "୦୧୨୩୪୫୬୭୮୯"
+  return String(n).split("").map(c => d[+c]).join("")
 }
 
-// ── Cache ────────────────────────────────────────────────────────────────────
+function enDate(dateStr) {
+  const [y, m, day] = dateStr.split("-").map(Number)
+  const mo = ["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+  return `${mo[m]} ${day}, ${y}`
+}
+
+function tithiLine(day) {
+  return day.paksha ? `${day.paksha} ${day.tithi}` : day.tithi
+}
+
+// ── Cache ─────────────────────────────────────────────────────────────────────
 const fm = FileManager.local()
 const CACHE_DIR = fm.joinPath(fm.documentsDirectory(), "panjika-cache")
 if (!fm.fileExists(CACHE_DIR)) fm.createDirectory(CACHE_DIR)
 
 async function loadYear(year) {
   const path = fm.joinPath(CACHE_DIR, `${year}.json`)
-  if (fm.fileExists(path)) {
-    return JSON.parse(fm.readString(path))
-  }
-  const req = new Request(`${GITHUB_RAW}/panchanga_${year}.json`)
+  if (fm.fileExists(path)) return JSON.parse(fm.readString(path))
+  const req  = new Request(`${GITHUB_RAW}/panchanga_${year}.json`)
   const text = await req.loadString()
   fm.writeString(path, text)
   return JSON.parse(text)
 }
 
-// ── Today's data ─────────────────────────────────────────────────────────────
 async function getToday() {
   const today = new Date().toISOString().slice(0, 10)
   const year  = parseInt(today.slice(0, 4))
-
   for (const y of [year, year - 1]) {
     try {
       const data = await loadYear(y)
@@ -53,7 +61,81 @@ async function getToday() {
   return null
 }
 
-// ── Widget builder ────────────────────────────────────────────────────────────
+// ── Detail table (shown on tap) ───────────────────────────────────────────────
+async function showDetail(day) {
+  if (!day) {
+    const a = new Alert()
+    a.title   = "ତ୍ରୁଟି"
+    a.message = "Could not load today's data. Check your internet connection."
+    a.addAction("OK")
+    await a.present()
+    return
+  }
+
+  const table = new UITable()
+  table.showSeparators = true
+
+  function addRow(label, value, opts = {}) {
+    const row = new UITableRow()
+    row.height = opts.tall ? 64 : 52
+
+    if (opts.header) {
+      row.backgroundColor = C_MAROON
+      const cell = UITableCell.text(label, value)
+      cell.titleFont    = Font.boldSystemFont(opts.titleSize || 26)
+      cell.subtitleFont = Font.systemFont(13)
+      cell.titleColor    = C_SAFFRON
+      cell.subtitleColor = C_MUTED
+      cell.leftAligned()
+      row.addCell(cell)
+    } else {
+      const lc = UITableCell.text(label)
+      lc.titleFont  = Font.systemFont(13)
+      lc.titleColor = new Color("#555555")
+      lc.leftAligned()
+      lc.widthWeight = 35
+
+      const vc = UITableCell.text(value)
+      vc.titleFont  = opts.valueFont || Font.systemFont(16)
+      vc.titleColor = opts.valueColor || new Color("#111111")
+      vc.rightAligned()
+      vc.widthWeight = 65
+
+      row.addCell(lc)
+      row.addCell(vc)
+    }
+
+    table.addRow(row)
+  }
+
+  // Header
+  addRow(`${toOdia(day.odiaDate)} ${day.odiaMonth}`, enDate(day.date),
+    { header: true, titleSize: 26, tall: true })
+
+  // Festivals (if any)
+  if (day.festivals?.length) {
+    for (const f of day.festivals) {
+      addRow("🎉", f, { valueFont: Font.boldSystemFont(14), valueColor: new Color("#B45309") })
+    }
+  }
+
+  // Panchanga
+  addRow("ତିଥି",    tithiLine(day))
+  addRow("ନକ୍ଷତ୍ର", day.nakshatra)
+  addRow("ଯୋଗ",    day.yoga)
+  addRow("କରଣ",    day.karana)
+
+  // Times
+  addRow("ସୂର୍ଯ୍ୟୋଦୟ", day.sunrise)
+  addRow("ସୂର୍ଯ୍ୟାସ୍ତ",  day.sunset)
+  addRow("ରାହୁ କାଳ",
+    `${day.rahuStart} – ${day.rahuEnd}`,
+    { valueFont: Font.boldSystemFont(15), valueColor: new Color("#DC2626") })
+
+  await table.present(false)
+}
+
+// ── Widget ────────────────────────────────────────────────────────────────────
 function makeGradient() {
   const g = new LinearGradient()
   g.colors    = [C_MAROON, C_DARK_MAROON]
@@ -63,7 +145,7 @@ function makeGradient() {
   return g
 }
 
-function addLabel(parent, text, font, color, lines = 1) {
+function txt(parent, text, font, color, lines = 1) {
   const t = parent.addText(text)
   t.font      = font
   t.textColor = color
@@ -72,136 +154,118 @@ function addLabel(parent, text, font, color, lines = 1) {
   return t
 }
 
-function enDate(dateStr) {
-  const [y, m, d] = dateStr.split("-").map(Number)
-  const months = ["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-  return `${months[m]} ${d}, ${y}`
-}
-
-function tithiLine(day) {
-  return day.paksha ? `${day.paksha} ${day.tithi}` : day.tithi
-}
-
 async function buildWidget(day, family) {
   const w = new ListWidget()
   w.backgroundGradient = makeGradient()
-  w.url = APP_URL
+  // Tap opens this script → shows detail table
+  w.url = URLScheme.forRunningScript()
   w.setPadding(14, 14, 14, 14)
 
   if (!day) {
-    addLabel(w, "ତ୍ରୁଟି — ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ", Font.systemFont(14), C_WHITE)
+    txt(w, "ତ୍ରୁଟି", Font.systemFont(14), C_WHITE)
     return w
   }
 
   if (family === "small") {
-    // ── Small ──────────────────────────────────────────────────────────────
-    addLabel(w, `${toOdia(day.odiaDate)}`, Font.boldSystemFont(42), C_SAFFRON)
-    addLabel(w, day.odiaMonth, Font.boldSystemFont(15), C_WHITE)
+    txt(w, toOdia(day.odiaDate), Font.boldSystemFont(44), C_SAFFRON)
+    txt(w, day.odiaMonth, Font.boldSystemFont(14), C_WHITE)
     w.addSpacer(4)
-    addLabel(w, enDate(day.date), Font.systemFont(11), C_MUTED)
+    txt(w, enDate(day.date), Font.systemFont(10), C_MUTED)
     w.addSpacer(6)
-    addLabel(w, tithiLine(day), Font.systemFont(12), C_WHITE, 2)
+    txt(w, tithiLine(day), Font.systemFont(11), C_WHITE, 2)
 
   } else if (family === "medium") {
-    // ── Medium ─────────────────────────────────────────────────────────────
     const row = w.addStack()
     row.layoutHorizontally()
     row.centerAlignContent()
 
-    // Left: big date
     const left = row.addStack()
     left.layoutVertically()
-    addLabel(left, `${toOdia(day.odiaDate)}`, Font.boldSystemFont(48), C_SAFFRON)
-    addLabel(left, day.odiaMonth, Font.boldSystemFont(14), C_WHITE)
-    addLabel(left, enDate(day.date), Font.systemFont(10), C_MUTED)
+    txt(left, toOdia(day.odiaDate), Font.boldSystemFont(50), C_SAFFRON)
+    txt(left, day.odiaMonth, Font.boldSystemFont(13), C_WHITE)
+    txt(left, enDate(day.date), Font.systemFont(10), C_MUTED)
 
     row.addSpacer()
 
-    // Right: panchanga rows
     const right = row.addStack()
     right.layoutVertically()
     right.spacing = 5
-
-    const rows = [
+    for (const [lbl, val] of [
       ["ତିଥି",    tithiLine(day)],
       ["ନକ୍ଷତ୍ର", day.nakshatra],
       ["ଯୋଗ",    day.yoga],
-    ]
-    for (const [label, val] of rows) {
+    ]) {
       const r = right.addStack()
       r.layoutHorizontally()
       r.spacing = 4
-      addLabel(r, label, Font.systemFont(10), C_DIM)
+      txt(r, lbl, Font.systemFont(10), C_DIM)
       r.addSpacer()
-      addLabel(r, val, Font.systemFont(12), C_WHITE, 1)
+      txt(r, val, Font.systemFont(12), C_WHITE)
     }
 
     w.addSpacer()
-
-    // Bottom: sunrise / sunset / rahu
-    const bottom = w.addStack()
-    bottom.layoutHorizontally()
-    bottom.spacing = 8
-    addLabel(bottom, `☀ ${day.sunrise}`, Font.systemFont(10), C_MUTED)
-    bottom.addSpacer()
-    addLabel(bottom, `🌅 ${day.sunset}`, Font.systemFont(10), C_MUTED)
-    bottom.addSpacer()
-    addLabel(bottom, `⚠ ${day.rahuStart}–${day.rahuEnd}`, Font.systemFont(10), new Color("#FF6B6B"))
+    const bot = w.addStack()
+    bot.layoutHorizontally()
+    bot.spacing = 6
+    txt(bot, `☀ ${day.sunrise}`, Font.systemFont(10), C_MUTED)
+    bot.addSpacer()
+    txt(bot, `🌅 ${day.sunset}`, Font.systemFont(10), C_MUTED)
+    bot.addSpacer()
+    txt(bot, `⚠ ${day.rahuStart}–${day.rahuEnd}`, Font.systemFont(10), C_RAHU)
 
   } else {
-    // ── Large ──────────────────────────────────────────────────────────────
-    addLabel(w, `${toOdia(day.odiaDate)} ${day.odiaMonth}`, Font.boldSystemFont(32), C_SAFFRON)
-    addLabel(w, enDate(day.date), Font.systemFont(13), C_MUTED)
+    // large
+    txt(w, `${toOdia(day.odiaDate)} ${day.odiaMonth}`, Font.boldSystemFont(32), C_SAFFRON)
+    txt(w, enDate(day.date), Font.systemFont(13), C_MUTED)
     w.addSpacer(10)
 
-    const fields = [
+    for (const [lbl, val] of [
       ["ତିଥି",    tithiLine(day)],
       ["ନକ୍ଷତ୍ର", day.nakshatra],
       ["ଯୋଗ",    day.yoga],
       ["କରଣ",    day.karana],
-    ]
-    for (const [label, val] of fields) {
+    ]) {
       const r = w.addStack()
       r.layoutHorizontally()
-      r.spacing = 6
-      addLabel(r, label, Font.systemFont(12), C_DIM)
+      txt(r, lbl, Font.systemFont(12), C_DIM)
       r.addSpacer()
-      addLabel(r, val, Font.systemFont(14), C_WHITE)
+      txt(r, val, Font.systemFont(14), C_WHITE)
       w.addSpacer(4)
     }
 
     w.addSpacer(8)
-
     const times = w.addStack()
     times.layoutHorizontally()
-    addLabel(times, `☀ ସୂର୍ଯ୍ୟୋଦୟ  ${day.sunrise}`, Font.systemFont(12), C_MUTED)
+    txt(times, `☀ ${day.sunrise}`, Font.systemFont(12), C_MUTED)
     times.addSpacer()
-    addLabel(times, `🌅 ${day.sunset}`, Font.systemFont(12), C_MUTED)
+    txt(times, `🌅 ${day.sunset}`, Font.systemFont(12), C_MUTED)
 
     w.addSpacer(6)
-
     const rahu = w.addStack()
     rahu.layoutHorizontally()
     rahu.backgroundColor = new Color("#FF000020")
     rahu.cornerRadius = 6
     rahu.setPadding(6, 8, 6, 8)
-    addLabel(rahu, "ରାହୁ କାଳ", Font.systemFont(12), new Color("#FF6B6B"))
+    txt(rahu, "ରାହୁ କାଳ", Font.systemFont(12), C_RAHU)
     rahu.addSpacer()
-    addLabel(rahu, `${day.rahuStart} – ${day.rahuEnd}`, Font.boldSystemFont(12), new Color("#FF6B6B"))
+    txt(rahu, `${day.rahuStart} – ${day.rahuEnd}`, Font.boldSystemFont(12), C_RAHU)
   }
 
   return w
 }
 
-// ── Run ───────────────────────────────────────────────────────────────────────
-const day    = await getToday()
-const family = config.widgetFamily ?? "medium"
-const widget = await buildWidget(day, family)
+// ── Entry point ───────────────────────────────────────────────────────────────
+const day = await getToday()
 
-Script.setWidget(widget)
-if (config.runsInApp) {
-  if (family === "small")  widget.presentSmall()
-  else if (family === "large") widget.presentLarge()
-  else widget.presentMedium()
+if (config.runsInWidget) {
+  // Rendering on home screen
+  const family = config.widgetFamily ?? "medium"
+  const widget = await buildWidget(day, family)
+  Script.setWidget(widget)
+
+} else {
+  // Opened via tap (or manual run in Scriptable app) → show detail
+  await showDetail(day)
 }
+
 Script.complete()
