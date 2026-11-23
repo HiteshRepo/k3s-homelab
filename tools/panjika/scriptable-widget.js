@@ -75,11 +75,9 @@ async function showDetail(day) {
   const table = new UITable()
   table.showSeparators = true
 
-  // Color.dynamic is unreliable in UITableCell; read appearance directly
-  const dark    = Device.isUsingDarkAppearance()
-  const C_LABEL = dark ? new Color("#AAAAAA") : new Color("#666666")
-  const C_VALUE = dark ? new Color("#F0F0F0") : new Color("#111111")
-  const C_FEST  = dark ? new Color("#FCD34D") : new Color("#B45309")
+  const C_LABEL = new Color("#E8690B")   // saffron — label names
+  const C_VALUE = new Color("#FFFFFF")   // white   — values
+  const C_FEST  = new Color("#FCD34D")   // amber   — festivals
 
   function addRow(label, value, opts = {}) {
     const row = new UITableRow()
