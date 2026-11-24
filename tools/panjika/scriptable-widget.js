@@ -183,7 +183,7 @@ async function buildWidget(day, family, mode) {
     if (mode === "lunar") {
       txt(w, tithiLabel(day), Font.boldSystemFont(44), C_SAFFRON)
       txt(w, tithiLine(day), Font.boldSystemFont(14), C_WHITE, 2)
-      w.addSpacer(4)
+      w.addSpacer()
       txt(w, enDate(day.date), Font.systemFont(10), C_MUTED)
     } else {
       txt(w, toOdia(day.odiaDate), Font.boldSystemFont(44), C_SAFFRON)
