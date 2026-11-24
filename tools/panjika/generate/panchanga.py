@@ -259,8 +259,13 @@ def generate(year: int = 2027) -> dict:
         sr_jd = swe.julday(d.year, d.month, d.day,
                            sr_dt.hour + sr_dt.minute / 60 + sr_dt.second / 3600) - ist_offset
 
-        ti = tithi_index(sr_jd)
-        ni = nakshatra_index(sr_jd)
+        s_lon = sun_lon(sr_jd)
+        m_lon = moon_lon(sr_jd)
+        elongation = (m_lon - s_lon) % 360
+        ayanamsa = swe.get_ayanamsa_ut(sr_jd)
+
+        ti = int(elongation / 12)
+        ni = int(m_lon / (360 / 27)) % 27
         yi = yoga_index(sr_jd)
         ki = karana_index(sr_jd)
 
@@ -308,6 +313,10 @@ def generate(year: int = 2027) -> dict:
             "rahuEnd":       rahu_end,
             "festivals":     festivals,
             "festivalDescs": descs,
+            "sunLon":        round(s_lon, 2),
+            "moonLon":       round(m_lon, 2),
+            "elongation":    round(elongation, 2),
+            "ayanamsa":      round(ayanamsa, 2),
         })
 
         d += timedelta(days=1)
