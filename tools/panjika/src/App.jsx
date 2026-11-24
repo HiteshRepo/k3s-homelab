@@ -165,7 +165,7 @@ export default function App() {
 
         {overlaidSelected && (
           <aside className="detail-pane">
-            <DayDetail day={overlaidSelected} onClose={() => setSelected(null)} />
+            <DayDetail day={overlaidSelected} onClose={() => setSelected(null)} mode={calMode} />
           </aside>
         )}
       </div>

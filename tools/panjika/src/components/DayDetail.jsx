@@ -9,7 +9,7 @@ const MONTHS_EN = [
   'July', 'August', 'September', 'October', 'November', 'December',
 ];
 
-export default function DayDetail({ day, onClose }) {
+export default function DayDetail({ day, onClose, mode = 'solar' }) {
   const [y, m, d] = day.date.split('-').map(Number);
   const weekdayOdia = WEEKDAY_ODIA[(day.weekday + 1) % 7];
   const tithiDisplay = day.paksha ? `${day.paksha}. ${day.tithi}` : day.tithi;
@@ -20,7 +20,7 @@ export default function DayDetail({ day, onClose }) {
 
       <div className="detail-date-block">
         <div className="detail-odia-date">
-          {toOdiaNum(day.odiaDate)} {day.odiaMonth}
+          {mode === 'lunar' ? tithiDisplay : `${toOdiaNum(day.odiaDate)} ${day.odiaMonth}`}
         </div>
         <div className="detail-en-date">{MONTHS_EN[m]} {d}, {y}</div>
         <div className="detail-weekday">{weekdayOdia}</div>
