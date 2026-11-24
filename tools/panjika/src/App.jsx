@@ -36,49 +36,35 @@ function buildMonthGroups(allDays) {
   return groups;
 }
 
-// Lunar (Amanta): each month runs Shukla 1 → Amavasya.
-// A new group starts at every tithiIndex === 0 (Shukla Pratipada).
-// Month is named after the solar month of its Purnima.
+// Purnimanta: new month starts the day after Purnima (Shukla→Krishna transition).
+// Named by the solar month of its Amavasya (new moon), which falls squarely in
+// the same-named solar month in almost all cases — more reliable than using the
+// starting day, which can be the last day of the previous solar month.
 function buildLunarMonthGroups(allDays) {
   const groups = [];
   let current = null;
   let prevTithi = -1;
   for (const day of allDays) {
-    // Purnimanta: new month starts at the Shukla→Krishna transition.
-    // Trigger on prevTithi<15 && day.tithiIndex>=15 so we handle:
-    //   - normal case: Purnima (14) → K1 (15)
-    //   - kshaya K1: Purnima (14) → K2 (16) — K1 skipped by astronomy
-    //   - kshaya Purnima: Chaturdashi (13) → K1 (15) — Purnima skipped
-    //   - Purnima spanning two civil days: both 14, skip the split (14>=15 is false)
+    // Boundary: Shukla→Krishna transition handles normal, kshaya K1, kshaya Purnima.
+    // Purnima spanning two civil days (both 14): 14>=15 is false, no spurious split.
     if (!current || (prevTithi < 15 && day.tithiIndex >= 15)) {
+      // Initial name from starting day; overwritten when Amavasya is seen.
       current = { odiaMonthIndex: day.odiaMonthIndex, odiaMonth: day.odiaMonth, days: [] };
       groups.push(current);
     }
     current.days.push(day);
+    // Update group name to the solar month of its Amavasya (the definitive name).
+    if (day.tithiIndex === 29) {
+      current.odiaMonthIndex = day.odiaMonthIndex;
+      current.odiaMonth = day.odiaMonth;
+    }
     prevTithi = day.tithiIndex;
   }
   return groups;
 }
 
-// Adhika Masa: when two consecutive lunar months share the same solar name,
-// the one with no Sankranti (odiaMonthIndex stays constant) is "Adhika" (extra).
-function markAdhikaMasa(groups) {
-  for (let i = 0; i < groups.length - 1; i++) {
-    const a = groups[i];
-    const b = groups[i + 1];
-    if (a.odiaMonth !== b.odiaMonth) continue;
-    const aHasSankranti = a.days.some(d => d.odiaMonthIndex !== a.days[0].odiaMonthIndex);
-    if (aHasSankranti) {
-      b.odiaMonth = 'ଅଧିକ ' + b.odiaMonth;
-    } else {
-      a.odiaMonth = 'ଅଧିକ ' + a.odiaMonth;
-    }
-  }
-  return groups;
-}
-
 const MONTH_GROUPS = buildMonthGroups(ALL_DAYS);
-const LUNAR_MONTH_GROUPS = markAdhikaMasa(buildLunarMonthGroups(ALL_DAYS));
+const LUNAR_MONTH_GROUPS = buildLunarMonthGroups(ALL_DAYS);
 
 function initialGroupIdx(groups = MONTH_GROUPS) {
   const today = new Date().toISOString().slice(0, 10);
