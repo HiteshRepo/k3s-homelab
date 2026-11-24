@@ -174,7 +174,7 @@ async function buildWidget(day, family, mode) {
   const w = new ListWidget()
   w.backgroundGradient = makeGradient()
   // Tap opens this script → shows detail table
-  w.url = URLScheme.forRunningScript()
+  w.url = `scriptable:///run?scriptName=${encodeURIComponent(Script.name())}&mode=${mode}`
   w.setPadding(14, 14, 14, 14)
 
   if (!day) {
@@ -293,8 +293,9 @@ async function buildWidget(day, family, mode) {
 const day = await getToday()
 
 // Widget parameter: set to "lunar" in Edit Widget → Parameter to show tithi view.
-// Leave empty (default) for solar date view.
-const MODE = (args.widgetParameter ?? "").toLowerCase() === "lunar" ? "lunar" : "solar"
+// When tapped, the mode is passed via URL query param so the detail screen matches.
+const modeSource = args.widgetParameter ?? args.queryParameters?.mode ?? ""
+const MODE = modeSource.toLowerCase() === "lunar" ? "lunar" : "solar"
 
 if (config.runsInWidget) {
   // Rendering on home screen
