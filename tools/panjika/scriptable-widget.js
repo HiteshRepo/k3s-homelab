@@ -185,8 +185,6 @@ async function buildWidget(day, family, mode) {
       txt(w, tithiLine(day), Font.boldSystemFont(14), C_WHITE, 2)
       w.addSpacer(4)
       txt(w, enDate(day.date), Font.systemFont(10), C_MUTED)
-      w.addSpacer(6)
-      txt(w, day.odiaMonth, Font.systemFont(11), C_WHITE)
     } else {
       txt(w, toOdia(day.odiaDate), Font.boldSystemFont(44), C_SAFFRON)
       txt(w, day.odiaMonth, Font.boldSystemFont(14), C_WHITE)
