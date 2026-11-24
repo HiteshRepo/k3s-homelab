@@ -34,6 +34,15 @@ function tithiLine(day) {
   return day.paksha ? `${day.paksha} ${day.tithi}` : day.tithi
 }
 
+// Compact tithi label for lunar display (e.g. ଶୁ.୯, କ.୩, ପୂ, ଅ)
+function tithiLabel(day) {
+  const idx = day.tithiIndex
+  if (idx === 14) return "ପୂ"
+  if (idx === 29) return "ଅ"
+  if (idx <= 13) return `ଶୁ.${toOdia(idx + 1)}`
+  return `କ.${toOdia(idx - 14)}`
+}
+
 // ── Cache ─────────────────────────────────────────────────────────────────────
 const fm = FileManager.local()
 const CACHE_DIR = fm.joinPath(fm.documentsDirectory(), "panjika-cache")
@@ -158,7 +167,7 @@ function txt(parent, text, font, color, lines = 1) {
   return t
 }
 
-async function buildWidget(day, family) {
+async function buildWidget(day, family, mode) {
   const w = new ListWidget()
   w.backgroundGradient = makeGradient()
   // Tap opens this script → shows detail table
@@ -171,12 +180,21 @@ async function buildWidget(day, family) {
   }
 
   if (family === "small") {
-    txt(w, toOdia(day.odiaDate), Font.boldSystemFont(44), C_SAFFRON)
-    txt(w, day.odiaMonth, Font.boldSystemFont(14), C_WHITE)
-    w.addSpacer(4)
-    txt(w, enDate(day.date), Font.systemFont(10), C_MUTED)
-    w.addSpacer(6)
-    txt(w, tithiLine(day), Font.systemFont(11), C_WHITE, 2)
+    if (mode === "lunar") {
+      txt(w, tithiLabel(day), Font.boldSystemFont(44), C_SAFFRON)
+      txt(w, tithiLine(day), Font.boldSystemFont(14), C_WHITE, 2)
+      w.addSpacer(4)
+      txt(w, enDate(day.date), Font.systemFont(10), C_MUTED)
+      w.addSpacer(6)
+      txt(w, day.odiaMonth, Font.systemFont(11), C_WHITE)
+    } else {
+      txt(w, toOdia(day.odiaDate), Font.boldSystemFont(44), C_SAFFRON)
+      txt(w, day.odiaMonth, Font.boldSystemFont(14), C_WHITE)
+      w.addSpacer(4)
+      txt(w, enDate(day.date), Font.systemFont(10), C_MUTED)
+      w.addSpacer(6)
+      txt(w, tithiLine(day), Font.systemFont(11), C_WHITE, 2)
+    }
 
   } else if (family === "medium") {
     const row = w.addStack()
@@ -185,9 +203,15 @@ async function buildWidget(day, family) {
 
     const left = row.addStack()
     left.layoutVertically()
-    txt(left, toOdia(day.odiaDate), Font.boldSystemFont(50), C_SAFFRON)
-    txt(left, day.odiaMonth, Font.boldSystemFont(13), C_WHITE)
-    txt(left, enDate(day.date), Font.systemFont(10), C_MUTED)
+    if (mode === "lunar") {
+      txt(left, tithiLabel(day), Font.boldSystemFont(50), C_SAFFRON)
+      txt(left, tithiLine(day), Font.boldSystemFont(13), C_WHITE, 2)
+      txt(left, enDate(day.date), Font.systemFont(10), C_MUTED)
+    } else {
+      txt(left, toOdia(day.odiaDate), Font.boldSystemFont(50), C_SAFFRON)
+      txt(left, day.odiaMonth, Font.boldSystemFont(13), C_WHITE)
+      txt(left, enDate(day.date), Font.systemFont(10), C_MUTED)
+    }
 
     row.addSpacer()
 
@@ -219,7 +243,11 @@ async function buildWidget(day, family) {
 
   } else {
     // large
-    txt(w, `${toOdia(day.odiaDate)} ${day.odiaMonth}`, Font.boldSystemFont(32), C_SAFFRON)
+    if (mode === "lunar") {
+      txt(w, tithiLine(day), Font.boldSystemFont(28), C_SAFFRON, 2)
+    } else {
+      txt(w, `${toOdia(day.odiaDate)} ${day.odiaMonth}`, Font.boldSystemFont(32), C_SAFFRON)
+    }
     txt(w, enDate(day.date), Font.systemFont(13), C_MUTED)
     w.addSpacer(10)
 
@@ -261,10 +289,14 @@ async function buildWidget(day, family) {
 // ── Entry point ───────────────────────────────────────────────────────────────
 const day = await getToday()
 
+// Widget parameter: set to "lunar" in Edit Widget → Parameter to show tithi view.
+// Leave empty (default) for solar date view.
+const MODE = (args.widgetParameter ?? "").toLowerCase() === "lunar" ? "lunar" : "solar"
+
 if (config.runsInWidget) {
   // Rendering on home screen
   const family = config.widgetFamily ?? "medium"
-  const widget = await buildWidget(day, family)
+  const widget = await buildWidget(day, family, MODE)
   Script.setWidget(widget)
 
 } else {

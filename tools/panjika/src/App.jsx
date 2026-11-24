@@ -75,7 +75,7 @@ function initialGroupIdx(groups = MONTH_GROUPS) {
 }
 
 export default function App() {
-  const [calMode, setCalMode] = useState('solar');
+  const [calMode, setCalMode] = useState('lunar');
   const [solarIdx, setSolarIdx] = useState(() => initialGroupIdx(MONTH_GROUPS));
   const [lunarIdx, setLunarIdx] = useState(() => initialGroupIdx(LUNAR_MONTH_GROUPS));
   const [selected, setSelected] = useState(null);
