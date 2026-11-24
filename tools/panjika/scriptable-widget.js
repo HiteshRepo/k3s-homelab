@@ -71,7 +71,7 @@ async function getToday() {
 }
 
 // ── Detail table (shown on tap) ───────────────────────────────────────────────
-async function showDetail(day) {
+async function showDetail(day, mode) {
   if (!day) {
     const a = new Alert()
     a.title   = "ତ୍ରୁଟି"
@@ -122,7 +122,10 @@ async function showDetail(day) {
   }
 
   // Header
-  addRow(`${toOdia(day.odiaDate)} ${day.odiaMonth}`, enDate(day.date),
+  const headerTitle = mode === "lunar"
+    ? tithiLine(day)
+    : `${toOdia(day.odiaDate)} ${day.odiaMonth}`
+  addRow(headerTitle, enDate(day.date),
     { header: true, titleSize: 26, tall: true })
 
   // Festivals (if any)
@@ -301,7 +304,7 @@ if (config.runsInWidget) {
 
 } else {
   // Opened via tap (or manual run in Scriptable app) → show detail
-  await showDetail(day)
+  await showDetail(day, MODE)
 }
 
 Script.complete()
