@@ -60,8 +60,25 @@ function buildLunarMonthGroups(allDays) {
   return groups;
 }
 
+// Adhika Masa: when two consecutive lunar months share the same solar name,
+// the one with no Sankranti (odiaMonthIndex stays constant) is "Adhika" (extra).
+function markAdhikaMasa(groups) {
+  for (let i = 0; i < groups.length - 1; i++) {
+    const a = groups[i];
+    const b = groups[i + 1];
+    if (a.odiaMonth !== b.odiaMonth) continue;
+    const aHasSankranti = a.days.some(d => d.odiaMonthIndex !== a.days[0].odiaMonthIndex);
+    if (aHasSankranti) {
+      b.odiaMonth = 'ଅଧିକ ' + b.odiaMonth;
+    } else {
+      a.odiaMonth = 'ଅଧିକ ' + a.odiaMonth;
+    }
+  }
+  return groups;
+}
+
 const MONTH_GROUPS = buildMonthGroups(ALL_DAYS);
-const LUNAR_MONTH_GROUPS = buildLunarMonthGroups(ALL_DAYS);
+const LUNAR_MONTH_GROUPS = markAdhikaMasa(buildLunarMonthGroups(ALL_DAYS));
 
 function initialGroupIdx(groups = MONTH_GROUPS) {
   const today = new Date().toISOString().slice(0, 10);
