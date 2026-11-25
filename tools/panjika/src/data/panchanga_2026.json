@@ -19,7 +19,11 @@
       "rahuStart": "13:12",
       "rahuEnd": "14:34",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 256.38,
+      "moonLon": 43.04,
+      "elongation": 146.66,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-02",
@@ -38,7 +42,11 @@
       "rahuStart": "10:28",
       "rahuEnd": "11:50",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 257.4,
+      "moonLon": 58.08,
+      "elongation": 160.68,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-03",
@@ -57,7 +65,11 @@
       "rahuStart": "09:07",
       "rahuEnd": "10:29",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 258.42,
+      "moonLon": 73.11,
+      "elongation": 174.69,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-04",
@@ -76,7 +88,11 @@
       "rahuStart": "15:57",
       "rahuEnd": "17:19",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 259.44,
+      "moonLon": 87.96,
+      "elongation": 188.52,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-05",
@@ -95,7 +111,11 @@
       "rahuStart": "07:45",
       "rahuEnd": "09:07",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 260.46,
+      "moonLon": 102.49,
+      "elongation": 202.03,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-06",
@@ -114,7 +134,11 @@
       "rahuStart": "14:36",
       "rahuEnd": "15:58",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 261.48,
+      "moonLon": 116.6,
+      "elongation": 215.12,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-07",
@@ -133,7 +157,11 @@
       "rahuStart": "11:52",
       "rahuEnd": "13:15",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 262.5,
+      "moonLon": 130.25,
+      "elongation": 227.75,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-08",
@@ -152,7 +180,11 @@
       "rahuStart": "13:15",
       "rahuEnd": "14:37",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 263.52,
+      "moonLon": 143.44,
+      "elongation": 239.92,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-09",
@@ -171,7 +203,11 @@
       "rahuStart": "10:31",
       "rahuEnd": "11:53",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 264.54,
+      "moonLon": 156.2,
+      "elongation": 251.67,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-10",
@@ -190,7 +226,11 @@
       "rahuStart": "09:09",
       "rahuEnd": "10:31",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 265.55,
+      "moonLon": 168.62,
+      "elongation": 263.07,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-11",
@@ -209,7 +249,11 @@
       "rahuStart": "16:01",
       "rahuEnd": "17:24",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 266.57,
+      "moonLon": 180.77,
+      "elongation": 274.2,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-12",
@@ -228,7 +272,11 @@
       "rahuStart": "07:47",
       "rahuEnd": "09:09",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 267.59,
+      "moonLon": 192.74,
+      "elongation": 285.14,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-13",
@@ -247,7 +295,11 @@
       "rahuStart": "14:40",
       "rahuEnd": "16:03",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 268.61,
+      "moonLon": 204.6,
+      "elongation": 295.99,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-14",
@@ -270,7 +322,11 @@
       ],
       "festivalDescs": [
         "Sun enters Makara — Pongal / auspicious bathing"
-      ]
+      ],
+      "sunLon": 269.63,
+      "moonLon": 216.45,
+      "elongation": 306.82,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-15",
@@ -289,7 +345,11 @@
       "rahuStart": "13:18",
       "rahuEnd": "14:41",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 270.65,
+      "moonLon": 228.33,
+      "elongation": 317.68,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-16",
@@ -308,7 +368,11 @@
       "rahuStart": "10:33",
       "rahuEnd": "11:56",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 271.67,
+      "moonLon": 240.31,
+      "elongation": 328.64,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-17",
@@ -327,7 +391,11 @@
       "rahuStart": "09:11",
       "rahuEnd": "10:33",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 272.69,
+      "moonLon": 252.42,
+      "elongation": 339.74,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-18",
@@ -346,7 +414,11 @@
       "rahuStart": "16:06",
       "rahuEnd": "17:28",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 273.71,
+      "moonLon": 264.7,
+      "elongation": 350.99,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-19",
@@ -365,7 +437,11 @@
       "rahuStart": "07:48",
       "rahuEnd": "09:11",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 274.72,
+      "moonLon": 277.15,
+      "elongation": 2.42,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-20",
@@ -388,7 +464,11 @@
       ],
       "festivalDescs": [
         "Saraswati Puja — Maagha Shukla Panchami"
-      ]
+      ],
+      "sunLon": 275.74,
+      "moonLon": 289.78,
+      "elongation": 14.03,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-21",
@@ -407,7 +487,11 @@
       "rahuStart": "11:58",
       "rahuEnd": "13:21",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 276.76,
+      "moonLon": 302.59,
+      "elongation": 25.83,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-22",
@@ -426,7 +510,11 @@
       "rahuStart": "13:21",
       "rahuEnd": "14:44",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 277.78,
+      "moonLon": 315.6,
+      "elongation": 37.82,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-23",
@@ -445,7 +533,11 @@
       "rahuStart": "10:35",
       "rahuEnd": "11:58",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 278.8,
+      "moonLon": 328.81,
+      "elongation": 50.01,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-24",
@@ -464,7 +556,11 @@
       "rahuStart": "09:11",
       "rahuEnd": "10:35",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 279.81,
+      "moonLon": 342.23,
+      "elongation": 62.41,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-25",
@@ -483,7 +579,11 @@
       "rahuStart": "16:09",
       "rahuEnd": "17:33",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 280.83,
+      "moonLon": 355.87,
+      "elongation": 75.04,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-26",
@@ -502,7 +602,11 @@
       "rahuStart": "07:48",
       "rahuEnd": "09:11",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 281.85,
+      "moonLon": 9.74,
+      "elongation": 87.9,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-27",
@@ -521,7 +625,11 @@
       "rahuStart": "14:47",
       "rahuEnd": "16:10",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 282.86,
+      "moonLon": 23.85,
+      "elongation": 100.99,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-28",
@@ -540,7 +648,11 @@
       "rahuStart": "11:59",
       "rahuEnd": "13:23",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 283.88,
+      "moonLon": 38.17,
+      "elongation": 114.29,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-29",
@@ -559,7 +671,11 @@
       "rahuStart": "13:23",
       "rahuEnd": "14:47",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 284.89,
+      "moonLon": 52.64,
+      "elongation": 127.75,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-30",
@@ -578,7 +694,11 @@
       "rahuStart": "10:35",
       "rahuEnd": "12:00",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 285.91,
+      "moonLon": 67.21,
+      "elongation": 141.3,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-01-31",
@@ -597,7 +717,11 @@
       "rahuStart": "09:11",
       "rahuEnd": "10:35",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 286.92,
+      "moonLon": 81.77,
+      "elongation": 154.85,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-01",
@@ -616,7 +740,11 @@
       "rahuStart": "16:13",
       "rahuEnd": "17:37",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 287.94,
+      "moonLon": 96.21,
+      "elongation": 168.28,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-02",
@@ -635,7 +763,11 @@
       "rahuStart": "07:47",
       "rahuEnd": "09:11",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 288.95,
+      "moonLon": 110.44,
+      "elongation": 181.48,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-03",
@@ -654,7 +786,11 @@
       "rahuStart": "14:49",
       "rahuEnd": "16:14",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 289.97,
+      "moonLon": 124.36,
+      "elongation": 194.39,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-04",
@@ -673,7 +809,11 @@
       "rahuStart": "12:00",
       "rahuEnd": "13:25",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 290.98,
+      "moonLon": 137.92,
+      "elongation": 206.94,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-05",
@@ -692,7 +832,11 @@
       "rahuStart": "13:25",
       "rahuEnd": "14:50",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 291.99,
+      "moonLon": 151.1,
+      "elongation": 219.1,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-06",
@@ -711,7 +855,11 @@
       "rahuStart": "10:35",
       "rahuEnd": "12:00",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 293.01,
+      "moonLon": 163.91,
+      "elongation": 230.9,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-07",
@@ -730,7 +878,11 @@
       "rahuStart": "09:10",
       "rahuEnd": "10:35",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 294.02,
+      "moonLon": 176.4,
+      "elongation": 242.38,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-08",
@@ -749,7 +901,11 @@
       "rahuStart": "16:16",
       "rahuEnd": "17:41",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 295.03,
+      "moonLon": 188.62,
+      "elongation": 253.58,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-09",
@@ -768,7 +924,11 @@
       "rahuStart": "07:45",
       "rahuEnd": "09:10",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 296.04,
+      "moonLon": 200.64,
+      "elongation": 264.59,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-10",
@@ -787,7 +947,11 @@
       "rahuStart": "14:51",
       "rahuEnd": "16:17",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 297.06,
+      "moonLon": 212.54,
+      "elongation": 275.48,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-11",
@@ -806,7 +970,11 @@
       "rahuStart": "12:01",
       "rahuEnd": "13:26",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 298.07,
+      "moonLon": 224.4,
+      "elongation": 286.34,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-12",
@@ -829,7 +997,11 @@
       ],
       "festivalDescs": [
         "Sun enters Kumbha"
-      ]
+      ],
+      "sunLon": 299.08,
+      "moonLon": 236.31,
+      "elongation": 297.23,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-13",
@@ -848,7 +1020,11 @@
       "rahuStart": "10:35",
       "rahuEnd": "12:01",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 300.09,
+      "moonLon": 248.32,
+      "elongation": 308.23,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-14",
@@ -867,7 +1043,11 @@
       "rahuStart": "09:09",
       "rahuEnd": "10:35",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 301.1,
+      "moonLon": 260.5,
+      "elongation": 319.4,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-15",
@@ -886,7 +1066,11 @@
       "rahuStart": "16:19",
       "rahuEnd": "17:45",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 302.11,
+      "moonLon": 272.9,
+      "elongation": 330.79,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-16",
@@ -905,7 +1089,11 @@
       "rahuStart": "07:42",
       "rahuEnd": "09:08",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 303.12,
+      "moonLon": 285.54,
+      "elongation": 342.42,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-17",
@@ -924,7 +1112,11 @@
       "rahuStart": "14:53",
       "rahuEnd": "16:19",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 304.13,
+      "moonLon": 298.45,
+      "elongation": 354.32,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-18",
@@ -943,7 +1135,11 @@
       "rahuStart": "12:00",
       "rahuEnd": "13:27",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 305.14,
+      "moonLon": 311.62,
+      "elongation": 6.48,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-19",
@@ -962,7 +1158,11 @@
       "rahuStart": "13:27",
       "rahuEnd": "14:53",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 306.15,
+      "moonLon": 325.04,
+      "elongation": 18.89,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-20",
@@ -981,7 +1181,11 @@
       "rahuStart": "10:33",
       "rahuEnd": "12:00",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 307.16,
+      "moonLon": 338.68,
+      "elongation": 31.52,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-21",
@@ -1000,7 +1204,11 @@
       "rahuStart": "09:06",
       "rahuEnd": "10:33",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 308.16,
+      "moonLon": 352.5,
+      "elongation": 44.33,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-22",
@@ -1019,7 +1227,11 @@
       "rahuStart": "16:21",
       "rahuEnd": "17:48",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 309.17,
+      "moonLon": 6.47,
+      "elongation": 57.3,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-23",
@@ -1038,7 +1250,11 @@
       "rahuStart": "07:38",
       "rahuEnd": "09:05",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 310.18,
+      "moonLon": 20.55,
+      "elongation": 70.37,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-24",
@@ -1057,7 +1273,11 @@
       "rahuStart": "14:54",
       "rahuEnd": "16:22",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 311.18,
+      "moonLon": 34.71,
+      "elongation": 83.53,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-25",
@@ -1076,7 +1296,11 @@
       "rahuStart": "11:59",
       "rahuEnd": "13:27",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 312.19,
+      "moonLon": 48.9,
+      "elongation": 96.71,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-26",
@@ -1095,7 +1319,11 @@
       "rahuStart": "13:27",
       "rahuEnd": "14:54",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 313.2,
+      "moonLon": 63.1,
+      "elongation": 109.9,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-27",
@@ -1114,7 +1342,11 @@
       "rahuStart": "10:31",
       "rahuEnd": "11:59",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 314.2,
+      "moonLon": 77.25,
+      "elongation": 123.05,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-02-28",
@@ -1133,7 +1365,11 @@
       "rahuStart": "09:03",
       "rahuEnd": "10:31",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 315.2,
+      "moonLon": 91.32,
+      "elongation": 136.11,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-01",
@@ -1152,7 +1388,11 @@
       "rahuStart": "16:23",
       "rahuEnd": "17:51",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 316.21,
+      "moonLon": 105.25,
+      "elongation": 149.04,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-02",
@@ -1171,7 +1411,11 @@
       "rahuStart": "07:34",
       "rahuEnd": "09:02",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 317.21,
+      "moonLon": 119.0,
+      "elongation": 161.79,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-03",
@@ -1190,7 +1434,11 @@
       "rahuStart": "14:55",
       "rahuEnd": "16:23",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 318.21,
+      "moonLon": 132.53,
+      "elongation": 174.32,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-04",
@@ -1209,7 +1457,11 @@
       "rahuStart": "11:58",
       "rahuEnd": "13:27",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 319.21,
+      "moonLon": 145.81,
+      "elongation": 186.59,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-05",
@@ -1228,7 +1480,11 @@
       "rahuStart": "13:26",
       "rahuEnd": "14:55",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 320.22,
+      "moonLon": 158.8,
+      "elongation": 198.59,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-06",
@@ -1247,7 +1503,11 @@
       "rahuStart": "10:29",
       "rahuEnd": "11:58",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 321.22,
+      "moonLon": 171.53,
+      "elongation": 210.31,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-07",
@@ -1266,7 +1526,11 @@
       "rahuStart": "09:00",
       "rahuEnd": "10:29",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 322.22,
+      "moonLon": 183.99,
+      "elongation": 221.77,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-08",
@@ -1285,7 +1549,11 @@
       "rahuStart": "16:24",
       "rahuEnd": "17:53",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 323.22,
+      "moonLon": 196.21,
+      "elongation": 233.0,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-09",
@@ -1304,7 +1572,11 @@
       "rahuStart": "07:29",
       "rahuEnd": "08:59",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 324.22,
+      "moonLon": 208.26,
+      "elongation": 244.04,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-10",
@@ -1323,7 +1595,11 @@
       "rahuStart": "14:55",
       "rahuEnd": "16:25",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 325.21,
+      "moonLon": 220.18,
+      "elongation": 254.97,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-11",
@@ -1342,7 +1618,11 @@
       "rahuStart": "11:56",
       "rahuEnd": "13:26",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 326.21,
+      "moonLon": 232.06,
+      "elongation": 265.85,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-12",
@@ -1361,7 +1641,11 @@
       "rahuStart": "13:26",
       "rahuEnd": "14:55",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 327.21,
+      "moonLon": 243.96,
+      "elongation": 276.75,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-13",
@@ -1380,7 +1664,11 @@
       "rahuStart": "10:26",
       "rahuEnd": "11:56",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 328.21,
+      "moonLon": 255.96,
+      "elongation": 287.75,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-14",
@@ -1403,7 +1691,11 @@
       ],
       "festivalDescs": [
         "Sun enters Meena"
-      ]
+      ],
+      "sunLon": 329.21,
+      "moonLon": 268.14,
+      "elongation": 298.94,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-15",
@@ -1422,7 +1714,11 @@
       "rahuStart": "16:25",
       "rahuEnd": "17:55",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 330.2,
+      "moonLon": 280.58,
+      "elongation": 310.38,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-16",
@@ -1441,7 +1737,11 @@
       "rahuStart": "07:24",
       "rahuEnd": "08:55",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 331.2,
+      "moonLon": 293.32,
+      "elongation": 322.12,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-17",
@@ -1460,7 +1760,11 @@
       "rahuStart": "14:55",
       "rahuEnd": "16:26",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 332.19,
+      "moonLon": 306.4,
+      "elongation": 334.21,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-18",
@@ -1483,7 +1787,11 @@
       ],
       "festivalDescs": [
         "Night of Shiva — Phalguna Krishna Chaturdashi"
-      ]
+      ],
+      "sunLon": 333.19,
+      "moonLon": 319.85,
+      "elongation": 346.66,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-19",
@@ -1502,7 +1810,11 @@
       "rahuStart": "13:25",
       "rahuEnd": "14:55",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 334.18,
+      "moonLon": 333.63,
+      "elongation": 359.45,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-20",
@@ -1521,7 +1833,11 @@
       "rahuStart": "10:23",
       "rahuEnd": "11:54",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 335.18,
+      "moonLon": 347.71,
+      "elongation": 12.54,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-21",
@@ -1540,7 +1856,11 @@
       "rahuStart": "08:52",
       "rahuEnd": "10:23",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 336.17,
+      "moonLon": 2.02,
+      "elongation": 25.85,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-22",
@@ -1559,7 +1879,11 @@
       "rahuStart": "16:26",
       "rahuEnd": "17:58",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 337.16,
+      "moonLon": 16.47,
+      "elongation": 39.3,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-23",
@@ -1578,7 +1902,11 @@
       "rahuStart": "07:19",
       "rahuEnd": "08:51",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 338.16,
+      "moonLon": 30.95,
+      "elongation": 52.79,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-24",
@@ -1597,7 +1925,11 @@
       "rahuStart": "14:55",
       "rahuEnd": "16:27",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 339.15,
+      "moonLon": 45.38,
+      "elongation": 66.24,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-25",
@@ -1616,7 +1948,11 @@
       "rahuStart": "11:52",
       "rahuEnd": "13:24",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 340.14,
+      "moonLon": 59.7,
+      "elongation": 79.56,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-26",
@@ -1635,7 +1971,11 @@
       "rahuStart": "13:24",
       "rahuEnd": "14:55",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 341.13,
+      "moonLon": 73.84,
+      "elongation": 92.71,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-27",
@@ -1654,7 +1994,11 @@
       "rahuStart": "10:20",
       "rahuEnd": "11:52",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 342.12,
+      "moonLon": 87.78,
+      "elongation": 105.66,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-28",
@@ -1673,7 +2017,11 @@
       "rahuStart": "08:48",
       "rahuEnd": "10:20",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 343.11,
+      "moonLon": 101.51,
+      "elongation": 118.4,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-29",
@@ -1692,7 +2040,11 @@
       "rahuStart": "16:27",
       "rahuEnd": "17:59",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 344.1,
+      "moonLon": 115.03,
+      "elongation": 130.93,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-30",
@@ -1711,7 +2063,11 @@
       "rahuStart": "07:14",
       "rahuEnd": "08:46",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 345.08,
+      "moonLon": 128.34,
+      "elongation": 143.26,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-03-31",
@@ -1730,7 +2086,11 @@
       "rahuStart": "14:55",
       "rahuEnd": "16:28",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 346.07,
+      "moonLon": 141.45,
+      "elongation": 155.37,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-01",
@@ -1749,7 +2109,11 @@
       "rahuStart": "11:50",
       "rahuEnd": "13:23",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 347.06,
+      "moonLon": 154.35,
+      "elongation": 167.29,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-02",
@@ -1772,7 +2136,11 @@
       ],
       "festivalDescs": [
         "Holi / Dol Jatra — Phalguna Purnima"
-      ]
+      ],
+      "sunLon": 348.04,
+      "moonLon": 167.06,
+      "elongation": 179.01,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-03",
@@ -1791,7 +2159,11 @@
       "rahuStart": "10:17",
       "rahuEnd": "11:50",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 349.03,
+      "moonLon": 179.57,
+      "elongation": 190.54,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-04",
@@ -1810,7 +2182,11 @@
       "rahuStart": "08:43",
       "rahuEnd": "10:16",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 350.01,
+      "moonLon": 191.89,
+      "elongation": 201.88,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-05",
@@ -1829,7 +2205,11 @@
       "rahuStart": "16:28",
       "rahuEnd": "18:01",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 351.0,
+      "moonLon": 204.05,
+      "elongation": 213.05,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-06",
@@ -1848,7 +2228,11 @@
       "rahuStart": "07:09",
       "rahuEnd": "08:42",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 351.98,
+      "moonLon": 216.06,
+      "elongation": 224.08,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-07",
@@ -1867,7 +2251,11 @@
       "rahuStart": "14:55",
       "rahuEnd": "16:29",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 352.97,
+      "moonLon": 227.98,
+      "elongation": 235.01,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-08",
@@ -1886,7 +2274,11 @@
       "rahuStart": "11:48",
       "rahuEnd": "13:22",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 353.95,
+      "moonLon": 239.84,
+      "elongation": 245.89,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-09",
@@ -1905,7 +2297,11 @@
       "rahuStart": "13:22",
       "rahuEnd": "14:55",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 354.93,
+      "moonLon": 251.72,
+      "elongation": 256.79,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-10",
@@ -1924,7 +2320,11 @@
       "rahuStart": "10:14",
       "rahuEnd": "11:48",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 355.91,
+      "moonLon": 263.69,
+      "elongation": 267.78,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-11",
@@ -1943,7 +2343,11 @@
       "rahuStart": "08:40",
       "rahuEnd": "10:13",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 356.89,
+      "moonLon": 275.83,
+      "elongation": 278.94,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-12",
@@ -1962,7 +2366,11 @@
       "rahuStart": "16:29",
       "rahuEnd": "18:04",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 357.87,
+      "moonLon": 288.22,
+      "elongation": 290.35,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-13",
@@ -1981,7 +2389,11 @@
       "rahuStart": "07:04",
       "rahuEnd": "08:38",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 358.85,
+      "moonLon": 300.95,
+      "elongation": 302.09,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-14",
@@ -2004,7 +2416,11 @@
       ],
       "festivalDescs": [
         "Odia New Year — Sun enters sidereal Mesha"
-      ]
+      ],
+      "sunLon": 359.83,
+      "moonLon": 314.06,
+      "elongation": 314.23,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-15",
@@ -2023,7 +2439,11 @@
       "rahuStart": "11:46",
       "rahuEnd": "13:21",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 0.81,
+      "moonLon": 327.61,
+      "elongation": 326.8,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-16",
@@ -2042,7 +2462,11 @@
       "rahuStart": "13:21",
       "rahuEnd": "14:55",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 1.79,
+      "moonLon": 341.6,
+      "elongation": 339.81,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-17",
@@ -2061,7 +2485,11 @@
       "rahuStart": "10:11",
       "rahuEnd": "11:46",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 2.77,
+      "moonLon": 355.99,
+      "elongation": 353.22,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-18",
@@ -2080,7 +2508,11 @@
       "rahuStart": "08:36",
       "rahuEnd": "10:11",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 3.75,
+      "moonLon": 10.69,
+      "elongation": 6.94,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-19",
@@ -2099,7 +2531,11 @@
       "rahuStart": "16:31",
       "rahuEnd": "18:06",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 4.73,
+      "moonLon": 25.58,
+      "elongation": 20.86,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-20",
@@ -2118,7 +2554,11 @@
       "rahuStart": "07:00",
       "rahuEnd": "08:35",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 5.7,
+      "moonLon": 40.51,
+      "elongation": 34.81,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-21",
@@ -2137,7 +2577,11 @@
       "rahuStart": "14:56",
       "rahuEnd": "16:31",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 6.68,
+      "moonLon": 55.34,
+      "elongation": 48.66,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-22",
@@ -2156,7 +2600,11 @@
       "rahuStart": "11:45",
       "rahuEnd": "13:20",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 7.66,
+      "moonLon": 69.94,
+      "elongation": 62.28,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-23",
@@ -2175,7 +2623,11 @@
       "rahuStart": "13:20",
       "rahuEnd": "14:56",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 8.63,
+      "moonLon": 84.23,
+      "elongation": 75.6,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-24",
@@ -2194,7 +2646,11 @@
       "rahuStart": "10:09",
       "rahuEnd": "11:45",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 9.6,
+      "moonLon": 98.19,
+      "elongation": 88.58,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-25",
@@ -2217,7 +2673,11 @@
       ],
       "festivalDescs": [
         "Birthday of Lord Rama — Baishakha Shukla Navami"
-      ]
+      ],
+      "sunLon": 10.58,
+      "moonLon": 111.8,
+      "elongation": 101.22,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-26",
@@ -2236,7 +2696,11 @@
       "rahuStart": "16:32",
       "rahuEnd": "18:08",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 11.55,
+      "moonLon": 125.1,
+      "elongation": 113.55,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-27",
@@ -2255,7 +2719,11 @@
       "rahuStart": "06:56",
       "rahuEnd": "08:32",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 12.52,
+      "moonLon": 138.12,
+      "elongation": 125.6,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-28",
@@ -2274,7 +2742,11 @@
       "rahuStart": "14:56",
       "rahuEnd": "16:33",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 13.5,
+      "moonLon": 150.91,
+      "elongation": 137.42,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-29",
@@ -2293,7 +2765,11 @@
       "rahuStart": "11:44",
       "rahuEnd": "13:20",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 14.47,
+      "moonLon": 163.5,
+      "elongation": 149.03,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-04-30",
@@ -2312,7 +2788,11 @@
       "rahuStart": "13:20",
       "rahuEnd": "14:57",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 15.44,
+      "moonLon": 175.92,
+      "elongation": 160.48,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-05-01",
@@ -2335,7 +2815,11 @@
       ],
       "festivalDescs": [
         "Birthday of Lord Hanuman — Baishakha Purnima"
-      ]
+      ],
+      "sunLon": 16.41,
+      "moonLon": 188.2,
+      "elongation": 171.79,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-05-02",
@@ -2354,7 +2838,11 @@
       "rahuStart": "08:30",
       "rahuEnd": "10:07",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 17.38,
+      "moonLon": 200.35,
+      "elongation": 182.97,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-05-03",
@@ -2373,7 +2861,11 @@
       "rahuStart": "16:34",
       "rahuEnd": "18:11",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 18.35,
+      "moonLon": 212.39,
+      "elongation": 194.04,
+      "ayanamsa": 24.22
     },
     {
       "date": "2026-05-04",
@@ -2392,7 +2884,11 @@
       "rahuStart": "06:52",
       "rahuEnd": "08:29",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 19.32,
+      "moonLon": 224.33,
+      "elongation": 205.01,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-05",
@@ -2411,7 +2907,11 @@
       "rahuStart": "14:57",
       "rahuEnd": "16:34",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 20.29,
+      "moonLon": 236.21,
+      "elongation": 215.93,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-06",
@@ -2430,7 +2930,11 @@
       "rahuStart": "11:43",
       "rahuEnd": "13:20",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 21.25,
+      "moonLon": 248.07,
+      "elongation": 226.81,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-07",
@@ -2449,7 +2953,11 @@
       "rahuStart": "13:20",
       "rahuEnd": "14:58",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 22.22,
+      "moonLon": 259.94,
+      "elongation": 237.72,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-08",
@@ -2468,7 +2976,11 @@
       "rahuStart": "10:05",
       "rahuEnd": "11:43",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 23.19,
+      "moonLon": 271.89,
+      "elongation": 248.7,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-09",
@@ -2487,7 +2999,11 @@
       "rahuStart": "08:28",
       "rahuEnd": "10:05",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 24.16,
+      "moonLon": 284.0,
+      "elongation": 259.84,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-10",
@@ -2506,7 +3022,11 @@
       "rahuStart": "16:36",
       "rahuEnd": "18:13",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 25.12,
+      "moonLon": 296.34,
+      "elongation": 271.22,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-11",
@@ -2525,7 +3045,11 @@
       "rahuStart": "06:49",
       "rahuEnd": "08:27",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 26.09,
+      "moonLon": 309.0,
+      "elongation": 282.91,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-12",
@@ -2544,7 +3068,11 @@
       "rahuStart": "14:58",
       "rahuEnd": "16:36",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 27.06,
+      "moonLon": 322.05,
+      "elongation": 294.99,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-13",
@@ -2563,7 +3091,11 @@
       "rahuStart": "11:43",
       "rahuEnd": "13:21",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 28.02,
+      "moonLon": 335.56,
+      "elongation": 307.54,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-14",
@@ -2582,7 +3114,11 @@
       "rahuStart": "13:21",
       "rahuEnd": "14:59",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 28.99,
+      "moonLon": 349.56,
+      "elongation": 320.57,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-15",
@@ -2605,7 +3141,11 @@
       ],
       "festivalDescs": [
         "Sun enters Vrishabha"
-      ]
+      ],
+      "sunLon": 29.95,
+      "moonLon": 4.03,
+      "elongation": 334.08,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-16",
@@ -2624,7 +3164,11 @@
       "rahuStart": "08:26",
       "rahuEnd": "10:04",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 30.92,
+      "moonLon": 18.9,
+      "elongation": 347.99,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-17",
@@ -2643,7 +3187,11 @@
       "rahuStart": "16:38",
       "rahuEnd": "18:16",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 31.88,
+      "moonLon": 34.05,
+      "elongation": 2.17,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-18",
@@ -2662,7 +3210,11 @@
       "rahuStart": "06:47",
       "rahuEnd": "08:26",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 32.84,
+      "moonLon": 49.29,
+      "elongation": 16.44,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-19",
@@ -2681,7 +3233,11 @@
       "rahuStart": "15:00",
       "rahuEnd": "16:38",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 33.81,
+      "moonLon": 64.45,
+      "elongation": 30.64,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-20",
@@ -2700,7 +3256,11 @@
       "rahuStart": "11:43",
       "rahuEnd": "13:21",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 34.77,
+      "moonLon": 79.35,
+      "elongation": 44.58,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-21",
@@ -2719,7 +3279,11 @@
       "rahuStart": "13:22",
       "rahuEnd": "15:00",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 35.73,
+      "moonLon": 93.89,
+      "elongation": 58.16,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-22",
@@ -2738,7 +3302,11 @@
       "rahuStart": "10:04",
       "rahuEnd": "11:43",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 36.7,
+      "moonLon": 108.01,
+      "elongation": 71.31,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-23",
@@ -2757,7 +3325,11 @@
       "rahuStart": "08:25",
       "rahuEnd": "10:04",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 37.66,
+      "moonLon": 121.68,
+      "elongation": 84.03,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-24",
@@ -2776,7 +3348,11 @@
       "rahuStart": "16:40",
       "rahuEnd": "18:19",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 38.62,
+      "moonLon": 134.96,
+      "elongation": 96.34,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-25",
@@ -2795,7 +3371,11 @@
       "rahuStart": "06:46",
       "rahuEnd": "08:25",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 39.58,
+      "moonLon": 147.88,
+      "elongation": 108.3,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-26",
@@ -2814,7 +3394,11 @@
       "rahuStart": "15:02",
       "rahuEnd": "16:41",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 40.54,
+      "moonLon": 160.51,
+      "elongation": 119.97,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-27",
@@ -2833,7 +3417,11 @@
       "rahuStart": "11:43",
       "rahuEnd": "13:23",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 41.5,
+      "moonLon": 172.91,
+      "elongation": 131.41,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-28",
@@ -2852,7 +3440,11 @@
       "rahuStart": "13:23",
       "rahuEnd": "15:02",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 42.46,
+      "moonLon": 185.13,
+      "elongation": 142.67,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-29",
@@ -2871,7 +3463,11 @@
       "rahuStart": "10:04",
       "rahuEnd": "11:44",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 43.42,
+      "moonLon": 197.23,
+      "elongation": 153.81,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-30",
@@ -2890,7 +3486,11 @@
       "rahuStart": "08:25",
       "rahuEnd": "10:04",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 44.38,
+      "moonLon": 209.23,
+      "elongation": 164.85,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-05-31",
@@ -2909,7 +3509,11 @@
       "rahuStart": "16:42",
       "rahuEnd": "18:22",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 45.34,
+      "moonLon": 221.17,
+      "elongation": 175.83,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-01",
@@ -2928,7 +3532,11 @@
       "rahuStart": "06:45",
       "rahuEnd": "08:25",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 46.29,
+      "moonLon": 233.06,
+      "elongation": 186.76,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-02",
@@ -2947,7 +3555,11 @@
       "rahuStart": "15:03",
       "rahuEnd": "16:43",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 47.25,
+      "moonLon": 244.92,
+      "elongation": 197.67,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-03",
@@ -2966,7 +3578,11 @@
       "rahuStart": "11:44",
       "rahuEnd": "13:24",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 48.21,
+      "moonLon": 256.8,
+      "elongation": 208.59,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-04",
@@ -2985,7 +3601,11 @@
       "rahuStart": "13:24",
       "rahuEnd": "15:04",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 49.17,
+      "moonLon": 268.71,
+      "elongation": 219.54,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-05",
@@ -3004,7 +3624,11 @@
       "rahuStart": "10:05",
       "rahuEnd": "11:45",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 50.13,
+      "moonLon": 280.71,
+      "elongation": 230.58,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-06",
@@ -3023,7 +3647,11 @@
       "rahuStart": "08:25",
       "rahuEnd": "10:05",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 51.08,
+      "moonLon": 292.85,
+      "elongation": 241.76,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-07",
@@ -3042,7 +3670,11 @@
       "rahuStart": "16:45",
       "rahuEnd": "18:25",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 52.04,
+      "moonLon": 305.19,
+      "elongation": 253.15,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-08",
@@ -3061,7 +3693,11 @@
       "rahuStart": "06:46",
       "rahuEnd": "08:25",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 53.0,
+      "moonLon": 317.83,
+      "elongation": 264.83,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-09",
@@ -3080,7 +3716,11 @@
       "rahuStart": "15:05",
       "rahuEnd": "16:45",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 53.95,
+      "moonLon": 330.82,
+      "elongation": 276.87,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-10",
@@ -3099,7 +3739,11 @@
       "rahuStart": "11:46",
       "rahuEnd": "13:26",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 54.91,
+      "moonLon": 344.24,
+      "elongation": 289.33,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-11",
@@ -3118,7 +3762,11 @@
       "rahuStart": "13:26",
       "rahuEnd": "15:06",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 55.87,
+      "moonLon": 358.13,
+      "elongation": 302.26,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-12",
@@ -3137,7 +3785,11 @@
       "rahuStart": "10:06",
       "rahuEnd": "11:46",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 56.82,
+      "moonLon": 12.5,
+      "elongation": 315.67,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-13",
@@ -3156,7 +3808,11 @@
       "rahuStart": "08:26",
       "rahuEnd": "10:06",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 57.78,
+      "moonLon": 27.3,
+      "elongation": 329.52,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-14",
@@ -3179,7 +3835,11 @@
       ],
       "festivalDescs": [
         "Raja Day 1 — Mithuna Sankranti eve"
-      ]
+      ],
+      "sunLon": 58.73,
+      "moonLon": 42.43,
+      "elongation": 343.69,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-15",
@@ -3204,7 +3864,11 @@
       "festivalDescs": [
         "Sun enters Mithuna — Raja festival begins",
         "Mithuna Sankranti — Raja Day 2"
-      ]
+      ],
+      "sunLon": 59.69,
+      "moonLon": 57.72,
+      "elongation": 358.03,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-16",
@@ -3229,7 +3893,11 @@
       "festivalDescs": [
         "Lord Jagannath's chariot festival — Ashadha Shukla Dwitiya",
         "Raja Day 3 — Bhu Daha"
-      ]
+      ],
+      "sunLon": 60.65,
+      "moonLon": 73.0,
+      "elongation": 12.35,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-17",
@@ -3252,7 +3920,11 @@
       ],
       "festivalDescs": [
         "Raja Day 4 — Vasumati bath"
-      ]
+      ],
+      "sunLon": 61.6,
+      "moonLon": 88.07,
+      "elongation": 26.47,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-18",
@@ -3271,7 +3943,11 @@
       "rahuStart": "13:27",
       "rahuEnd": "15:08",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 62.56,
+      "moonLon": 102.8,
+      "elongation": 40.24,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-19",
@@ -3290,7 +3966,11 @@
       "rahuStart": "10:07",
       "rahuEnd": "11:48",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 63.51,
+      "moonLon": 117.09,
+      "elongation": 53.57,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-20",
@@ -3309,7 +3989,11 @@
       "rahuStart": "08:27",
       "rahuEnd": "10:08",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 64.47,
+      "moonLon": 130.9,
+      "elongation": 66.44,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-21",
@@ -3328,7 +4012,11 @@
       "rahuStart": "16:48",
       "rahuEnd": "18:29",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 65.42,
+      "moonLon": 144.27,
+      "elongation": 78.84,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-22",
@@ -3347,7 +4035,11 @@
       "rahuStart": "06:48",
       "rahuEnd": "08:28",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 66.38,
+      "moonLon": 157.22,
+      "elongation": 90.84,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-23",
@@ -3366,7 +4058,11 @@
       "rahuStart": "15:09",
       "rahuEnd": "16:49",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 67.33,
+      "moonLon": 169.83,
+      "elongation": 102.5,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-24",
@@ -3385,7 +4081,11 @@
       "rahuStart": "11:49",
       "rahuEnd": "13:29",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 68.28,
+      "moonLon": 182.17,
+      "elongation": 113.89,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-25",
@@ -3404,7 +4104,11 @@
       "rahuStart": "13:29",
       "rahuEnd": "15:09",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 69.24,
+      "moonLon": 194.31,
+      "elongation": 125.07,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-26",
@@ -3423,7 +4127,11 @@
       "rahuStart": "10:09",
       "rahuEnd": "11:49",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 70.19,
+      "moonLon": 206.32,
+      "elongation": 136.12,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-27",
@@ -3442,7 +4150,11 @@
       "rahuStart": "08:29",
       "rahuEnd": "10:09",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 71.15,
+      "moonLon": 218.24,
+      "elongation": 147.09,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-28",
@@ -3461,7 +4173,11 @@
       "rahuStart": "16:50",
       "rahuEnd": "18:30",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 72.1,
+      "moonLon": 230.11,
+      "elongation": 158.01,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-29",
@@ -3480,7 +4196,11 @@
       "rahuStart": "06:49",
       "rahuEnd": "08:29",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 73.05,
+      "moonLon": 241.99,
+      "elongation": 168.93,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-06-30",
@@ -3499,7 +4219,11 @@
       "rahuStart": "15:10",
       "rahuEnd": "16:50",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 74.01,
+      "moonLon": 253.88,
+      "elongation": 179.87,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-01",
@@ -3518,7 +4242,11 @@
       "rahuStart": "11:50",
       "rahuEnd": "13:30",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 74.96,
+      "moonLon": 265.83,
+      "elongation": 190.86,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-02",
@@ -3537,7 +4265,11 @@
       "rahuStart": "13:30",
       "rahuEnd": "15:10",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 75.91,
+      "moonLon": 277.85,
+      "elongation": 201.93,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-03",
@@ -3556,7 +4288,11 @@
       "rahuStart": "10:10",
       "rahuEnd": "11:50",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 76.87,
+      "moonLon": 289.98,
+      "elongation": 213.11,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-04",
@@ -3575,7 +4311,11 @@
       "rahuStart": "08:31",
       "rahuEnd": "10:11",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 77.82,
+      "moonLon": 302.25,
+      "elongation": 224.43,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-05",
@@ -3594,7 +4334,11 @@
       "rahuStart": "16:50",
       "rahuEnd": "18:30",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 78.77,
+      "moonLon": 314.72,
+      "elongation": 235.95,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-06",
@@ -3613,7 +4357,11 @@
       "rahuStart": "06:51",
       "rahuEnd": "08:31",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 79.73,
+      "moonLon": 327.44,
+      "elongation": 247.72,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-07",
@@ -3632,7 +4380,11 @@
       "rahuStart": "15:11",
       "rahuEnd": "16:50",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 80.68,
+      "moonLon": 340.47,
+      "elongation": 259.79,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-08",
@@ -3651,7 +4403,11 @@
       "rahuStart": "11:51",
       "rahuEnd": "13:31",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 81.63,
+      "moonLon": 353.85,
+      "elongation": 272.22,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-09",
@@ -3670,7 +4426,11 @@
       "rahuStart": "13:31",
       "rahuEnd": "15:11",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 82.59,
+      "moonLon": 7.64,
+      "elongation": 285.05,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-10",
@@ -3689,7 +4449,11 @@
       "rahuStart": "10:12",
       "rahuEnd": "11:52",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 83.54,
+      "moonLon": 21.83,
+      "elongation": 298.29,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-11",
@@ -3708,7 +4472,11 @@
       "rahuStart": "08:33",
       "rahuEnd": "10:12",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 84.5,
+      "moonLon": 36.41,
+      "elongation": 311.91,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-12",
@@ -3727,7 +4495,11 @@
       "rahuStart": "16:50",
       "rahuEnd": "18:30",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 85.45,
+      "moonLon": 51.3,
+      "elongation": 325.85,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-13",
@@ -3746,7 +4518,11 @@
       "rahuStart": "06:54",
       "rahuEnd": "08:33",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 86.41,
+      "moonLon": 66.38,
+      "elongation": 339.98,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-14",
@@ -3765,7 +4541,11 @@
       "rahuStart": "15:11",
       "rahuEnd": "16:50",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 87.36,
+      "moonLon": 81.5,
+      "elongation": 354.14,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-15",
@@ -3784,7 +4564,11 @@
       "rahuStart": "11:52",
       "rahuEnd": "13:31",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 88.31,
+      "moonLon": 96.5,
+      "elongation": 8.18,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-16",
@@ -3807,7 +4591,11 @@
       ],
       "festivalDescs": [
         "Sun enters Karka"
-      ]
+      ],
+      "sunLon": 89.27,
+      "moonLon": 111.22,
+      "elongation": 21.95,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-17",
@@ -3826,7 +4614,11 @@
       "rahuStart": "10:13",
       "rahuEnd": "11:52",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 90.22,
+      "moonLon": 125.56,
+      "elongation": 35.34,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-18",
@@ -3845,7 +4637,11 @@
       "rahuStart": "08:34",
       "rahuEnd": "10:13",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 91.18,
+      "moonLon": 139.47,
+      "elongation": 48.29,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-19",
@@ -3864,7 +4660,11 @@
       "rahuStart": "16:49",
       "rahuEnd": "18:28",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 92.13,
+      "moonLon": 152.93,
+      "elongation": 60.8,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-20",
@@ -3883,7 +4683,11 @@
       "rahuStart": "06:56",
       "rahuEnd": "08:35",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 93.09,
+      "moonLon": 165.97,
+      "elongation": 72.88,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-21",
@@ -3902,7 +4706,11 @@
       "rahuStart": "15:10",
       "rahuEnd": "16:49",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 94.04,
+      "moonLon": 178.64,
+      "elongation": 84.6,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-22",
@@ -3921,7 +4729,11 @@
       "rahuStart": "11:53",
       "rahuEnd": "13:31",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 95.0,
+      "moonLon": 191.0,
+      "elongation": 96.01,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-23",
@@ -3940,7 +4752,11 @@
       "rahuStart": "13:31",
       "rahuEnd": "15:10",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 95.95,
+      "moonLon": 203.14,
+      "elongation": 107.19,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-24",
@@ -3959,7 +4775,11 @@
       "rahuStart": "10:14",
       "rahuEnd": "11:53",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 96.91,
+      "moonLon": 215.12,
+      "elongation": 118.22,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-25",
@@ -3978,7 +4798,11 @@
       "rahuStart": "08:36",
       "rahuEnd": "10:14",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 97.86,
+      "moonLon": 227.02,
+      "elongation": 129.15,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-26",
@@ -3997,7 +4821,11 @@
       "rahuStart": "16:48",
       "rahuEnd": "18:26",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 98.82,
+      "moonLon": 238.88,
+      "elongation": 140.07,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-27",
@@ -4016,7 +4844,11 @@
       "rahuStart": "06:58",
       "rahuEnd": "08:36",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 99.77,
+      "moonLon": 250.78,
+      "elongation": 151.0,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-28",
@@ -4035,7 +4867,11 @@
       "rahuStart": "15:09",
       "rahuEnd": "16:47",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 100.73,
+      "moonLon": 262.74,
+      "elongation": 162.01,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-29",
@@ -4054,7 +4890,11 @@
       "rahuStart": "11:53",
       "rahuEnd": "13:31",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 101.68,
+      "moonLon": 274.8,
+      "elongation": 173.11,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-30",
@@ -4073,7 +4913,11 @@
       "rahuStart": "13:31",
       "rahuEnd": "15:09",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 102.64,
+      "moonLon": 286.99,
+      "elongation": 184.35,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-07-31",
@@ -4092,7 +4936,11 @@
       "rahuStart": "10:15",
       "rahuEnd": "11:53",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 103.6,
+      "moonLon": 299.34,
+      "elongation": 195.74,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-01",
@@ -4111,7 +4959,11 @@
       "rahuStart": "08:37",
       "rahuEnd": "10:15",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 104.55,
+      "moonLon": 311.86,
+      "elongation": 207.31,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-02",
@@ -4130,7 +4982,11 @@
       "rahuStart": "16:45",
       "rahuEnd": "18:23",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 105.51,
+      "moonLon": 324.59,
+      "elongation": 219.08,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-03",
@@ -4149,7 +5005,11 @@
       "rahuStart": "07:00",
       "rahuEnd": "08:37",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 106.47,
+      "moonLon": 337.54,
+      "elongation": 231.08,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-04",
@@ -4168,7 +5028,11 @@
       "rahuStart": "15:07",
       "rahuEnd": "16:45",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 107.42,
+      "moonLon": 350.75,
+      "elongation": 243.33,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-05",
@@ -4187,7 +5051,11 @@
       "rahuStart": "11:52",
       "rahuEnd": "13:29",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 108.38,
+      "moonLon": 4.23,
+      "elongation": 255.85,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-06",
@@ -4206,7 +5074,11 @@
       "rahuStart": "13:29",
       "rahuEnd": "15:06",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 109.34,
+      "moonLon": 18.01,
+      "elongation": 268.67,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-07",
@@ -4225,7 +5097,11 @@
       "rahuStart": "10:15",
       "rahuEnd": "11:52",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 110.3,
+      "moonLon": 32.07,
+      "elongation": 281.77,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-08",
@@ -4244,7 +5120,11 @@
       "rahuStart": "08:38",
       "rahuEnd": "10:15",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 111.26,
+      "moonLon": 46.41,
+      "elongation": 295.15,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-09",
@@ -4263,7 +5143,11 @@
       "rahuStart": "16:42",
       "rahuEnd": "18:19",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 112.21,
+      "moonLon": 60.97,
+      "elongation": 308.76,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-10",
@@ -4282,7 +5166,11 @@
       "rahuStart": "07:01",
       "rahuEnd": "08:38",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 113.17,
+      "moonLon": 75.68,
+      "elongation": 322.5,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-11",
@@ -4301,7 +5189,11 @@
       "rahuStart": "15:05",
       "rahuEnd": "16:41",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 114.13,
+      "moonLon": 90.43,
+      "elongation": 336.29,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-12",
@@ -4320,7 +5212,11 @@
       "rahuStart": "11:51",
       "rahuEnd": "13:28",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 115.09,
+      "moonLon": 105.1,
+      "elongation": 350.01,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-13",
@@ -4339,7 +5235,11 @@
       "rahuStart": "13:27",
       "rahuEnd": "15:04",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 116.05,
+      "moonLon": 119.59,
+      "elongation": 3.54,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-14",
@@ -4358,7 +5258,11 @@
       "rahuStart": "10:15",
       "rahuEnd": "11:51",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 117.01,
+      "moonLon": 133.8,
+      "elongation": 16.78,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-15",
@@ -4377,7 +5281,11 @@
       "rahuStart": "08:38",
       "rahuEnd": "10:14",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 117.98,
+      "moonLon": 147.65,
+      "elongation": 29.67,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-16",
@@ -4396,7 +5304,11 @@
       "rahuStart": "16:39",
       "rahuEnd": "18:15",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 118.94,
+      "moonLon": 161.12,
+      "elongation": 42.18,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-17",
@@ -4419,7 +5331,11 @@
       ],
       "festivalDescs": [
         "Sun enters Simha"
-      ]
+      ],
+      "sunLon": 119.9,
+      "moonLon": 174.2,
+      "elongation": 54.3,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-18",
@@ -4438,7 +5354,11 @@
       "rahuStart": "15:02",
       "rahuEnd": "16:37",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 120.86,
+      "moonLon": 186.91,
+      "elongation": 66.05,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-19",
@@ -4457,7 +5377,11 @@
       "rahuStart": "11:50",
       "rahuEnd": "13:25",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 121.82,
+      "moonLon": 199.32,
+      "elongation": 77.5,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-20",
@@ -4476,7 +5400,11 @@
       "rahuStart": "13:25",
       "rahuEnd": "15:01",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 122.79,
+      "moonLon": 211.49,
+      "elongation": 88.7,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-21",
@@ -4495,7 +5423,11 @@
       "rahuStart": "10:14",
       "rahuEnd": "11:49",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 123.75,
+      "moonLon": 223.48,
+      "elongation": 99.73,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-22",
@@ -4514,7 +5446,11 @@
       "rahuStart": "08:39",
       "rahuEnd": "10:14",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 124.71,
+      "moonLon": 235.38,
+      "elongation": 110.67,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-23",
@@ -4533,7 +5469,11 @@
       "rahuStart": "16:34",
       "rahuEnd": "18:09",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 125.67,
+      "moonLon": 247.25,
+      "elongation": 121.58,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-24",
@@ -4552,7 +5492,11 @@
       "rahuStart": "07:04",
       "rahuEnd": "08:39",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 126.64,
+      "moonLon": 259.17,
+      "elongation": 132.53,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-25",
@@ -4571,7 +5515,11 @@
       "rahuStart": "14:58",
       "rahuEnd": "16:33",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 127.6,
+      "moonLon": 271.2,
+      "elongation": 143.6,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-26",
@@ -4590,7 +5538,11 @@
       "rahuStart": "11:48",
       "rahuEnd": "13:23",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 128.57,
+      "moonLon": 283.39,
+      "elongation": 154.82,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-27",
@@ -4609,7 +5561,11 @@
       "rahuStart": "13:22",
       "rahuEnd": "14:57",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 129.53,
+      "moonLon": 295.77,
+      "elongation": 166.24,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-28",
@@ -4628,7 +5584,11 @@
       "rahuStart": "10:13",
       "rahuEnd": "11:47",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 130.5,
+      "moonLon": 308.38,
+      "elongation": 177.88,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-29",
@@ -4647,7 +5607,11 @@
       "rahuStart": "08:38",
       "rahuEnd": "10:13",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 131.46,
+      "moonLon": 321.23,
+      "elongation": 189.77,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-30",
@@ -4666,7 +5630,11 @@
       "rahuStart": "16:29",
       "rahuEnd": "18:04",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 132.43,
+      "moonLon": 334.32,
+      "elongation": 201.9,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-08-31",
@@ -4685,7 +5653,11 @@
       "rahuStart": "07:04",
       "rahuEnd": "08:38",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 133.39,
+      "moonLon": 347.65,
+      "elongation": 214.26,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-01",
@@ -4704,7 +5676,11 @@
       "rahuStart": "14:54",
       "rahuEnd": "16:28",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 134.36,
+      "moonLon": 1.2,
+      "elongation": 226.84,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-02",
@@ -4723,7 +5699,11 @@
       "rahuStart": "11:46",
       "rahuEnd": "13:20",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 135.33,
+      "moonLon": 14.96,
+      "elongation": 239.63,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-03",
@@ -4742,7 +5722,11 @@
       "rahuStart": "13:19",
       "rahuEnd": "14:53",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 136.3,
+      "moonLon": 28.88,
+      "elongation": 252.59,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-04",
@@ -4761,7 +5745,11 @@
       "rahuStart": "10:12",
       "rahuEnd": "11:45",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 137.27,
+      "moonLon": 42.96,
+      "elongation": 265.7,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-05",
@@ -4780,7 +5768,11 @@
       "rahuStart": "08:38",
       "rahuEnd": "10:12",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 138.24,
+      "moonLon": 57.16,
+      "elongation": 278.93,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-06",
@@ -4799,7 +5791,11 @@
       "rahuStart": "16:24",
       "rahuEnd": "17:57",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 139.2,
+      "moonLon": 71.44,
+      "elongation": 292.24,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-07",
@@ -4818,7 +5814,11 @@
       "rahuStart": "07:05",
       "rahuEnd": "08:38",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 140.18,
+      "moonLon": 85.76,
+      "elongation": 305.59,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-08",
@@ -4837,7 +5837,11 @@
       "rahuStart": "14:50",
       "rahuEnd": "16:23",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 141.15,
+      "moonLon": 100.06,
+      "elongation": 318.92,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-09",
@@ -4856,7 +5860,11 @@
       "rahuStart": "11:43",
       "rahuEnd": "13:16",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 142.12,
+      "moonLon": 114.29,
+      "elongation": 332.17,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-10",
@@ -4875,7 +5883,11 @@
       "rahuStart": "13:16",
       "rahuEnd": "14:48",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 143.09,
+      "moonLon": 128.37,
+      "elongation": 345.29,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-11",
@@ -4894,7 +5906,11 @@
       "rahuStart": "10:10",
       "rahuEnd": "11:43",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 144.06,
+      "moonLon": 142.26,
+      "elongation": 358.19,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-12",
@@ -4913,7 +5929,11 @@
       "rahuStart": "08:38",
       "rahuEnd": "10:10",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 145.03,
+      "moonLon": 155.88,
+      "elongation": 10.84,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-13",
@@ -4932,7 +5952,11 @@
       "rahuStart": "16:19",
       "rahuEnd": "17:51",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 146.01,
+      "moonLon": 169.2,
+      "elongation": 23.19,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-14",
@@ -4951,7 +5975,11 @@
       "rahuStart": "07:06",
       "rahuEnd": "08:38",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 146.98,
+      "moonLon": 182.21,
+      "elongation": 35.23,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-15",
@@ -4970,7 +5998,11 @@
       "rahuStart": "14:45",
       "rahuEnd": "16:17",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 147.96,
+      "moonLon": 194.91,
+      "elongation": 46.95,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-16",
@@ -4989,7 +6021,11 @@
       "rahuStart": "11:41",
       "rahuEnd": "13:13",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 148.93,
+      "moonLon": 207.32,
+      "elongation": 58.39,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-17",
@@ -5012,7 +6048,11 @@
       ],
       "festivalDescs": [
         "Sun enters Kanya"
-      ]
+      ],
+      "sunLon": 149.91,
+      "moonLon": 219.49,
+      "elongation": 69.59,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-18",
@@ -5031,7 +6071,11 @@
       "rahuStart": "10:09",
       "rahuEnd": "11:40",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 150.88,
+      "moonLon": 231.49,
+      "elongation": 80.61,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-19",
@@ -5050,7 +6094,11 @@
       "rahuStart": "08:37",
       "rahuEnd": "10:09",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 151.86,
+      "moonLon": 243.38,
+      "elongation": 91.52,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-20",
@@ -5069,7 +6117,11 @@
       "rahuStart": "16:13",
       "rahuEnd": "17:44",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 152.83,
+      "moonLon": 255.25,
+      "elongation": 102.41,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-21",
@@ -5088,7 +6140,11 @@
       "rahuStart": "07:06",
       "rahuEnd": "08:37",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 153.81,
+      "moonLon": 267.17,
+      "elongation": 113.36,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-22",
@@ -5107,7 +6163,11 @@
       "rahuStart": "14:41",
       "rahuEnd": "16:12",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 154.79,
+      "moonLon": 279.23,
+      "elongation": 124.44,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-23",
@@ -5126,7 +6186,11 @@
       "rahuStart": "11:39",
       "rahuEnd": "13:09",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 155.77,
+      "moonLon": 291.49,
+      "elongation": 135.73,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-24",
@@ -5145,7 +6209,11 @@
       "rahuStart": "13:09",
       "rahuEnd": "14:39",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 156.75,
+      "moonLon": 304.03,
+      "elongation": 147.28,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-25",
@@ -5164,7 +6232,11 @@
       "rahuStart": "10:07",
       "rahuEnd": "11:38",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 157.73,
+      "moonLon": 316.86,
+      "elongation": 159.14,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-26",
@@ -5187,7 +6259,11 @@
       ],
       "festivalDescs": [
         "Kumar Purnima — Ashvina Purnima, women's moon worship"
-      ]
+      ],
+      "sunLon": 158.7,
+      "moonLon": 330.03,
+      "elongation": 171.33,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-27",
@@ -5206,7 +6282,11 @@
       "rahuStart": "16:08",
       "rahuEnd": "17:38",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 159.68,
+      "moonLon": 343.52,
+      "elongation": 183.83,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-28",
@@ -5225,7 +6305,11 @@
       "rahuStart": "07:07",
       "rahuEnd": "08:37",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 160.67,
+      "moonLon": 357.3,
+      "elongation": 196.63,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-29",
@@ -5244,7 +6328,11 @@
       "rahuStart": "14:36",
       "rahuEnd": "16:06",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 161.65,
+      "moonLon": 11.31,
+      "elongation": 209.66,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-09-30",
@@ -5263,7 +6351,11 @@
       "rahuStart": "11:36",
       "rahuEnd": "13:06",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 162.63,
+      "moonLon": 25.49,
+      "elongation": 222.86,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-01",
@@ -5282,7 +6374,11 @@
       "rahuStart": "13:05",
       "rahuEnd": "14:35",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 163.61,
+      "moonLon": 39.75,
+      "elongation": 236.14,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-02",
@@ -5301,7 +6397,11 @@
       "rahuStart": "10:06",
       "rahuEnd": "11:35",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 164.59,
+      "moonLon": 54.03,
+      "elongation": 249.44,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-03",
@@ -5320,7 +6420,11 @@
       "rahuStart": "08:36",
       "rahuEnd": "10:06",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 165.58,
+      "moonLon": 68.28,
+      "elongation": 262.7,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-04",
@@ -5339,7 +6443,11 @@
       "rahuStart": "16:02",
       "rahuEnd": "17:32",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 166.56,
+      "moonLon": 82.44,
+      "elongation": 275.88,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-05",
@@ -5358,7 +6466,11 @@
       "rahuStart": "07:07",
       "rahuEnd": "08:36",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 167.55,
+      "moonLon": 96.49,
+      "elongation": 288.94,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-06",
@@ -5377,7 +6489,11 @@
       "rahuStart": "14:32",
       "rahuEnd": "16:01",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 168.53,
+      "moonLon": 110.42,
+      "elongation": 301.89,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-07",
@@ -5396,7 +6512,11 @@
       "rahuStart": "11:34",
       "rahuEnd": "13:03",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 169.52,
+      "moonLon": 124.21,
+      "elongation": 314.69,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-08",
@@ -5415,7 +6535,11 @@
       "rahuStart": "13:02",
       "rahuEnd": "14:31",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 170.51,
+      "moonLon": 137.85,
+      "elongation": 327.34,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-09",
@@ -5434,7 +6558,11 @@
       "rahuStart": "10:05",
       "rahuEnd": "11:33",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 171.49,
+      "moonLon": 151.32,
+      "elongation": 339.82,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-10",
@@ -5453,7 +6581,11 @@
       "rahuStart": "08:36",
       "rahuEnd": "10:05",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 172.48,
+      "moonLon": 164.58,
+      "elongation": 352.1,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-11",
@@ -5472,7 +6604,11 @@
       "rahuStart": "15:57",
       "rahuEnd": "17:26",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 173.47,
+      "moonLon": 177.64,
+      "elongation": 4.16,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-12",
@@ -5491,7 +6627,11 @@
       "rahuStart": "07:08",
       "rahuEnd": "08:36",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 174.46,
+      "moonLon": 190.45,
+      "elongation": 15.99,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-13",
@@ -5510,7 +6650,11 @@
       "rahuStart": "14:28",
       "rahuEnd": "15:56",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 175.45,
+      "moonLon": 203.02,
+      "elongation": 27.57,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-14",
@@ -5529,7 +6673,11 @@
       "rahuStart": "11:32",
       "rahuEnd": "13:00",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 176.44,
+      "moonLon": 215.36,
+      "elongation": 38.92,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-15",
@@ -5548,7 +6696,11 @@
       "rahuStart": "13:00",
       "rahuEnd": "14:27",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 177.43,
+      "moonLon": 227.49,
+      "elongation": 50.06,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-16",
@@ -5567,7 +6719,11 @@
       "rahuStart": "10:04",
       "rahuEnd": "11:32",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 178.42,
+      "moonLon": 239.46,
+      "elongation": 61.03,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-17",
@@ -5590,7 +6746,11 @@
       ],
       "festivalDescs": [
         "Sun enters Tula"
-      ]
+      ],
+      "sunLon": 179.41,
+      "moonLon": 251.32,
+      "elongation": 71.91,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-18",
@@ -5609,7 +6769,11 @@
       "rahuStart": "15:53",
       "rahuEnd": "17:20",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 180.41,
+      "moonLon": 263.16,
+      "elongation": 82.75,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-19",
@@ -5628,7 +6792,11 @@
       "rahuStart": "07:10",
       "rahuEnd": "08:37",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 181.4,
+      "moonLon": 275.05,
+      "elongation": 93.65,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-20",
@@ -5647,7 +6815,11 @@
       "rahuStart": "14:25",
       "rahuEnd": "15:52",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 182.39,
+      "moonLon": 287.08,
+      "elongation": 104.68,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-21",
@@ -5666,7 +6838,11 @@
       "rahuStart": "11:31",
       "rahuEnd": "12:58",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 183.39,
+      "moonLon": 299.34,
+      "elongation": 115.95,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-22",
@@ -5685,7 +6861,11 @@
       "rahuStart": "12:57",
       "rahuEnd": "14:24",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 184.38,
+      "moonLon": 311.91,
+      "elongation": 127.53,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-23",
@@ -5704,7 +6884,11 @@
       "rahuStart": "10:04",
       "rahuEnd": "11:30",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 185.38,
+      "moonLon": 324.86,
+      "elongation": 139.48,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-24",
@@ -5723,7 +6907,11 @@
       "rahuStart": "08:37",
       "rahuEnd": "10:04",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 186.37,
+      "moonLon": 338.22,
+      "elongation": 151.85,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-25",
@@ -5742,7 +6930,11 @@
       "rahuStart": "15:49",
       "rahuEnd": "17:15",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 187.37,
+      "moonLon": 352.01,
+      "elongation": 164.64,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-26",
@@ -5765,7 +6957,11 @@
       ],
       "festivalDescs": [
         "Kartika Purnima — Boita Bandana"
-      ]
+      ],
+      "sunLon": 188.36,
+      "moonLon": 6.18,
+      "elongation": 177.81,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-27",
@@ -5784,7 +6980,11 @@
       "rahuStart": "14:22",
       "rahuEnd": "15:48",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 189.36,
+      "moonLon": 20.65,
+      "elongation": 191.28,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-28",
@@ -5803,7 +7003,11 @@
       "rahuStart": "11:30",
       "rahuEnd": "12:56",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 190.36,
+      "moonLon": 35.3,
+      "elongation": 204.95,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-29",
@@ -5822,7 +7026,11 @@
       "rahuStart": "12:56",
       "rahuEnd": "14:21",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 191.36,
+      "moonLon": 50.02,
+      "elongation": 218.66,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-30",
@@ -5841,7 +7049,11 @@
       "rahuStart": "10:04",
       "rahuEnd": "11:30",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 192.36,
+      "moonLon": 64.67,
+      "elongation": 232.32,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-10-31",
@@ -5860,7 +7072,11 @@
       "rahuStart": "08:39",
       "rahuEnd": "10:04",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 193.36,
+      "moonLon": 79.16,
+      "elongation": 245.8,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-01",
@@ -5879,7 +7095,11 @@
       "rahuStart": "15:46",
       "rahuEnd": "17:11",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 194.36,
+      "moonLon": 93.42,
+      "elongation": 259.06,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-02",
@@ -5898,7 +7118,11 @@
       "rahuStart": "07:14",
       "rahuEnd": "08:39",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 195.36,
+      "moonLon": 107.42,
+      "elongation": 272.06,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-03",
@@ -5917,7 +7141,11 @@
       "rahuStart": "14:20",
       "rahuEnd": "15:45",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 196.36,
+      "moonLon": 121.16,
+      "elongation": 284.81,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-04",
@@ -5936,7 +7164,11 @@
       "rahuStart": "11:30",
       "rahuEnd": "12:55",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 197.36,
+      "moonLon": 134.67,
+      "elongation": 297.31,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-05",
@@ -5955,7 +7187,11 @@
       "rahuStart": "12:55",
       "rahuEnd": "14:19",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 198.36,
+      "moonLon": 147.95,
+      "elongation": 309.59,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-06",
@@ -5974,7 +7210,11 @@
       "rahuStart": "10:05",
       "rahuEnd": "11:30",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 199.36,
+      "moonLon": 161.04,
+      "elongation": 321.67,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-07",
@@ -5993,7 +7233,11 @@
       "rahuStart": "08:40",
       "rahuEnd": "10:05",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 200.37,
+      "moonLon": 173.94,
+      "elongation": 333.57,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-08",
@@ -6016,7 +7260,11 @@
       ],
       "festivalDescs": [
         "Kartika Krishna Chaturdashi — Diwali eve"
-      ]
+      ],
+      "sunLon": 201.37,
+      "moonLon": 186.66,
+      "elongation": 345.29,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-09",
@@ -6039,7 +7287,11 @@
       ],
       "festivalDescs": [
         "Festival of lights — Kartika Amavasya"
-      ]
+      ],
+      "sunLon": 202.38,
+      "moonLon": 199.21,
+      "elongation": 356.83,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-10",
@@ -6062,7 +7314,11 @@
       ],
       "festivalDescs": [
         "Kartika Shukla Prathama"
-      ]
+      ],
+      "sunLon": 203.38,
+      "moonLon": 211.58,
+      "elongation": 8.19,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-11",
@@ -6085,7 +7341,11 @@
       ],
       "festivalDescs": [
         "Kartika Shukla Dwitiya — siblings' bond"
-      ]
+      ],
+      "sunLon": 204.39,
+      "moonLon": 223.77,
+      "elongation": 19.38,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-12",
@@ -6104,7 +7364,11 @@
       "rahuStart": "12:54",
       "rahuEnd": "14:18",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 205.39,
+      "moonLon": 235.81,
+      "elongation": 30.42,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-13",
@@ -6123,7 +7387,11 @@
       "rahuStart": "10:06",
       "rahuEnd": "11:30",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 206.4,
+      "moonLon": 247.72,
+      "elongation": 41.32,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-14",
@@ -6142,7 +7410,11 @@
       "rahuStart": "08:43",
       "rahuEnd": "10:07",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 207.41,
+      "moonLon": 259.55,
+      "elongation": 52.14,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-15",
@@ -6161,7 +7433,11 @@
       "rahuStart": "15:42",
       "rahuEnd": "17:06",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 208.41,
+      "moonLon": 271.35,
+      "elongation": 62.93,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-16",
@@ -6184,7 +7460,11 @@
       ],
       "festivalDescs": [
         "Sun enters Vrischika"
-      ]
+      ],
+      "sunLon": 209.42,
+      "moonLon": 283.2,
+      "elongation": 73.77,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-17",
@@ -6203,7 +7483,11 @@
       "rahuStart": "14:18",
       "rahuEnd": "15:42",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 210.43,
+      "moonLon": 295.17,
+      "elongation": 84.74,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-18",
@@ -6222,7 +7506,11 @@
       "rahuStart": "11:31",
       "rahuEnd": "12:55",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 211.44,
+      "moonLon": 307.38,
+      "elongation": 95.94,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-19",
@@ -6241,7 +7529,11 @@
       "rahuStart": "12:55",
       "rahuEnd": "14:18",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 212.45,
+      "moonLon": 319.89,
+      "elongation": 107.44,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-20",
@@ -6260,7 +7552,11 @@
       "rahuStart": "10:08",
       "rahuEnd": "11:32",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 213.46,
+      "moonLon": 332.81,
+      "elongation": 119.35,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-21",
@@ -6279,7 +7575,11 @@
       "rahuStart": "08:45",
       "rahuEnd": "10:09",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 214.47,
+      "moonLon": 346.18,
+      "elongation": 131.72,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-22",
@@ -6298,7 +7598,11 @@
       "rahuStart": "15:42",
       "rahuEnd": "17:05",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 215.48,
+      "moonLon": 0.05,
+      "elongation": 144.57,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-23",
@@ -6317,7 +7621,11 @@
       "rahuStart": "07:23",
       "rahuEnd": "08:46",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 216.49,
+      "moonLon": 14.39,
+      "elongation": 157.91,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-24",
@@ -6336,7 +7644,11 @@
       "rahuStart": "14:19",
       "rahuEnd": "15:42",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 217.5,
+      "moonLon": 29.14,
+      "elongation": 171.64,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-25",
@@ -6355,7 +7667,11 @@
       "rahuStart": "11:33",
       "rahuEnd": "12:56",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 218.51,
+      "moonLon": 44.15,
+      "elongation": 185.65,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-26",
@@ -6374,7 +7690,11 @@
       "rahuStart": "12:56",
       "rahuEnd": "14:19",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 219.52,
+      "moonLon": 59.28,
+      "elongation": 199.76,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-27",
@@ -6393,7 +7713,11 @@
       "rahuStart": "10:11",
       "rahuEnd": "11:34",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 220.53,
+      "moonLon": 74.34,
+      "elongation": 213.81,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-28",
@@ -6412,7 +7736,11 @@
       "rahuStart": "08:49",
       "rahuEnd": "10:11",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 221.54,
+      "moonLon": 89.2,
+      "elongation": 227.65,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-29",
@@ -6431,7 +7759,11 @@
       "rahuStart": "15:42",
       "rahuEnd": "17:05",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 222.55,
+      "moonLon": 103.73,
+      "elongation": 241.18,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-11-30",
@@ -6450,7 +7782,11 @@
       "rahuStart": "07:27",
       "rahuEnd": "08:50",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 223.57,
+      "moonLon": 117.9,
+      "elongation": 254.33,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-01",
@@ -6469,7 +7805,11 @@
       "rahuStart": "14:20",
       "rahuEnd": "15:42",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 224.58,
+      "moonLon": 131.68,
+      "elongation": 267.1,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-02",
@@ -6488,7 +7828,11 @@
       "rahuStart": "11:35",
       "rahuEnd": "12:58",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 225.6,
+      "moonLon": 145.11,
+      "elongation": 279.52,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-03",
@@ -6507,7 +7851,11 @@
       "rahuStart": "12:58",
       "rahuEnd": "14:20",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 226.61,
+      "moonLon": 158.23,
+      "elongation": 291.62,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-04",
@@ -6526,7 +7874,11 @@
       "rahuStart": "10:14",
       "rahuEnd": "11:36",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 227.62,
+      "moonLon": 171.08,
+      "elongation": 303.46,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-05",
@@ -6545,7 +7897,11 @@
       "rahuStart": "08:52",
       "rahuEnd": "10:14",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 228.64,
+      "moonLon": 183.71,
+      "elongation": 315.07,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-06",
@@ -6564,7 +7920,11 @@
       "rahuStart": "15:43",
       "rahuEnd": "17:06",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 229.65,
+      "moonLon": 196.15,
+      "elongation": 326.5,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-07",
@@ -6583,7 +7943,11 @@
       "rahuStart": "07:31",
       "rahuEnd": "08:53",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 230.67,
+      "moonLon": 208.44,
+      "elongation": 337.77,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-08",
@@ -6602,7 +7966,11 @@
       "rahuStart": "14:22",
       "rahuEnd": "15:44",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 231.69,
+      "moonLon": 220.59,
+      "elongation": 348.9,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-09",
@@ -6621,7 +7989,11 @@
       "rahuStart": "11:38",
       "rahuEnd": "13:00",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 232.7,
+      "moonLon": 232.62,
+      "elongation": 359.92,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-10",
@@ -6640,7 +8012,11 @@
       "rahuStart": "13:01",
       "rahuEnd": "14:23",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 233.72,
+      "moonLon": 244.55,
+      "elongation": 10.83,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-11",
@@ -6659,7 +8035,11 @@
       "rahuStart": "10:17",
       "rahuEnd": "11:39",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 234.74,
+      "moonLon": 256.4,
+      "elongation": 21.67,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-12",
@@ -6678,7 +8058,11 @@
       "rahuStart": "08:56",
       "rahuEnd": "10:18",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 235.75,
+      "moonLon": 268.21,
+      "elongation": 32.45,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-13",
@@ -6697,7 +8081,11 @@
       "rahuStart": "15:46",
       "rahuEnd": "17:08",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 236.77,
+      "moonLon": 280.01,
+      "elongation": 43.24,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-14",
@@ -6716,7 +8104,11 @@
       "rahuStart": "07:35",
       "rahuEnd": "08:57",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 237.79,
+      "moonLon": 291.86,
+      "elongation": 54.07,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-15",
@@ -6735,7 +8127,11 @@
       "rahuStart": "14:25",
       "rahuEnd": "15:47",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 238.81,
+      "moonLon": 303.83,
+      "elongation": 65.02,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-16",
@@ -6758,7 +8154,11 @@
       ],
       "festivalDescs": [
         "Sun enters Dhanu"
-      ]
+      ],
+      "sunLon": 239.82,
+      "moonLon": 315.99,
+      "elongation": 76.17,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-17",
@@ -6777,7 +8177,11 @@
       "rahuStart": "13:04",
       "rahuEnd": "14:26",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 240.84,
+      "moonLon": 328.44,
+      "elongation": 87.6,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-18",
@@ -6796,7 +8200,11 @@
       "rahuStart": "10:21",
       "rahuEnd": "11:43",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 241.86,
+      "moonLon": 341.26,
+      "elongation": 99.4,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-19",
@@ -6815,7 +8223,11 @@
       "rahuStart": "09:00",
       "rahuEnd": "10:21",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 242.88,
+      "moonLon": 354.51,
+      "elongation": 111.63,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-20",
@@ -6834,7 +8246,11 @@
       "rahuStart": "15:49",
       "rahuEnd": "17:11",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 243.9,
+      "moonLon": 8.26,
+      "elongation": 124.36,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-21",
@@ -6853,7 +8269,11 @@
       "rahuStart": "07:39",
       "rahuEnd": "09:01",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 244.91,
+      "moonLon": 22.51,
+      "elongation": 137.6,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-22",
@@ -6872,7 +8292,11 @@
       "rahuStart": "14:28",
       "rahuEnd": "15:50",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 245.93,
+      "moonLon": 37.22,
+      "elongation": 151.29,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-23",
@@ -6891,7 +8315,11 @@
       "rahuStart": "11:45",
       "rahuEnd": "13:07",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 246.95,
+      "moonLon": 52.3,
+      "elongation": 165.35,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-24",
@@ -6910,7 +8338,11 @@
       "rahuStart": "13:07",
       "rahuEnd": "14:29",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 247.97,
+      "moonLon": 67.58,
+      "elongation": 179.61,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-25",
@@ -6929,7 +8361,11 @@
       "rahuStart": "10:24",
       "rahuEnd": "11:46",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 248.99,
+      "moonLon": 82.89,
+      "elongation": 193.9,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-26",
@@ -6948,7 +8384,11 @@
       "rahuStart": "09:03",
       "rahuEnd": "10:25",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 250.01,
+      "moonLon": 98.04,
+      "elongation": 208.03,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-27",
@@ -6967,7 +8407,11 @@
       "rahuStart": "15:52",
       "rahuEnd": "17:14",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 251.02,
+      "moonLon": 112.88,
+      "elongation": 221.86,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-28",
@@ -6986,7 +8430,11 @@
       "rahuStart": "07:42",
       "rahuEnd": "09:04",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 252.04,
+      "moonLon": 127.33,
+      "elongation": 235.28,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-29",
@@ -7005,7 +8453,11 @@
       "rahuStart": "14:32",
       "rahuEnd": "15:54",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 253.06,
+      "moonLon": 141.33,
+      "elongation": 248.26,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-30",
@@ -7024,7 +8476,11 @@
       "rahuStart": "11:49",
       "rahuEnd": "13:10",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 254.08,
+      "moonLon": 154.88,
+      "elongation": 260.8,
+      "ayanamsa": 24.23
     },
     {
       "date": "2026-12-31",
@@ -7043,7 +8499,11 @@
       "rahuStart": "13:11",
       "rahuEnd": "14:33",
       "festivals": [],
-      "festivalDescs": []
+      "festivalDescs": [],
+      "sunLon": 255.1,
+      "moonLon": 168.04,
+      "elongation": 272.94,
+      "ayanamsa": 24.23
     }
   ]
 }

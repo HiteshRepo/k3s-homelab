@@ -556,6 +556,57 @@ body {
   font-weight: 500;
 }
 
+/* ── Math section ── */
+.detail-math {
+  margin-top: 8px;
+}
+
+.math-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.math-toggle:hover {
+  background: var(--border);
+}
+
+.math-body {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #FFFBF5;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+
+.math-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.math-icon {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  margin-top: 1px;
+}
+
+.math-text strong {
+  color: var(--text-primary);
+}
+
 /* ── Footer ── */
 .app-footer {
   display: flex;
