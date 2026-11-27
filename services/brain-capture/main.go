@@ -11,12 +11,20 @@ import (
 	"time"
 )
 
-var vaultPath string
+var (
+	vaultPath string
+	apiKey    string
+)
 
 func main() {
 	vaultPath = os.Getenv("VAULT_PATH")
 	if vaultPath == "" {
 		vaultPath = "/vault"
+	}
+
+	apiKey = os.Getenv("CAPTURE_API_KEY")
+	if apiKey == "" {
+		fmt.Fprintln(os.Stderr, "CAPTURE_API_KEY not set — all requests will be rejected")
 	}
 
 	port := os.Getenv("PORT")
@@ -25,13 +33,24 @@ func main() {
 	}
 
 	http.HandleFunc("/health", handleHealth)
-	http.HandleFunc("/capture", handleCapture)
-	http.HandleFunc("/capture/voice", handleVoice)
+	http.HandleFunc("/capture", withAuth(handleCapture))
+	http.HandleFunc("/capture/voice", withAuth(handleVoice))
 
 	fmt.Printf("brain-capture listening on :%s, vault=%s\n", port, vaultPath)
 	if err := http.ListenAndServe(":"+port, nil); err != nil {
 		fmt.Fprintf(os.Stderr, "server error: %v\n", err)
 		os.Exit(1)
+	}
+}
+
+func withAuth(next http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		token := strings.TrimPrefix(r.Header.Get("Authorization"), "Bearer ")
+		if token == "" || token != apiKey {
+			http.Error(w, "unauthorized", http.StatusUnauthorized)
+			return
+		}
+		next(w, r)
 	}
 }
 

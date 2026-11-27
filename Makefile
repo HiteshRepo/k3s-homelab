@@ -72,6 +72,18 @@ homarr-secret: ## Create the Homarr database encryption key secret
 	    --namespace homelab \
 	    --from-literal=db-encryption-key=$$(openssl rand -hex 32)
 
+.PHONY: brain-capture-secret
+brain-capture-secret: ## Create the brain-capture API key secret (auto-generated, usage: make brain-capture-secret)
+	@kubectl get secret brain-capture-keys -n brain-capture >/dev/null 2>&1 && echo "brain-capture-keys secret already exists" || { \
+	  API_KEY=$$(openssl rand -hex 32); \
+	  kubectl create namespace brain-capture --dry-run=client -o yaml | kubectl apply -f -; \
+	  kubectl create secret generic brain-capture-keys \
+	    --namespace brain-capture \
+	    --from-literal=api-key=$$API_KEY; \
+	  echo "API key: $$API_KEY"; \
+	  echo "Save this — it won't be shown again."; \
+	}
+
 # ─── Cloudflare Tunnel ────────────────────────────────────────────────────────
 
 TUNNEL_TOKEN ?= ""
