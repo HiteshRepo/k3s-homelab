@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: brain-capture
+  namespace: brain-capture
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: brain-capture
+  template:
+    metadata:
+      labels:
+        app: brain-capture
+    spec:
+      containers:
+        - name: brain-capture
+          image: ghcr.io/hiteshrepo/brain-capture:latest
+          imagePullPolicy: Always
+          env:
+            - name: VAULT_PATH
+              value: /vault
+            - name: PORT
+              value: "8080"
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: vault
+              mountPath: /vault
+          resources:
+            requests:
+              memory: 32Mi
+              cpu: 10m
+            limits:
+              memory: 128Mi
+      volumes:
+        - name: vault
+          hostPath:
+            path: /mnt/external/second-brain/vault
+            type: DirectoryOrCreate
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: brain-capture
+  namespace: brain-capture
+spec:
+  selector:
+    app: brain-capture
+  ports:
+    - port: 8080
+      name: http

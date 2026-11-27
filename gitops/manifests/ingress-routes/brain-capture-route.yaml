@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: brain-capture
+  namespace: traefik-system
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`brain.lab.hiteshp.in`)
+      kind: Rule
+      services:
+        - name: brain-capture
+          namespace: brain-capture
+          port: 8080
+  tls: {}
