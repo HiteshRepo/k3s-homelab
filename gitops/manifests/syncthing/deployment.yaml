@@ -1,0 +1,99 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: syncthing-config-pvc
+  namespace: syncthing
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-path
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: syncthing
+  namespace: syncthing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: syncthing
+  template:
+    metadata:
+      labels:
+        app: syncthing
+    spec:
+      containers:
+        - name: syncthing
+          image: syncthing/syncthing:1.29.6
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: STGUIADDRESS
+              value: "0.0.0.0:8384"
+            - name: STNORESTART
+              value: "yes"
+          ports:
+            - containerPort: 8384
+              name: web
+            - containerPort: 22000
+              protocol: TCP
+              name: sync-tcp
+            - containerPort: 22000
+              protocol: UDP
+              name: sync-quic
+          volumeMounts:
+            - name: config
+              mountPath: /var/syncthing
+            - name: vault
+              mountPath: /vault
+          resources:
+            requests:
+              memory: 64Mi
+              cpu: 50m
+            limits:
+              memory: 256Mi
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: syncthing-config-pvc
+        - name: vault
+          hostPath:
+            path: /mnt/external/second-brain/vault
+            type: DirectoryOrCreate
+---
+# Web UI — accessed via Traefik IngressRoute
+apiVersion: v1
+kind: Service
+metadata:
+  name: syncthing-web
+  namespace: syncthing
+spec:
+  selector:
+    app: syncthing
+  ports:
+    - port: 8384
+      name: web
+---
+# Sync port — dedicated LoadBalancer IP so devices can reach it directly on the LAN
+apiVersion: v1
+kind: Service
+metadata:
+  name: syncthing-sync
+  namespace: syncthing
+  annotations:
+    metallb.universe.tf/loadBalancerIPs: 192.168.29.203
+spec:
+  type: LoadBalancer
+  selector:
+    app: syncthing
+  ports:
+    - port: 22000
+      protocol: TCP
+      name: sync-tcp
+    - port: 22000
+      protocol: UDP
+      name: sync-quic

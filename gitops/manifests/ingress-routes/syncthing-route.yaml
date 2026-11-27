@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: syncthing
+  namespace: traefik-system
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`syncthing.lab.hiteshp.in`)
+      kind: Rule
+      services:
+        - name: syncthing-web
+          namespace: syncthing
+          port: 8384
+  tls: {}
