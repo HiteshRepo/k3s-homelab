@@ -87,11 +87,12 @@ func handleCapture(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	heading := now.Format("2006-01-02 15:04")
+	var content string
 	if req.Title != "" {
-		heading = req.Title
+		content = fmt.Sprintf("# %s\n\n%s\n", req.Title, req.Text)
+	} else {
+		content = req.Text + "\n"
 	}
-	content := fmt.Sprintf("# %s\n\n%s\n", heading, req.Text)
 
 	if err := os.WriteFile(filepath.Join(draftsDir, filename), []byte(content), 0644); err != nil {
 		http.Error(w, "failed to write file", http.StatusInternalServerError)
